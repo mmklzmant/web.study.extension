@@ -1,0 +1,20 @@
+@charset "utf-8";
+/**
+ * 功能: 九九乘法表
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-07 09:34:35
+ */
+
+.line div{
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    background: linear-gradient(145deg, #53a3eb, #096dc7);
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+}
+.line {
+    width: 900px;
+}
