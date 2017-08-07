@@ -1,0 +1,64 @@
+@charset "utf-8";
+/**
+ * 功能: 物流信息样式表
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-07 16:15:02
+ */
+
+ /**********************************************/
+ /*公共样式*/
+ /*********************************************/
+ *{
+    box-sizing: border-box;
+ }
+ body{
+    margin: 0;
+    padding: 0;
+ }
+ .container{
+    width: 900px;
+    margin: 0 auto;
+ }
+
+ /**********************************************/
+ /*详细设置*/
+ /*********************************************/
+form>div{
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+form>div input{
+    height: 30px;
+    width: 250px;
+    border: 2px solid #965202;
+    outline: none;
+    padding-left: 10px;
+}
+form>div button{
+    width: 80px;
+    height: 30px;
+    color: white;
+    background-color: #FF8900;
+    border: none;
+}
+table{
+    border-collapse: collapse;
+}
+table td{
+    border: 1px solid #000;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    color: #965202;
+}
+table tbody tr:nth-child(even){
+    background-color: #FFF6E9;
+}
+table thead td{
+    background-color: #FF8900;
+}
+tbody tr td:last-child{
+    color: #FF8900;
+}
