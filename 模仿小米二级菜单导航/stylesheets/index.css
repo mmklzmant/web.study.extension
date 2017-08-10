@@ -5,6 +5,18 @@
  * @date    2017-08-09
  */
 
+/**********************************************/
+ /*iconfont*/
+ /*********************************************/
+@font-face {
+  font-family: 'iconfont';  /* project id 380873 */
+  src: url('https://at.alicdn.com/t/font_380873_iqr1xjs35a0s5rk9.eot');
+  src: url('https://at.alicdn.com/t/font_380873_iqr1xjs35a0s5rk9.eot?#iefix') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_380873_iqr1xjs35a0s5rk9.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_380873_iqr1xjs35a0s5rk9.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_380873_iqr1xjs35a0s5rk9.svg#iconfont') format('svg');
+}
+
  /**********************************************/
  /*公共样式*/
  /*********************************************/
@@ -62,24 +74,44 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 234px;
+    /*width: 234px;*/
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 15px 0px;
 }
-#menu-items>ul>li{
+#menu{
+    width: 234px;
+}
+#menu>li{
     width: 100%;
     height: 42px;
     line-height: 42px;
     padding-left: 30px;
+    position: relative;
 }
-#menu-items>ul>li>a{
+#menu>li>a{
     color: #fff;
     font-size: 14px;
 }
-#menu-items>ul>li:hover{
+#menu>li:hover{
     background-color: #ff6700
 }
+/*图标*/
+#menu>li>a>i{
+    color: rgba(255, 255, 255, 0.5);
+    position: absolute;                
+    top: 12px;
+    right: 20px;
+    font-size: 16px; 
+    line-height: 16px;
+}
+.iconfont{
+   font-family: "iconfont";
+   font-size: 16px;
+   font-weight: bold;                                                            
+   font-style: normal;
+}
+/*子菜单*/
 #submenu{
     display: none;
     position: absolute;
@@ -99,11 +131,17 @@
 #submenu>li>a{
     font-size: 14px;
     color: #000;
+    vertical-align: middle;
+    padding-left: 20px;
 }
-#menu-items ul>li:hover ul{
+#submenu>li>img{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+#menu-items:hover #submenu{
     display: block;
 }
-
 /**********************************************/
  /*响应式样式设置*/
  /*********************************************/
