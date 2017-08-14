@@ -14,6 +14,7 @@
  body{
     margin: 0;
     padding: 0;
+    font-size: 14px;
  }
  .container{
     width: 960px;
@@ -70,6 +71,10 @@ form .top input {
     width: 200px;
     height: 30px;
     color: #1477B9;
+    padding-left: 5px;
+}
+form .top input:focus{
+    border: 1px solid #659EE5;
 }
 /*按钮*/
 form .bottom{
@@ -88,20 +93,20 @@ form #reset{
     background-color: #92949A;
 }
 form #reset:hover{
-    background-color: #747E99;
+    background-color: #659EE5;
 }
 form #reset:active{
     background-color: #53679A;
 }
 form #add{
-    background: #2C4CA1;
+    background: #659EE5;
     color: #fff;
 }
 form #add:hover{
-    background-color: #4860A0;
+    background-color: #81AEE5;
 }
 form #add:active{
-    background-color: #0841D8;
+    background-color: #4860A0;
 }
 
 /*table*/
@@ -111,16 +116,28 @@ div.table{
 table{
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid #659EE5;
 }
 table tr{
     height: 35px;
+}
+table td{
+    border-top: 1px solid rgba(83, 114, 199, 0.5);
+    padding-left: 5px;
 }
 table thead td, table tbody td{
     width: 11.1%;
 }
 table thead, table tfoot{
     color: #fff;
-    background-color: #2C4CA1;
+    background-color: #659EE5;
+}
+tbody tr:nth-child(odd)
+{
+    background-color: #AEC6D2;
+}
+tbody tr:nth-child(even){
+    background-color: #D8DBE0; 
 }
 /**********************************************/
  /*响应式样式设置*/
