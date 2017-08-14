@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>消费统计</title>
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <!-- mmklzmant于2017-08-14 16:01:18编写 -->
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <form>
+                <div class="top clearfix">
+                    <div class="left fl">
+                        <div>
+                            <label>饮食：</label>
+                            <input type="number" name="eating" id="eating">
+                        </div>
+                        <div>
+                            <label>行车交通：</label>
+                            <input type="number" name="traffic" id="traffic">
+                        </div>
+                        <div>
+                            <label>金融保险：</label>
+                            <input type="number" name="insurance" id="insurance">
+                        </div>
+                    </div>
+                    <div class="center fl">
+                        <div>
+                            <label>购物：</label>
+                            <input type="number" name="shopping" id="shopping">
+                        </div>
+                        <div>
+                            <label>休闲娱乐：</label>
+                            <input type="number" name="entertainment" id="entertainment">
+                        </div>
+                        <div>
+                            <label>医疗：</label>
+                            <input type="number" name="medical" id="medical">
+                        </div>
+                    </div>
+                    <div class="right fl">
+                        <div>
+                            <label>居家生活：</label>
+                            <input type="number" name="life" id="life">
+                        </div>
+                        <div>
+                            <label>人情费用：</label>
+                            <input type="number" name="humanity" id="humanity">
+                        </div>
+                        <div>
+                            <label>其它：</label>
+                            <input type="number" name="other" id="other">
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <button type="reset" id="reset">重置</button>
+                    <button type="button" id="add">添加</button>
+                </div>
+            </form>
+            <div class="table">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <td>饮食</td>
+                            <td>购物</td>
+                            <td>居家生活</td>
+                            <td>行车交通</td>
+                            <td>休闲娱乐</td>
+                            <td>人情费用</td>
+                            <td>金融保险</td>
+                            <td>医疗</td>
+                            <td>其它</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <td>平均每天</td>
+                            <td id="aver" colspan="8">￥0.00</td>
+                        </tr>
+                        <tr>
+                            <td>总记</td>
+                            <td id="sum" colspan="8">￥0.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="javascripts/index.js"></script>
+</body>
+
+</html>

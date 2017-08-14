@@ -47,6 +47,7 @@ function createMenu() {
             goodsNav[i].classfiy + "<i class=\"iconfont\">&#xe6a7;</i></a>";
     }
     menu.innerHTML = html;
+    
     //绑定鼠标事件
     for (var j = 0; j < len; j++) {
         var menu_li = menu.getElementsByTagName("li")[j];
@@ -56,12 +57,10 @@ function createMenu() {
             createSubmenu(this.index);
         }
     }
-
 }
 
 //生成子菜单
 function createSubmenu(index) {
-    var len = goodsNav.length;
     var goodsItem = goodsNav[index].goods;
     var html = "";
     var goods_len = goodsItem.length;
