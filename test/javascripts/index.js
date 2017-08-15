@@ -33,7 +33,25 @@ if (ndList) {
 	function appendItems(){
 		const fragment = document.createDocumentFragment();
 		for(let i = 0; i < batchSize; i++){
-			
+			const ndItem = document.createElement("li");
+			ndItem.innerText = bacthDone * batchSize + i + 1;
+			fragment.appendChild(ndItem);
+		}
+
+		ndList.appendChild(fragment);
+
+		bacthDone += 1;
+		doBatchAppend();
+	}
+
+	function doBatchAppend(){
+		if(bacthDone < batchCount)
+		{
+			window.requestAnimationFrame(appendItems);
 		}
 	}
+
+	doBatchAppend();
+
+	
 }

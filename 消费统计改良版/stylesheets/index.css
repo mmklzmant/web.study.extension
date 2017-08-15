@@ -1,0 +1,145 @@
+@charset "utf-8";
+/**
+ * 功能: 
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-01 16:35:40
+ */
+
+ /**********************************************/
+ /*公共样式*/
+ /*********************************************/
+ *{
+    box-sizing: border-box;
+ }
+ body{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+ }
+ .container{
+    width: 960px;
+    margin: 0 auto;
+ }
+ input, button{
+    outline: none;
+ }
+ /*浮动*/
+ .fl{
+    float: left;
+ }
+.fr{
+    float: right;
+}
+ /*清除浮动*/
+ .clearfix:before, .clearfix:after{
+    display: table;
+    content: "";
+ }
+ .clearfix:after{
+    clear: both;
+    height: 0;
+    visibility: hidden;
+ }
+
+
+ /**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+main{
+    padding-top: 30px;
+}
+/*form*/
+form{
+    width: 100%;
+    padding-bottom: 40px;
+}
+form label{
+    width: 100px;
+    text-align: right;
+    display: inline-block;
+}
+form .top{
+    margin-bottom: 20px;
+}
+form .top > div{
+    width: 33.3%;
+}
+form .top > div > div{
+    margin-bottom: 15px;
+}
+form .top input {
+    width: 200px;
+    height: 30px;
+    color: #1477B9;
+    padding-left: 5px;
+}
+form .top input:focus{
+    border: 1px solid #659EE5;
+}
+/*按钮*/
+form .bottom{
+    width: 100%;
+    text-align: center;
+}
+form button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    line-height: 30px;
+    border-radius: 5px;
+}
+form #reset{
+    margin-right: 15px;
+    background-color: #92949A;
+}
+form #reset:hover{
+    background-color: #659EE5;
+}
+form #reset:active{
+    background-color: #53679A;
+}
+form #add{
+    background: #659EE5;
+    color: #fff;
+}
+form #add:hover{
+    background-color: #81AEE5;
+}
+form #add:active{
+    background-color: #4860A0;
+}
+
+/*table*/
+div.table{
+    width: 100%;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #659EE5;
+}
+table tr{
+    height: 35px;
+}
+table td{
+    border-top: 1px solid rgba(83, 114, 199, 0.5);
+    padding-left: 5px;
+}
+table thead td, table tbody td{
+    width: 11.1%;
+}
+table thead, table tfoot{
+    color: #fff;
+    background-color: #659EE5;
+}
+tbody tr:nth-child(odd)
+{
+    background-color: #AEC6D2;
+}
+tbody tr:nth-child(even){
+    background-color: #D8DBE0; 
+}
+/**********************************************/
+ /*响应式样式设置*/
+ /*********************************************/
+
