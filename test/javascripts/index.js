@@ -5,7 +5,6 @@
  */
 
 var ndList = document.getElementById("list");
-console.log(ndList);
 //first
 /*if (ndList) {
 	for(var i = 0; i < 30000; i++){
@@ -25,15 +24,39 @@ console.log(ndList);
 
 //second
 if (ndList) {
-	const total = 30000;
-	const batchSize = 4;//每次插入的节点数
-	const batchCount = total/batchSize;//需批处理多少次
-	let bacthDone = 0;//已经完成的批处理个数
+	var total = 30000;//总共加载的li
+	var size = 4;//一次加载的次数
+	var frequency = total/size;//分批的次数
+	var done = 0; //加载完的批次数
 
-	function appendItems(){
-		const fragment = document.createDocumentFragment();
-		for(let i = 0; i < batchSize; i++){
-			
+	doAppend();
+
+	function doAppend(){
+		if(done < frequency)
+		{
+			window.requestAnimationFrame(doLoad);
 		}
 	}
+
+	function doLoad(){
+		var fragment = document.createDocumentFragment();
+		for(var i = 0; i < size; i++){
+			const ndItem = document.createElement("li");
+			ndItem.innerText = (done * size) + i + 1;
+			fragment.appendChild(ndItem);
+		}
+
+		ndList.appendChild(fragment);
+		done += 1;
+		doAppend();
+	}
+
+	ndList.addEventListener("click", function(e){
+		var e = e || window.event;
+		var target = e.target || e.srcElement;
+		if(target.tagName === "LI"){
+			alert(target.innerText);
+		}
+	})
+
 }
