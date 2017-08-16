@@ -1,57 +1,57 @@
 /**
- * 功能：测试
+ * 功能：一段动画采用setInterval与requestAnimationFrame，分别给出了webKit下调用刷新的次数
  * @authors mmklzmant (mmklzmant@163.com)
- * @date    2017-08-14 22:01:25
+ * @date    2017-08-16
  */
 
-var ndList = document.getElementById("list");
-console.log(ndList);
-//first
-/*if (ndList) {
-	for(var i = 0; i < 30000; i++){
-		const ndItem = document.createElement("li");
-		ndItem.innerText = i+1;
-		ndList.appendChild(ndItem);
-	}
+var book = document.getElementById('book')
+var several = document.getElementById('several');
 
-	ndList.addEventListener("lick", function(e){
-		var e = e || window.event;
-		var target = e.target || e.srcElement;
-		if(target.tagName === "LI"){
-			alert(target.innerText);
-		}
-	})
-}*/
+animate(book, {
+    left: 50,
+    duration: 2000
+})
 
-//second
-if (ndList) {
-	const total = 30000;
-	const batchSize = 4;//每次插入的节点数
-	const batchCount = total/batchSize;//需批处理多少次
-	let bacthDone = 0;//已经完成的批处理个数
+function animate(elem, options) {
+    //动画初始值
+    var start = 500
+    //动画结束值
+    var end = options.left
+    //动画id
+    var timerId;
+    var createTime = function() {
+        return (+new Date)
+    }
+    //动画开始时间
+    var startTime = createTime();
 
-	function appendItems(){
-		const fragment = document.createDocumentFragment();
-		for(let i = 0; i < batchSize; i++){
-			const ndItem = document.createElement("li");
-			ndItem.innerText = bacthDone * batchSize + i + 1;
-			fragment.appendChild(ndItem);
-		}
+    var i = 0;
 
-		ndList.appendChild(fragment);
+    function tick() {
+        i++;
+        several.innerHTML = 'setInterval调用次数:' + i;
+        //每次变化的时间
+        var remaining = Math.max(0, startTime + options.duration - createTime())
+        var temp = remaining / options.duration || 0;
+        var percent = 1 - temp;
+        var stop = function() {
+            //停止动画
+            clearInterval(timerId);
+            timerId = null;
+        }
+        var setStyle = function(value) {
+            elem.style['left'] = value + 'px'
+        }
+        //移动的距离
+        var now = (end - start) * percent + start;
+        if (percent === 1) {
+            setStyle(now)
+            stop();
+        } else {
+            setStyle(now)
+        }
+    }
 
-		bacthDone += 1;
-		doBatchAppend();
-	}
-
-	function doBatchAppend(){
-		if(bacthDone < batchCount)
-		{
-			window.requestAnimationFrame(appendItems);
-		}
-	}
-
-	doBatchAppend();
-
-	
+    //开始执行动画
+    var timerId = setInterval(tick, 13);
 }

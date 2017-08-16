@@ -1,0 +1,111 @@
+@charset "utf-8";
+/**
+ * 功能: 手机支付页面
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-16
+ */
+
+ /**********************************************/
+ /*公共样式*/
+ /*********************************************/
+ *{
+    box-sizing: border-box;
+ }
+ body,p,div{
+    margin: 0;
+    padding: 0;
+ }
+ /*浮动*/
+ .fl{
+    float: left;
+ }
+.fr{
+    float: right;
+}
+ /*清除浮动*/
+ .clearfix:before, .clearfix:after{
+    display: table;
+    content: "";
+ }
+ .clearfix:after{
+    clear: both;
+    height: 0;
+    visibility: hidden;
+ }
+
+
+
+ /**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+page[data-page]{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 100%;
+    display: block;
+}
+page[data-page]:nth-child(1){
+    left: 0;
+}
+
+/*遮罩层*/
+.mask{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.payInfo{
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 200px);
+    left: 0;
+    top: 0;
+    z-index: 11;
+}
+.pay-box{
+    position: absolute;
+    width: 280px;
+    height: 220px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    left: 50%;
+    margin-left: -140px;
+    top: 50%;
+    margin-top: -110px;
+}
+.keyboard{
+    position: fixed;
+    width: 100%;
+    height: 200px;
+    background-color: #fff;
+    border-top: 1px solid #888;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    overflow: hidden;
+}
+.keyboard div{
+    width: 33.3%;
+    float: left;
+    height: 25%;
+    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    text-align: center;
+    font: 32px/50px "arial";
+    cursor: pointer;
+}
+.keyboard div:empty{
+    background-color: #eee;
+}
+/**********************************************/
+ /*响应式样式设置*/
+ /*********************************************/
+

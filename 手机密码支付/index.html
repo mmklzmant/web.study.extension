@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>首页</title>
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <!-- mmklzmant于2017-08-01 编写 -->
+</head>
+
+<body>
+    <page data-page="首页">
+        <header>首页</header>
+        <main>
+            <button type="button" class="gotoPay">前往支付页面</button>
+        </main>
+        <footer></footer>
+    </page>
+    <page data-page="支付页面">
+        <header>
+            <span>返回</span> 支付页面
+        </header>
+        <main>
+            <div>
+                <label>￥</label>
+                <input type="number" id="money" placeholder="请输入支付金额" maxlength="7">
+            </div>
+            <button type="button" id="pay">支付</button>
+        </main>
+        <footer></footer>
+    </page>
+    <page data-page="支付结果">
+        <header>
+            <span>返回</span> 支付结果
+        </header>
+        <main>
+            <p>支付成功</p>
+            <p>
+                <span>支付金额</span>
+                <span id="payNum">12.00</span>
+            </p>
+        </main>
+        <footer></footer>
+    </page>
+    <div class="mask"></div>
+	<div class="payInfo">
+		<div class="pay-box">
+			<p>
+				<span>x</span>
+				请输入支付密码
+			</p>
+			<p>
+				向
+				<span>皮卡丘</span>
+				转账
+			</p>
+			<p>
+				￥
+				<span>12.00</span>
+			</p>
+			<div class="password">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<div class="keyboard clearfix">
+		<div class="num">7</div>
+		<div class="num">8</div>
+		<div class="num">9</div>
+		<div class="num">4</div>
+		<div class="num">5</div>
+		<div class="num">6</div>
+		<div class="num">1</div>
+		<div class="num">2</div>
+		<div class="num">3</div>
+		<div></div>
+		<div class="num">0</div>
+		<div class="num">←</div>
+	</div>
+</body>
+
+</html>

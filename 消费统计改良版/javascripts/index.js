@@ -72,7 +72,7 @@ function pushData() {
     //inputs数组的长度
     var len = inputs.length;
     for (var i = 0; i < len; i++) {
-        obj["data" + (i + 1)] = Number(inputs[i].value) || 0;
+        obj["data" + (i + 1)] = Number(inputs[i].value);
     }
     arrData.push(obj);
 }
