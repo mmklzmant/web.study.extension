@@ -1,62 +1,55 @@
 /**
- * 功能：测试
+ * 功能：一段动画采用setInterval与requestAnimationFrame，分别给出了webKit下调用刷新的次数
  * @authors mmklzmant (mmklzmant@163.com)
- * @date    2017-08-14 22:01:25
+ * @date    2017-08-16
  */
 
-var ndList = document.getElementById("list");
-//first
-/*if (ndList) {
-	for(var i = 0; i < 30000; i++){
-		const ndItem = document.createElement("li");
-		ndItem.innerText = i+1;
-		ndList.appendChild(ndItem);
-	}
+animate(book, {
+    left: 50,
+    duration: 2000
+})
 
-	ndList.addEventListener("lick", function(e){
-		var e = e || window.event;
-		var target = e.target || e.srcElement;
-		if(target.tagName === "LI"){
-			alert(target.innerText);
-		}
-	})
-}*/
+function animate(elem, options) {
+    //动画初始值
+    var start = 500
+    //动画结束值
+    var end = options.left
+    //动画id
+    var timerId;
+    var createTime = function() {
+        return (+new Date)
+    }
+    //动画开始时间
+    var startTime = createTime();
 
-//second
-if (ndList) {
-	var total = 30000;//总共加载的li
-	var size = 4;//一次加载的次数
-	var frequency = total/size;//分批的次数
-	var done = 0; //加载完的批次数
+    var i = 0;
 
-	doAppend();
+    function tick() {
+        i++;
+        several.innerHTML = 'setInterval调用次数:' + i;
+        //每次变化的时间
+        var remaining = Math.max(0, startTime + options.duration - createTime())
+        var temp = remaining / options.duration || 0;
+        var percent = 1 - temp;
+        var stop = function() {
+            //停止动画
+            clearInterval(timerId);
+            timerId = null;
+        }
+        var setStyle = function(value) {
+            elem.style['left'] = value + 'px'
+        }
+        //移动的距离
+        var now = (end - start) * percent + start;
+        if (percent === 1) {
+            setStyle(now)
+            stop();
+        } else {
+            setStyle(now)
+        }
+    }
 
-	function doAppend(){
-		if(done < frequency)
-		{
-			window.requestAnimationFrame(doLoad);
-		}
-	}
-
-	function doLoad(){
-		var fragment = document.createDocumentFragment();
-		for(var i = 0; i < size; i++){
-			const ndItem = document.createElement("li");
-			ndItem.innerText = (done * size) + i + 1;
-			fragment.appendChild(ndItem);
-		}
-
-		ndList.appendChild(fragment);
-		done += 1;
-		doAppend();
-	}
-
-	ndList.addEventListener("click", function(e){
-		var e = e || window.event;
-		var target = e.target || e.srcElement;
-		if(target.tagName === "LI"){
-			alert(target.innerText);
-		}
-	})
-
+    //开始执行动画
+    var timerId = setInterval(tick, 13);
 }
+>>>>>>> 8ea231a623ef753e8104261b03037d9656b1a754
