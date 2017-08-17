@@ -5,33 +5,46 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>首页</title>
+    <link href="stylesheets/common.css" rel="stylesheet">
     <link href="stylesheets/index.css" rel="stylesheet">
     <!-- mmklzmant于2017-08-01 编写 -->
 </head>
 
 <body>
     <main id="root">
-    	<!-- <page data-page="信息页面">
-    		<header></header>
-    		<main></main>
-    		<footer></footer>
-    	</page> -->
+        <page data-page="信息页面">
+            <header></header>
+            <main></main>
+            <footer></footer>
+        </page>
         <page data-page="首页">
             <header>首页</header>
             <main>
-                <div id="gotoPay">
-                	<img src="images/headimg.jpg" alt="error">
-                	<span class="nickname">Change...</span>
-                	<span class="next">&gt;</span>
-                </div>
+                <ul>
+                    <li>
+                        <div class="gotoPay">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="gotoPay">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="gotoPay">
+                        </div>
+                    </li>
+                </ul>
             </main>
             <footer></footer>
         </page>
         <page data-page="支付页面">
             <header>
-                <span id="payBack" data-href="index">返回</span> 支付页面
+                <span data-href="index">返回</span> 支付页面
             </header>
-            <main>
+            <main class="payPage">
+                <p>
+                    您将向<span id="payPageNick">Change...</span>转账
+                </p>
                 <div class="input">
                     <label>￥</label>
                     <input type="number" id="money" placeholder="请输入支付金额" maxlength="7">
@@ -42,32 +55,35 @@
         </page>
         <page data-page="支付结果">
             <header>
-                <span id="resultBack" data-href="index">返回</span> 支付结果
+                <span data-href="index">返回</span> 支付结果
             </header>
             <main>
                 <p>支付成功！</p>
                 <p>
-                    <span>支付金额</span>
+                    给
+                    <span id="result-nick">Change...</span>
+                </p>
+                <p>
+                    成功转账
                     <span id="payNum">12.00</span>
                 </p>
             </main>
             <footer></footer>
         </page>
-        <script type="text/javascript" src="javascripts/index.js"></script>
         <div class="mask"></div>
         <div class="payInfo">
             <div class="pay-box">
                 <p>
-                    <span>x</span> 请输入支付密码
+                    <span class="quit">x</span> 请输入支付密码
                 </p>
                 <p>
-                    向<span>皮卡丘</span>转账
+                    向<span id="mask-nick">皮卡丘</span>转账
                 </p>
                 <p>
-                    ￥<span>12.00</span>
+                    ￥<span id="pay-money">12.00</span>
                 </p>
-                <p>密码输入错误</p>
-                <div class="password">
+                <p id="error">密码输入错误</p>
+                <div id="password">
                     <div></div>
                     <div></div>
                     <div></div>
@@ -89,9 +105,10 @@
             <div class="num">3</div>
             <div></div>
             <div class="num">0</div>
-            <div class="num">←</div>
+            <div class="delkey">←</div>
         </div>
     </main>
+    <script type="text/javascript" src="javascripts/index.js"></script>
 </body>
 
 </html>

@@ -5,78 +5,22 @@
  * @date    2017-08-16
  */
 
- /**********************************************/
- /*公共样式*/
- /*********************************************/
- *{
-    box-sizing: border-box;
- }
- body, html{
-    height: 100%;
-    font: 18px "微软雅黑";
- }
- body,p,div{
-    margin: 0;
-    padding: 0;
- }
- /*浮动*/
- .fl{
-    float: left;
- }
-.fr{
-    float: right;
-}
- /*清除浮动*/
- .clearfix:before, .clearfix:after{
-    display: table;
-    content: "";
- }
- .clearfix:after{
-    clear: both;
-    height: 0;
-    visibility: hidden;
- }
-
-
-
- /**********************************************/
+/**********************************************/
  /*样式细节设置*/
  /*********************************************/
- header{
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    font: 22px/50px "微软雅黑";
-    color: #fff;
-    background-color: #35343a;
- }
- footer{
-    width: 100%;
-    height: 50px;
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    background-color: #35343a;
- }
- #root{
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
+ main ul li{
+    border-bottom: 1px solid #aaa;
  }
 
- #gotoPay{
+ .gotoPay{
     width: 100%;
     height: 65px;
     line-height: 65px;
     background-color: #fff;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
     cursor: pointer;
     position: relative;
  }
- #gotoPay img{
+ .gotoPay img{
     width: 50px;
     height: 50px;
     position: absolute;
@@ -84,12 +28,12 @@
     left: 15px;
     border-radius: 50%;
  }
- #gotoPay span.nickname{
+ .gotoPay span:nth-of-type(1){
     position: absolute;
     left:83px;
     top: 1px;
  }
- #gotoPay span.next{
+ .gotoPay span.next{
     color: #aaa;
     position: absolute;
     right: 15px;
@@ -103,19 +47,21 @@ page[data-page]{
     height: 100%;
     overflow: hidden;
     position: absolute;
-    right: -100%;
     display: block;
     transition: all 0.4s;
 }
-/*page[data-page]:nth-child(1){
-    z-index: -1;
-    transition: none;
-    right: 100%;
-}*/
 page[data-page]:nth-child(1){
-   right: 0;
+    z-index: 1;
+    left: -100%;
+    transition: none;
 }
-
+page[data-page]:nth-child(2){
+  
+}
+page[data-page]:nth-child(3),page[data-page]:nth-child(4){
+    right: -100%;
+    z-index: 1;
+}
 /*支付页面*/
 header span[data-href]{
     line-height: 50px;
@@ -125,12 +71,23 @@ header span[data-href]{
     cursor: pointer;
     position: absolute;
 }
-page:nth-child(2) main{
+page:nth-child(3) main{
     width: 100%;
     height: calc(100%-100px);
     padding: 10px;
     top: 50px;
     position: absolute;
+}
+.payPage p{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.payPage p span{
+    color: #01aa01;
+    font-size: 26px;
+}
+.input{
+    text-align: center;
 }
 .input label{
     font-size: 25px;
@@ -157,20 +114,45 @@ page:nth-child(2) main{
     cursor: pointer;
 }
 /*支付结果页面*/
-page:nth-child(3) main{
+page:nth-child(4) main{
     width: 100%;
     height: calc(100%-100px);
     padding: 10px;
     top: 50px;
     position: absolute;
 }
-page:nth-child(3) main p{
+page:nth-child(4) main p{
     margin-top: 10px;
+    line-height: 50px;
     margin-bottom: 10px;
+    width: 100%;
 }
+page:nth-child(4) main p:first-child{
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+}
+page:nth-child(4) main p:nth-child(2){
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+page:nth-child(4) main p:nth-child(2) span{
+    font-size: 40px;
+    color: #01aa01;
+}
+page:nth-child(4) main p:nth-child(3){
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+page:nth-child(4) main p:nth-child(3) span{
+    font-size: 40px;
+    color: #000;
+}
+
 /*遮罩层*/
 .mask{
-    display: none;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -183,7 +165,6 @@ page:nth-child(3) main p{
 }
 
 .payInfo{
-    display: none;
     position: fixed;
     width: 100%;
     height: calc(100% - 200px);
@@ -204,7 +185,6 @@ page:nth-child(3) main p{
     margin-top: -110px;
 }
 .keyboard{
-    display: none;
     position: fixed;
     width: 100%;
     height: 200px;
@@ -230,6 +210,9 @@ page:nth-child(3) main p{
 }
 
 /*pay-box*/
+.pay-box{
+    position: relative;
+}
 .pay-box p:nth-child(1){
     position: relative;
     border-bottom: 1px solid #b6ccaf;
@@ -257,21 +240,23 @@ page:nth-child(3) main p{
 
 }
 .pay-box p:nth-child(4){
+    display: none;
     height: 20px;
     text-align: center;
     color: #e63434;
     line-height: 20px;
 }
-.password{
+#password{
     width: 242px;
     height: 40px;
     border: 1px solid #aaa;
     border-radius: 3px;
-    margin: 0 auto;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 17px;
+    left: 17px;
     overflow: hidden;
 }
-.password div{
+#password div{
     width: 40px;
     height: 100%;
     border-right: 1px solid #aaa;
@@ -279,7 +264,14 @@ page:nth-child(3) main p{
     text-align: center;
     float: left;
 }
-.password div:last-child{
+#password div i{
+    width: 16px;
+    height: 16px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+}
+#password div:last-child{
     border-right: none;
 }
 /**********************************************/
