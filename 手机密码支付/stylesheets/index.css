@@ -50,17 +50,15 @@ page[data-page]{
     display: block;
     transition: all 0.4s;
 }
-page[data-page]:nth-child(1){
-    z-index: 1;
-    left: -100%;
-    transition: none;
+page[data-page]:nth-child(0){
+    left: 0;
 }
-page[data-page]:nth-child(2){
+page[data-page]:nth-child(1){
   
 }
-page[data-page]:nth-child(3),page[data-page]:nth-child(4){
-    right: -100%;
-    z-index: 1;
+page[data-page]:nth-child(2),page[data-page]:nth-child(3){
+    left: 100%;
+    background-color: #fff;
 }
 /*支付页面*/
 header span[data-href]{
