@@ -8,20 +8,6 @@
 /*************************************************/
 /* 全局变量、对象定义部分 */
 /*************************************************/
-// 用户数据
-var userInfo = [{
-        nickname: "Change...",
-        imageUrl: "images/headimg_one.jpg"
-    },
-    {
-        nickname: "。。。。。",
-        imageUrl: "images/headimg_two.jpg"
-    },
-    {
-        nickname: "乙辛",
-        imageUrl: "images/headimg_three.jpg"
-    }
-];
 var currentUserInfo = {
     nickname: "Change...",
     imageUrl: "images/headimg_one.jpg",
@@ -35,9 +21,6 @@ var objNickName = {
 	//支付结果页面昵称
 	resultNick: document.getElementById("result-nick")
 }
-
-// li标签
-var liLabel = document.getElementsByTagName("li");
 
 //pages
 var pages = document.getElementsByTagName("page");
@@ -143,6 +126,7 @@ mainRoot.onclick = function(e) {
  * 加载用户列表
  */
 function loadUserList() {
+    var liLabel = document.getElementsByTagName("li");
     userInfo.forEach(function(e, index) {
         var node = (liLabel[index].children)[0];
         node.innerHTML = "<img src=\"" + e.imageUrl + "\">" +
@@ -155,6 +139,7 @@ function loadUserList() {
  * li监听事件绑定
  */
 function bindLiClick(){
+    var liLabel = document.getElementsByTagName("li");
 	var len = liLabel.length;
 
 	for(let i = 0; i < len; i++){
