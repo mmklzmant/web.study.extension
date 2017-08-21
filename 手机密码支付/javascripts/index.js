@@ -11,114 +11,54 @@
 var currentUserInfo = {
     nickname: "Change...",
     imageUrl: "images/headimg_one.jpg",
+    money: ""
 }
 
 var objNickName = {
-	//支付页面昵称
-	payPageNick: document.getElementById("payPageNick"),
-	//遮罩层昵称
-	maskNickName: document.getElementById("mask-nick"),
-	//支付结果页面昵称
-	resultNick: document.getElementById("result-nick")
+    //支付页面昵称
+    payPageNick: document.getElementById("payPageNick"),
+    //遮罩层昵称
+    maskNickName: document.getElementById("mask-nick"),
+    //支付结果页面昵称
+    resultNick: document.getElementById("result-nick")
 }
 
-//pages
-var pages = document.getElementsByTagName("page");
-//支付页面
-
-//返回按钮
-var backBtns = document.getElementsByTagName("span");
-//支付按钮 
-var payBtn = document.getElementById("pay");
-//支付金额
-var money = document.getElementById("money");
-var moneyValue;
 //main
 var mainRoot = document.getElementById("root");
-//密码输入错误标签
-var error = document.getElementById("error");
-
-//支付结果
-//支付金额
-var resultMoney = document.getElementById("payNum");
-
 //遮罩层
 var mainChildren = mainRoot.children;
 var tempChild = Array.prototype.slice.call(mainChildren).slice(0);
-//金额
-var maskMoney = document.getElementById("pay-money");
 
 // 密码
 var objPwd = {
     correct: "0b0001, 0b0010, 0b0011, 0b0100, 0b0101, 0b0110",
     current: []
 }
-var pageInfo = {
-    index: 1,
-}
+
 /*************************************************/
 /* 函数调用部分 */
 /*************************************************/
-//加载用户列表
-loadUserList();
+window.onload = function() {
+    //加载用户列表
+    loadUserList();
 
-//隐藏遮罩层
-removeMask();
+    //隐藏遮罩层
+    removeMask();
 
-// 返回按钮点击事件绑定
-var arrBackBtns = Array.prototype.slice.call(backBtns);
-arrBackBtns.forEach(function(e) {
-    if (e.getAttribute("data-href") === "index") {
-        e.onclick = function() {
-        	//返回上一个页面
-        	backPage();
-        }
-    }
-});
+    // 返回按钮点击事件绑定
+    backPage();
 
-//首页支付点击事件
-bindLiClick();
+    //首页好友列表点击事件
+    bindLiClick();
 
-//支付按钮点击事件
-payBtn.onclick = function() {
-    moneyValue = money.value;
-    if (Number(moneyValue) === 0) {
-        alert("请至少支付0.01元")
-    } else {
-        //显示遮罩层
-        showMask();
-        //设置金额
-        maskMoney.textContent = (Number(moneyValue).toFixed(2)).toLocaleString();
-    }
+    //支付按钮点击事件
+    payBtnClick();
 
+    //遮罩层取消按钮事件和keyboard 点击事件以及密码回退
+    maskItemClick();
 }
 
-//遮罩层取消按钮事件和keyboard 点击事件以及密码回退
-mainRoot.onclick = function(e) {
-    var e = e || window.event;
-    var target = e.target || e.srcElement;
 
-    //取消按钮事件
-    if (target.tagName.toLowerCase() === "span" &&
-        target.className === "quit") {
-    	//隐藏遮罩层
-        removeMask();
-    }
-
-    //keyboard点击事件
-    if (target.tagName.toLowerCase() === "div" &&
-        target.className === "num") {
-        //输入密码并在输入完成后进行判断
-        inputPwd(target);
-    }
-
-    //密码回退
-    if (target.tagName.toLowerCase() === "div" &&
-        target.className === "delkey") {
-        //回退密码
-        backPwd();
-    }
-}
 /*************************************************/
 /* 功能函数及方法定义部分 */
 /*************************************************/
@@ -138,20 +78,20 @@ function loadUserList() {
 /**
  * li监听事件绑定
  */
-function bindLiClick(){
+function bindLiClick() {
     var liLabel = document.getElementsByTagName("li");
-	var len = liLabel.length;
+    var len = liLabel.length;
 
-	for(let i = 0; i < len; i++){
-		liLabel[i].onclick = function(){
-			//设置当前用户信息
-  			currentUserInfo = userInfo[i];
-    		//切换页面
-    		tabPage();
-    		//设置昵称
-    		setNickName();
-		}
-	}
+    for (let i = 0; i < len; i++) {
+        liLabel[i].onclick = function() {
+            //设置当前用户信息
+            currentUserInfo = userInfo[i];
+            //切换页面
+            tabPage(1);
+            //设置昵称
+            setNickName();
+        }
+    }
 }
 /**
  * remove遮罩层
@@ -179,11 +119,83 @@ function showMask() {
 /**
  * 设置昵称
  */
-function setNickName(nickname){
-	for(var x in objNickName)
-	{
-		objNickName[x].innerText = currentUserInfo.nickname;
-	}
+function setNickName(nickname) {
+    for (var x in objNickName) {
+        objNickName[x].innerText = currentUserInfo.nickname;
+    }
+}
+/**
+ * 功能：支付按钮事件绑定
+ */
+function payBtnClick() {
+    //支付金额
+    var money = document.getElementById("money");
+    //支付按钮 
+    var payBtn = document.getElementById("pay");
+
+    payBtn.onclick = function() {
+        currentUserInfo.money = money.value;
+        if (Number(currentUserInfo.money) === 0) {
+            alert("请至少支付0.01元")
+        } 
+        else if(Number(currentUserInfo.money) > 5000)
+        {
+            alert("单笔交易额不得超过5000");
+        }
+        else {
+            //显示遮罩层
+            showMask();
+            //设置金额
+            setMoney();
+        }
+
+    }
+}
+/**
+ * 功能：设置金额
+ */
+function setMoney() {
+    //遮罩层金额
+    var maskMoney = document.getElementById("pay-money");
+    //支付金额
+    var resultMoney = document.getElementById("payNum");
+    //设置支付结果页面金额
+    maskMoney.textContent = (Number(currentUserInfo.money).toFixed(2)).toLocaleString();
+
+    resultMoney.textContent = "￥" + (Number(currentUserInfo.money).toFixed(2)).toLocaleString();
+}
+
+/**
+ * 功能： 遮罩层取消按钮事件和keyboard 
+ * 点击事件以及密码回退
+ */
+function maskItemClick() {
+
+    mainRoot.onclick = function(e) {
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+
+        //取消按钮事件
+        if (target.tagName.toLowerCase() === "span" &&
+            target.className === "quit") {
+            //隐藏遮罩层
+            removeMask();
+        }
+
+        //keyboard点击事件
+        if (target.tagName.toLowerCase() === "div" &&
+            target.className === "num") {
+            //输入密码并在输入完成后进行判断
+            inputPwd(target);
+        }
+
+        //密码回退
+        if (target.tagName.toLowerCase() === "div" &&
+            target.className === "delkey") {
+            //回退密码
+            backPwd();
+        }
+    }
 }
 /**
  * 判断密码是否相等
@@ -212,22 +224,26 @@ function transCorrectPwd() {
 /**
  * 页面切换
  */
-function tabPage() {
-    pages[pageInfo.index + 1].style.right = "0";
-    pages[0].style.left = "0";
-    pages[pageInfo.index].style.display = "none";
-    pageInfo.index += 1;
+function tabPage(index) {
+    var page = document.getElementsByTagName("page")[index];
+    page.style.left = "0";
 }
 
 /**
  * 返回上一个页面
  */
-function backPage(){
-	pages[pageInfo.index].style.right = "-100%";
-    pages[pageInfo.index - 1].style.display = "block";
-    pages[pageInfo.index - 1].style.right = "0";
-    pages[0].style.left = "-100%";
-    pageInfo.index -= 1;
+function backPage() {
+    var backBtns = document.getElementsByTagName("span");
+    var arrBackBtns = Array.prototype.slice.call(backBtns);
+    arrBackBtns.forEach(function(e) {
+        if (e.getAttribute("data-href") === "index") {
+            e.onclick = function() {
+                //返回上一个页面
+                var currentPage = this.parentElement.parentElement;
+                currentPage.style.left = "100%";
+            }
+        }
+    });
 }
 
 /**
@@ -261,7 +277,10 @@ function backPwd() {
  * 输入密码并在输入完成后进行判断
  */
 function inputPwd(target) {
+
     if (objPwd.current.length < 6) {
+        //密码输入错误标签
+        var error = document.getElementById("error");
 
         //隐藏密码错误提示
         error.style.display = "none";
@@ -270,21 +289,19 @@ function inputPwd(target) {
         objPwd.current.push(Number(target.innerText));
         var passwordChild = document.getElementById("password").children;
         (passwordChild[objPwd.current.length - 1]).innerHTML = "<i></i>";
-		
-		//输入完成
+
+        //输入完成
         if (objPwd.current.length === 6) {
             //判断密码是否相等
             if (isEqual()) {
-            	//设置支付结果页面金额
-                resultMoney.textContent = "￥" + (Number(moneyValue).toFixed(2)).toLocaleString();
                 //置空密码
                 removePwd();
                 //隐藏遮罩层
                 removeMask();
                 //切换页面
-                tabPage();
+                tabPage(2);
             } else {
-            	//置空密码
+                //置空密码
                 removePwd();
                 //显示密码错误提示
                 error.style.display = "block";
