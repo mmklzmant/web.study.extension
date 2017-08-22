@@ -84,6 +84,40 @@ public class Sort{
 		}
 		print(arr);
 	}
+
+	/**
+	 * 快排
+	 * @param arr   [description]
+	 * @param left  [description]
+	 * @param right [description]
+	 */
+	public static void quickSort(int[] arr, int left, int right){
+		if(left >= right)
+		{
+			return;
+		}
+		int pos = partition(arr, left, right);
+		quickSort(arr, left, pos-1);
+		quickSort(arr, pos+1, right);
+	}
+	
+	//一次快排
+	public static int partition(int[] arr, int left, int right){
+		int key = arr[left];
+		int posKey = left;
+
+		while(left < right){
+			while(left < right && arr[right] >= key){
+				right--;
+			}
+			while(left < right && arr[left] <= key){
+				left++;
+			}
+			swap(arr, left, right);
+		}
+		swap(arr, posKey, left);
+		return left;
+	}
 	/**
 	 * 功能：交换位置
 	 * @param arr [数组]
@@ -91,13 +125,9 @@ public class Sort{
 	 * @param j   [下标]
 	 */
 	public static void swap(int[] arr, int i, int j){
-		arr[i] = arr[i]^arr[j];
-		arr[j] = arr[i]^arr[j];
-		arr[i] = arr[i]^arr[j];
-
-		/*int temp = arr[j];
+		int temp = arr[j];
 		arr[j] = arr[i];
-		arr[i] = temp;*/
+		arr[i] = temp;
 	}
 
 	/**
@@ -108,5 +138,6 @@ public class Sort{
 		for(int i = 0; i < arr.length; i++){
 			System.out.print(arr[i] + " ");
 		}
+		System.out.println();
 	}
 }
