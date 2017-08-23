@@ -6,6 +6,9 @@ public class Test{
 		//选择排序
 		// Sort.selectSort(arr);
 		// 插入排序
-		Sort.insertSort(arr);
+		// Sort.insertSort(arr);
+		//快排
+		// Sort.quickSort(arr, 0, arr.length-1);
+		// Sort.print(arr);
 	}
 }
