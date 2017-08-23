@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>正则标签匹配</title>
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <!-- mmklzmant于2017-08-23 -->
+</head>
+
+<body>
+	<main>
+<code id="showCode"><ul class="skill-list">
+	<li class="html">HTML</li>
+	<li class="css">CSS</li>
+	<li class="js" class="checked">JavaScript</li>
+	<li class="jq">jQuery</li>
+	<li class="ng">Angular</li>
+	<li class="rc">React</li>
+	<li class="v">Vue</li>
+</ul>
+</code>
+	</main>
+	
+	<script>
+		var showCode = document.getElementById("showCode");
+		var codingAfter = "";
+		var	showCode_HTML = showCode.innerHTML;
+		codingAfter = showCode_HTML.replace(/</g, "&lt;");
+		showCode.innerHTML = codingAfter;
+		showCode_HTML = showCode.innerHTML;
+		codingAfter = showCode_HTML.replace(/>/g, "&gt;");
+	</script>
+    <script type="text/javascript" src="javascripts/index.js"></script>
+</body>
+
+</html>
