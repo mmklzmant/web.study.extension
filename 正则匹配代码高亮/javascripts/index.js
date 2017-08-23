@@ -18,22 +18,33 @@ showCode.innerHTML = codingStr;
 /*************************************************/
 /* 函数调用部分 */
 /*************************************************/
-//设置标签颜色
-setLabelColor(codingStr);
+//设置颜色
+setColor(codingStr);
+
 
 /*************************************************/
 /* 功能函数及方法定义部分 */
 /*************************************************/
-function setLabelColor(strCode){
-	var arr = removeReptItems(codingStr.match(new RegExp("li|ul", "g")));
-	for(var i = 0; i < arr.length; i++){
-		var regx = new RegExp(arr[i], "g");
-		strCode = strCode.replace(regx, "<span class=\"label\">" + arr[i] + "</span>");
-	}
-	var attrArr = codingStr.match(new RegExp("\\s\\w+=", "g"));
+function setColor(strCode){
+	// 设置属性的颜色
+	var attrArr = removeReptItems(strCode.match(new RegExp("\\s\\w+=", "g")));
 	for(var j = 0; j < attrArr.length; j++){
-		var regx1 = new RegExp(attrArr[j], "g");
-		strCode = strCode.replace(regx1, "<span class=\"attr\">" + arr[j] + "</span>")
+		var regxAttr = new RegExp(attrArr[j], "g");
+		strCode = strCode.replace(regxAttr, "<span style=\"color:#AE81FF\">" + attrArr[j] + "</span>");
+	}
+	
+	// 设置属性值的颜色
+	var attrValueArr = removeReptItems(strCode.match(new RegExp("\"\\w+(-?\\w+)?\"", "g")));
+	console.log(attrValueArr);
+	for(var k = 0; k < attrValueArr.length; k++){
+		var regx = new RegExp(attrValueArr[k], "g");
+		strCode = strCode.replace(regx, "<span style=\"color:#A6C628\">" + attrValueArr[k] + "</span>");
+	}
+	// 设置标签的颜色
+	var labelArr = removeReptItems(strCode.match(new RegExp("&lt;li|&lt;ul|&lt;\/ul|&lt;\/li|&gt;", "g")));
+	for(var i = 0; i < labelArr.length; i++){
+		var regx = new RegExp(labelArr[i], "g");
+		strCode = strCode.replace(regx, "<span style=\"color:#F94989\">" + labelArr[i] + "</span>");
 	}
 	showCode.innerHTML = strCode;
 }
