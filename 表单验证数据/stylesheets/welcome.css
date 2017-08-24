@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/**
+ * 功能：欢迎页面样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-24 17:54:10
+ */
+body,html{
+	margin: 0;
+	padding: 0;
+}
+p{
+	text-align: center;
+	margin-top: 60px;
+	font-size: 30px;
+}

@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/**
+ * 功能：登录页面样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-24 17:39:23
+ */
+body,html{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+/*表单*/
+ input{
+    padding: 6px;
+    border: 1px solid #999;
+    outline: none;
+    border-radius: 3px;
+    font: 0.9em sans-serif, "微软雅黑";
+ }
+ input:focus{
+    border: 2px solid #29f;
+    outline: none;
+    box-shadow: 0 0 10px rgba(15, 153, 255, 0.6);
+ }
+ input, select, textarea{
+    transition: all 0.15s;
+ }
+div, p, form{
+	margin: 0;
+	padding: 0;
+}
+form{
+	width: 400px;
+	height: 300px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+form>p{
+	margin-top: 20px;
+}
+form>p>label {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+button{
+    width: 80px;
+    height: 30px;
+    background-color: #0098ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin-top: 40px;
+    margin-left: 140px;
+}
+button:hover{
+    background-color: #7bbaea;
+}

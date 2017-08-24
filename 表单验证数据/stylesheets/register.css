@@ -1,0 +1,121 @@
+@charset "utf-8";
+/**
+* 功能：用户注册样式设置
+**/
+/*********************************/
+/* 初始化设置 */
+/*********************************/
+*{
+    box-sizing: border-box;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+body,html {
+	margin: 0;
+	padding: 0;
+    height: 100%;
+	color: #333;
+	font: 16px "微软雅黑";
+}
+ /*表单*/
+ input, select, button, textarea{
+    padding: 6px;
+    border: 1px solid #999;
+    outline: none;
+    border-radius: 3px;
+    font: 0.9em sans-serif, "微软雅黑";
+ }
+ input:focus, select:focus, textarea:focus{
+    border: 2px solid #29f;
+    outline: none;
+    box-shadow: 0 0 10px rgba(15, 153, 255, 0.6);
+ }
+ input, select, textarea{
+    transition: all 0.15s;
+ }
+
+/*********************************/
+/* 详细设置 */
+/*********************************/
+form{
+    width: 340px;
+    height: 680px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 40px;
+}
+form div{
+    height: 60px;
+    width: 340px;
+    padding-top: 20px;
+    position: relative;
+}
+form div input{
+    width: 200px;
+    height: 30px;
+    outline: none;
+    border: 1px solid #999;
+}
+form div.gender input{
+    width: 15px;
+    height: 15px;
+}
+/*自我介绍文本域设置*/
+form div.introduce{
+    position: relative;
+}
+form div textarea{
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top: 24px;
+}
+/*职业select设置*/
+form div select{
+    width: 200px;
+    height: 30px;
+}
+
+/*性别选择字体设置*/
+form div.gender label:not(:first-of-type){
+    font: 0.9em "微软雅黑";
+}
+
+form label.label{
+    width: 100px;
+    text-align: right;
+    display: inline-block;
+}
+form div span{
+    color: #f00;
+}
+form div p{
+    font-size: 14px;
+    color: #f00;
+    position: absolute;
+    top: 0;
+    left: 105px;
+}
+
+/*button*/
+.buttonGroup{
+    padding-left: 86px;
+    margin-top: 20px;
+}
+.buttonGroup button{
+    width: 80px;
+    height: 30px;
+    background-color: #0098ff;
+    border: none;
+    margin-right: 37px;
+    border-radius: 5px;
+}
+.buttonGroup button:hover{
+    background-color: #7bbaea;
+}
+
