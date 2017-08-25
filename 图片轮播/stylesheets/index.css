@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/**
+ * 功能：索引页样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-25
+ */
+/**********************************************/
+ /*元件样式设置*/
+ /*********************************************/
+/*container*/
+.container{
+	width: 1226px;
+	background-color: #eee;
+	margin: 0 auto;
+}	
+
+/**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+/*banner图*/
+.banner{
+	margin-top: 100px;
+	width: 100%;
+	height: 460px;
+	position: relative;
+}
+ .banner .images{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+} 
+.banner .images a{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition: left 3s;
+}
+.banner .images .img1{
+	left: 0;
+}
+.banner .images .img2{
+	left: 100%;
+}
+.banner .images .img3{
+	left: 100%;
+}
+.banner .images .img4{
+	left: 100%;
+}
+.banner .images .img5{
+	left: 100%;
+}
+.banner .images .img6{
+	left: 100%;
+}
+/*轮播prev和next按钮*/
+.banner .controls a{
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -35px;
+	width: 41px;
+	height: 70px;
+}
+.banner .controls #prev{
+	background: url(../images/icon-slides.png) no-repeat;
+	background-position: -84px 50%;
+	left: 0;
+	z-index: 20;
+}
+.banner .controls #next{
+	background: url(../images/icon-slides.png) no-repeat;
+	background-position: -120px 50%;
+	z-index: 20;
+	right: 0;
+}
+.banner .controls #prev:hover{
+	background-position: 0 50%;
+}
+.banner .controls #next:hover{
+	background-position: -41px 50%;
+}
+
+/*小圆点*/
+.round-icons{
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.round-icons i{
+	display: inline-block;
+	margin-right: 10px;
+	width: 12px;
+	height: 12px;
+	border: 2px solid #F4F3F4;
+	border-radius: 50%;
+	box-shadow: 0 0 5px #fff;
+	cursor: pointer;
+	transition: all 0.6s;
+}
+.round-icons i:hover{
+	background-color: #fff;
+}
+ /**********************************************/
+ /*响应式样式设置*/
+ /*********************************************/
