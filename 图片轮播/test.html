@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JS无缝滚动图片</title>
+<meta charset=UTF-8 />
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+}
+ 
+#div2 {
+    margin: auto;
+    width: 1226px;
+    height: 460px;
+    overflow: hidden;
+    left: 200px;
+}
+ 
+#div1 {
+    position: relative;
+    left: 0px;
+    width: 1200px;
+}
+ 
+#div1 li {
+    list-style-type: none;
+    float: left;
+    width: 1226px;
+    height: 460px;
+}
+ 
+img {
+    width: 1226px;
+    height: 460px;
+}
+ 
+ul#ul1 {
+    position: relative;
+}
+</style>
+<script type="text/javascript">
+    window.onload = function ()
+    {
+        var oUl = document.getElementById ('ul1');
+        var t,o;
+        var speed = 0;
+        var funny = function ()
+        {
+              t && clearInterval(t);
+            t = setInterval (function ()
+            {
+                speed -= 1226/11;
+                if(speed<-1226){
+                    speed=0;
+                     oUl.appendChild (oUl.children[0]);
+                    t && clearInterval(t);
+                    t = null;
+                    o && clearTimeout(o);
+                    o=setTimeout(funny,1000);
+                    }
+                oUl.style.left = speed + "px";
+            }, 3000);
+        }
+         funny ();
+    }
+</script>
+</head>
+<body>
+    <div id="div2">
+        <div id="div1">
+            <ul id="ul1">
+                <li><img src="images/banner_one.jpg">
+                </li>
+                <li><img src="images/banner_two.jpg">
+                </li>
+                <li><img src="images/banner_three.jpg">
+                </li>
+                <li><img src="images/banner_four.jpg">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

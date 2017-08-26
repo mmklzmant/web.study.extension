@@ -19,7 +19,7 @@ window.onload = function() {
     // 加载轮播图片和小圆点
     loadImages();
 	//图片自动轮播
-	runCarousels(3000);
+	runCarousels(5000);
 	
     // ==============================
     // 全局功能工具函数
@@ -65,38 +65,89 @@ function runCarousels(time){
 	//容器数组长度
 	var len = arrImgBox.length;
 	
-	//当前图片的下标
-	var currentIndex = 0;
+	//初始化图片样式left值
+	initStyle(arrImgBox);
 
+	//下一张图片的下标
+	var nextIndex = 1;
+	// tabImages(arrImgBox, nextIndex);
 	//每3秒轮播一次图片
 	var ident = setInterval(function(){
-		if(currentIndex === len-1){
-			currentIndex = 0;
+		if(nextIndex === len){
+			nextIndex = 0;
 		}
-		tabImages(arrImgBox, currentIndex);
-		currentIndex++;
+		tabImages(arrImgBox, nextIndex);
+		nextIndex++;
 	}, time);
 }
 
 /**
+ * 功能：初始化图片的样式，使当前显示的图片是
+ * 下标为0的图片，并设置它的下一张图片和上一张图片
+ * 的left值分别为100%和-100%
+ */
+function initStyle(arrImgBox){
+	arrImgBox[0].style.left = "0";
+	arrImgBox[0].style.zIndex = "10";
+	var len = arrImgBox.length;
+	for(var i = 0; i < len; i++){
+		if(i !== 0 || i !== len-1 || i !== 1);
+		{
+			arrImgBox[i].style.left = "0";
+		}
+	}
+	arrImgBox[len-1].style.left = "-100%";
+	arrImgBox[1].style.left = "100%";
+}
+/**
  * 功能：设置图片的left属性达到轮播效果
  * @param  {[Array]} arrImgBox    [轮播图片的容器标签]
- * @param  {[Number]} currentIndex [当前显示图片的下标值]
+ * @param  {[Number]} currentIndex [将要显示图片的下标值]
  */
-function tabImages(arrImgBox, currentIndex)
+function tabImages(arrImgBox, index)
 {
-	//设置当前图片left值为100%;
-	arrImgBox[currentIndex].style.left = "100%";
 	//容器数组长度
 	var len = arrImgBox.length;
-	//设置下一张图片left值为0
-	if(currentIndex === 5){
-		arrImgBox[0].style.left = "0";
+
+	//上一张图片的下标
+	var upper_one_index = (index-1) >=0 ? 
+			(index-1) : (len - Math.abs(index-1));
+	//上上张图片
+	var upper_two_index = (index-2) >=0 ? 
+			(index-2) : (len - Math.abs(index-2));
+
+	//下一张图片下标
+	nextIndex = (index+1)%len;
+
+	//设置zindex值
+	for(var i = 0; i < len; i++){
+		if(i === index)
+		{
+			arrImgBox[i].style.zIndex = "10";
+		}
+		else if(i === upper_one_index)
+		{
+			arrImgBox[i].style.zIndex = "5";
+		}
+		else{
+			arrImgBox[i].style.zIndex = "0";
+		}
 	}
-	else if(currentIndex === 0){
-		arrImgBox[len-1].style.left = "0"
-	}
-	else{
-		arrImgBox[currentIndex+1].style.left = "0";
-	}
+
+	//index
+	arrImgBox[index].style.transition = "left 3s";
+	arrImgBox[index].style.left = "0";
+
+	//nextIndex 
+	arrImgBox[nextIndex].style.transition = "none";
+	arrImgBox[nextIndex].style.left = "100%";
+
+	//upper_one_index 
+	arrImgBox[upper_one_index].style.transition = "left 3s";
+	arrImgBox[upper_one_index].style.left = "-100%";
+
+	//upper_two_index
+	arrImgBox[upper_two_index].style.transition = "none";
+	arrImgBox[upper_two_index].style.left = "0";
+
 }
