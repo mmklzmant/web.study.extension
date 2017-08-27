@@ -27,5 +27,9 @@ var imagesInfo = [
 	{
 		url: "#",
 		imageUrl: "images/banner_six.jpg"
+	},
+	{
+		url: "#",
+		imageUrl: "images/banner_six.jpg"
 	}
 ]
