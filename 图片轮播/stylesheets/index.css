@@ -36,30 +36,13 @@
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	transition: left 3s;
+	/* transition: left 3s; */
 }
 .banner .images a img{
 	width: 100%;
 	height: 100%;
 }
-.banner .images .img1{
-	left: 0;
-}
-.banner .images .img2{
-	left: 100%;
-}
-.banner .images .img3{
-	left: 100%;
-}
-.banner .images .img4{
-	left: 100%;
-}
-.banner .images .img5{
-	left: 100%;
-}
-.banner .images .img6{
-	left: 100%;
-}
+
 /*轮播prev和next按钮*/
 .banner .controls a{
 	display: block;
@@ -112,6 +95,23 @@
 }
 .round-icons i:hover{
 	background-color: #fff;
+}
+
+/*js通过设置className设置样式*/
+.trans-left{
+	transition: left 3s;
+}
+.trans-none{
+	transition: none;
+}
+.left-to-0{
+	left: 0;
+}
+.left-to-100{
+	left: 100%;
+}
+.left-to-minus-100{
+	left: -100%;
 }
  /**********************************************/
  /*响应式样式设置*/

@@ -86,7 +86,8 @@ function loadImages() {
     var roundIconHtml = "";
 
     imagesInfo.forEach(function(e, index) {
-        imgHtml += '<a href="' + e.url + '" class="img' + (index + 1) + '">' +
+        // '" class="img' + (index + 1) + 
+        imgHtml += '<a href="' + e.url + '">' +
             '<img src="' + e.imageUrl + '"></a>';
         roundIconHtml += "<i index=\"" + index + "\"></i>";
     });
@@ -97,16 +98,9 @@ function loadImages() {
 
 /**
  * 功能：轮播图片
- * @param  Number time 轮播间隔时间
  * @param  Number nextIndex 下一张图片下标
  */
 function runCarousels(nextIndex) {
-
-    //轮播图片容器数组
-    var arrImgBox = document.getElementsByClassName("images")[0]
-        .getElementsByTagName("a");
-    //容器数组长度
-    var len = arrImgBox.length;
 
     //每3秒轮播一次图片
     identInterval = setInterval(function() {
@@ -129,73 +123,51 @@ function initStyle() {
     var arrImgBox = document.getElementsByClassName("images")[0]
         .getElementsByTagName("a");
 
-    arrImgBox[0].style.left = "0";
+    arrImgBox[0].className = "trans-none left-to-0";
     arrImgBox[0].style.zIndex = "10";
     var len = arrImgBox.length;
     for (var i = 0; i < len; i++) {
         if (i !== 0 || i !== len - 1 || i !== 1); {
-            arrImgBox[i].style.left = "0";
+            arrImgBox[i].className = "trans-none left-to-0";
         }
     }
-    arrImgBox[len - 1].style.left = "-100%";
-    arrImgBox[1].style.left = "100%";
+    arrImgBox[len - 1].className = "trans-none left-to-minus-100";
+    arrImgBox[1].className = "trans-none left-to-100";
 }
 /**
- * 功能：设置图片的left属性达到轮播效果
- * @param  Array arrImgBox    轮播图片的容器标签
+ * 功能：设置图片的left属性轮播至下一张图片
  * @param  Number index 将要显示图片的下标值
  */
 function tabImages(index) {
-    //小圆点
-    var ndRoundIcons = document.getElementsByClassName("round-icons")[0]
-        .getElementsByTagName("i");
     //轮播图片容器数组
     var arrImgBox = document.getElementsByClassName("images")[0]
         .getElementsByTagName("a");
-    //容器数组长度
-    var len = arrImgBox.length;
 
-    //上一张图片的下标
-    var upper_one_index = (index - 1) >= 0 ?
-        (index - 1) : (len - Math.abs(index - 1));
-    //上上张图片
-    var upper_two_index = (index - 2) >= 0 ?
-        (index - 2) : (len - Math.abs(index - 2));
-
-	 //下一张图片下标
-    nextIndex = (index + 1) % len;
+    //计算index下标的上上张图片下标、上一张图片下标和下一张图片下标
+    var objIndex = calculateIndex(index);
     
     //设置zindex值
-    for (var i = 0; i < len; i++) {
-        if (i === index) {
-            arrImgBox[i].style.zIndex = "10";
-        } else if (i === upper_one_index) {
-            arrImgBox[i].style.zIndex = "5";
-        } else {
-            arrImgBox[i].style.zIndex = "0";
-        }
-    }
-    ndRoundIcons[index].style.backgroundColor = "#fff";
-    ndRoundIcons[upper_one_index].style.backgroundColor = "#555554";
+    setZindex(index, objIndex.upper_one_index);
+   
+    //设置小圆点样式
+    setRoundIconsStyle(index, objIndex.upper_one_index);
+
+    //设置图片样式达到轮播效果
     //index
-    arrImgBox[index].style.transition = "left 3s";
-    arrImgBox[index].style.left = "0";
+    arrImgBox[index].className = "trans-left left-to-0";
 
     //nextIndex 
-    arrImgBox[nextIndex].style.transition = "none";
-    arrImgBox[nextIndex].style.left = "100%";
+    arrImgBox[objIndex.nextIndex].className = "trans-none left-to-100";
 
     //upper_one_index 
-    arrImgBox[upper_one_index].style.transition = "left 3s";
-    arrImgBox[upper_one_index].style.left = "-100%";
+    arrImgBox[objIndex.upper_one_index].className = "trans-left left-to-minus-100";
 
     //upper_two_index
-    arrImgBox[upper_two_index].style.transition = "none";
-    arrImgBox[upper_two_index].style.left = "0";
+    arrImgBox[objIndex.upper_two_index].className = "trans-none left-to-0";
 }
 
 /**
- * 功能：当鼠标悬浮在图片上和上一张下一张按钮的时候停止轮播
+ * 功能：当鼠标悬浮在图片上的时候停止轮播
  */
 function mouseOverForStop() {
     //鼠标悬浮在图片上停止轮播
@@ -215,7 +187,7 @@ function mouseOutForStart() {
     //鼠标移开图片继续轮播
     var ndImgs = document.getElementsByClassName("images")[0]
         .getElementsByTagName("img");
-    var len = ndImgs.length;
+    
     for (var i = 0; i < len; i++) {
         ndImgs[i].onmouseout = function() {
             var nextIndex = (currentIndex + 1) % len;
@@ -276,46 +248,30 @@ function tabPrevImages(index) {
     var arrImgBox = document.getElementsByClassName("images")[0]
         .getElementsByTagName("a");
 
-    //上一张图片的下标
-    var upper_one_index = (index - 1) >= 0 ?
-        (index - 1) : (len - Math.abs(index - 1));
-    //上上张图片
-    var upper_two_index = (index - 2) >= 0 ?
-        (index - 2) : (len - Math.abs(index - 2));
-
-    //下一张图片下标
-    nextIndex = (index + 1) % len;
-
+    //计算index下标的上上张图片下标、上一张图片下标和下一张图片下标
+    var objIndex = calculateIndex(index);
+   
     //设置zindex值
-    for (var i = 0; i < len; i++) {
-        if (i === upper_one_index) {
-            arrImgBox[i].style.zIndex = "10";
-        } else if (i === index) {
-            arrImgBox[i].style.zIndex = "5";
-        } else {
-            arrImgBox[i].style.zIndex = "0";
-        }
-    }
-    ndRoundIcons[upper_one_index].style.backgroundColor = "#fff";
-    ndRoundIcons[index].style.backgroundColor = "#555554";
+    setZindex(objIndex.upper_one_index, index);
+
+    //设置小圆点样式
+    setRoundIconsStyle(objIndex.upper_one_index, index);
+    
+    //设置图片样式跳转至上一张图片
     //index
-    arrImgBox[index].style.transition = "left 3s";
-    arrImgBox[index].style.left = "100%";
+    arrImgBox[index].className = "trans-left left-to-100";
 
     //nextIndex 
-    arrImgBox[nextIndex].style.transition = "none";
-    arrImgBox[nextIndex].style.left = "0";
+    arrImgBox[objIndex.nextIndex].className = "trans-none left-to-0";
 
     //upper_one_index 
-    arrImgBox[upper_one_index].style.transition = "left 3s";
-    arrImgBox[upper_one_index].style.left = "0";
+    arrImgBox[objIndex.upper_one_index].className = "trans-left left-to-0";
 
     //upper_two_index
-    arrImgBox[upper_two_index].style.transition = "none";
-    arrImgBox[upper_two_index].style.left = "-100%";
+    arrImgBox[objIndex.upper_two_index].className = "trans-none left-to-minus-100";
 
     //设置图片当前显示的下标
-    currentIndex = upper_one_index;
+    currentIndex = objIndex.upper_one_index;
 }
 
 /**
@@ -355,7 +311,6 @@ function roundIconsClick() {
     ndContainer.onclick = function() {
         var e = e || window.event;
         var target = e.target || e.sreElement;
-
         if (target.tagName.toLowerCase() === "i") {
             showImage(Number(target.getAttribute("index")))
         }
@@ -374,47 +329,101 @@ function showImage(index) {
     var arrImgBox = document.getElementsByClassName("images")[0]
         .getElementsByTagName("a");
 
-    //上一张图片的下标
-    var upper_one_index = (index - 1) >= 0 ?
-        (index - 1) : (len - Math.abs(index - 1));
-    //上上张图片
-    var upper_two_index = (index - 2) >= 0 ?
-        (index - 2) : (len - Math.abs(index - 2));
+    //计算index下标的上上张图片下标、上一张图片下标和下一张图片下标
+    var objIndex = calculateIndex(index);
 
-    //下一张图片下标
-    nextIndex = (index + 1) % len;
+    //重置图片样式,如果不重置，可能会出现混乱的滑动
+    resetStyle();
 
     //设置zindex值
+    setZindex(index, objIndex.upper_one_index);
+   
+    //设置小圆点样式
+    setRoundIconsStyle(index, currentIndex);
+    
+    //设置图片样式跳转到指定下标图片
+    //index
+    arrImgBox[index].className = "trans-none left-to-0";
+
+    //nextIndex 
+    arrImgBox[objIndex.nextIndex].className = "trans-none left-to-100";
+
+    //upper_one_index 
+    arrImgBox[objIndex.upper_one_index].className = "trans-none left-to-minus-100";
+
+    //upper_two_index
+    arrImgBox[objIndex.upper_two_index].style = "trans-none left-to-0";
+
+    //设置当前显示的图片下标
+    currentIndex = index;
+}
+
+/**
+ * 功能：重置图片样式,如果不重置，可能会出现混乱的滑动
+ */
+function resetStyle(){
+    //轮播图片容器数组
+    var arrImgBox = document.getElementsByClassName("images")[0]
+        .getElementsByTagName("a");
+    for(var i = 0; i < len; i++)
+    {
+        arrImgBox[i].className = "trans-none";
+    }
+}
+/**
+ * 功能：设置小圆点样式
+ * @param Number index   当前显示的图片下标
+ * @param Number upper_one_index 上一张图片下标
+ */
+function setRoundIconsStyle(index, upper_index)
+{
+     //小圆点
+    var ndRoundIcons = document.getElementsByClassName("round-icons")[0]
+        .getElementsByTagName("i");
+    ndRoundIcons[index].style.backgroundColor = "#fff";
+    ndRoundIcons[upper_index].style.backgroundColor = "#555554";
+}
+
+/**
+ * 功能：计算index下标的上上张图片下标、
+ * 上一张图片下标和下一张图片下标
+ * @param Number index 将要显示的图片下标
+ * @return object 计算的所有下标值
+ */
+function calculateIndex(index)
+{
+    var obj = {};
+    obj.index = index;
+    //上一张图片
+    obj.upper_one_index = (index - 1) >= 0 ?
+        (index - 1) : (len - Math.abs(index - 1));
+    //上上张图片
+    obj.upper_two_index = (index - 2) >= 0 ?
+        (index - 2) : (len - Math.abs(index - 2));
+    //下一张图片
+    obj.nextIndex = (index + 1) % len;
+    return obj;
+}
+
+/**
+ * 功能：设置zIndex
+ * @param Number currentIndex 将要显示的下标
+ * @param Number slideIndex   即将滑出消失的下标
+ */
+function setZindex(currentIndex, slideIndex) {
+    //轮播图片容器数组
+    var arrImgBox = document.getElementsByClassName("images")[0]
+        .getElementsByTagName("a");
+    //设置zindex值
     for (var i = 0; i < len; i++) {
-        if (i === index) {
+        if (i === currentIndex) {
             arrImgBox[i].style.zIndex = "10";
-        } else if (i === upper_one_index) {
+        } else if (i === slideIndex) {
             arrImgBox[i].style.zIndex = "5";
         } else {
             arrImgBox[i].style.zIndex = "0";
         }
     }
-    ndRoundIcons[index].style.backgroundColor = "#fff";
-    ndRoundIcons[currentIndex].style.backgroundColor = "#555554";
-
-    //index
-    arrImgBox[index].style.transition = "none";
-    arrImgBox[index].style.left = "0";
-
-    //nextIndex 
-    arrImgBox[nextIndex].style.transition = "none";
-    arrImgBox[nextIndex].style.left = "100%";
-
-    //upper_one_index 
-    arrImgBox[upper_one_index].style.transition = "none";
-    arrImgBox[upper_one_index].style.left = "-100%";
-
-    //upper_two_index
-    arrImgBox[upper_two_index].style.transition = "none";
-    arrImgBox[upper_two_index].style.left = "0";
-
-    //设置当前显示的图片下标
-    currentIndex = index;
 }
 
 /**
