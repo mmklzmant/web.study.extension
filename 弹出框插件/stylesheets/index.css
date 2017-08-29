@@ -11,6 +11,12 @@
  *{
     box-sizing: border-box;
  }
+ body,html{
+    height: 100%;
+    width: 100%;
+    background: url(../images/bg.jpg) no-repeat;
+    background-size: cover;
+ }
  body,p,div{
     margin: 0;
     padding: 0;
@@ -44,17 +50,37 @@
  }
 
 
-/*************************************************/
-/* 元件样式定义 */
-/*************************************************/
-
-
 
  /**********************************************/
  /*样式细节设置*/
  /*********************************************/
-
-
+ body>p{
+    margin-left: 50px;
+    margin-top: 40px;
+    font-size: 20px;
+ }
+ /*表单填写*/
+form.main{
+    padding-top: 20px;
+    margin-left: 30px;
+}
+form.main button{
+    border: none;
+    background-color:  rgba(15, 153, 255, 0.6);
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    border-radius: 4px;
+    color: #fff;
+    margin-left: 20px;
+    outline: none;
+}
+form.main button:hover{
+    background-color: #64BBFC;
+}
+form.main button:active{
+    background-color: #0576CB;
+}
 
 /**********************************************/
  /*响应式样式设置*/

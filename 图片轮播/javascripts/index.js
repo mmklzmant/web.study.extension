@@ -1,4 +1,4 @@
-/**
+ /**
  * 功能：图片轮播
  * @authors mmklzmant (mmklzmant@163.com)
  * @date    2017-08-25
