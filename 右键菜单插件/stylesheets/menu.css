@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/**
+ * 功能：右键菜单样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-30 11:08:49
+ */
+context-menu{
+	font-size: 14px;
+	display: block;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	position: fixed;
+	z-index: 10;
+}
+context-menu>span{
+	display: block;
+	width: 90%;
+	border: 0;
+	margin-left: 10px;
+	background-color: #eee;
+	height: 1px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+context-menu>span:last-child{
+	display: none;
+}
+context-menu group{
+	display: block;
+	padding-left: 3px;
+	padding-left: 3px;
+}
+context-menu item{
+	width: 200px;
+	display: block;
+	height: 28px;
+	line-height: 25px;
+	padding-left: 35px;
+	position: relative;
+}
+context-menu item i{
+	font-style: normal;
+}
+context-menu item:hover{
+	background-color: #ECEEEB;
+}
+
+context-menu item img{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	line-height: 22px;
+	position: absolute;
+	left: 6px;
+	top: 4px;
+}
+context-menu item span{
+	position: absolute;
+	right: 8px;
+	top: 1px;
+	color: #000;
+}
