@@ -4,13 +4,63 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>Examples</title>
-    <link href="" rel="stylesheet">
-    <!-- mmklzmant于2017-08-21编写 -->
+    <title>数据</title>
+    <link href="stylesheets/common.css" rel="stylesheet">
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <!-- mmklzmant于2017-08-30编写 -->
 </head>
 
 <body>
-    
+    <main>
+        <form>
+            <button type="button">加载数据</button>
+            <button type="button">删除选中</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" name="goods">
+                        </th>
+                        <th>货号<i class="arrow"></i></th>
+                        <th>名称</th>
+                        <th>生产日期<i class="arrow"></i></th>
+                        <th>进货日期<i class="arrow"></i></th>
+                        <th>保质期</th>
+                        <th>售价<i class="arrow"></i></th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<!-- <tr>
+                		<td><input type="checkbox" name="goods"></td>
+                		<td>food-014</td>
+                		<td>牛奶</td>
+                		<td>2016-11-18</td>
+                		<td>2016-11-19</td>
+                		<td>2年</td>
+                		<td>￥128.00</td>
+                		<td>
+                			<span class="view">查看</span>
+                			<span class="delete">删除</span>
+                		</td>
+                	</tr>
+                	<tr>
+                		<td><input type="checkbox" name="goods"></td>
+                		<td>food-014</td>
+                		<td>牛奶</td>
+                		<td>2016-11-18</td>
+                		<td>2016-11-19</td>
+                		<td>2年</td>
+                		<td>￥128.00</td>
+                		<td>
+                			<span class="view">查看</span>
+                			<span class="delete">删除</span>
+                		</td>
+                	</tr> -->
+                </tbody>
+            </table>
+        </form>
+    </main>
     <script type="text/javascript" src="data/data.js"></script>
     <script type="text/javascript" src="javascripts/index.js"></script>
 </body>

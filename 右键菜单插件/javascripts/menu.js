@@ -4,32 +4,28 @@
  * @date    2017-08-30 11:35:49
  */
 
-function createContextMenu(id, itemList){
-	var node = document.getElementById(id);
+function contextMenu(id, itemList) {
+    this.node = document.getElementById(id);
 
-	node.oncontextmenu = function(e){
-		var e = e || window.event;
-		e.preventDefault();
+    this.createMenu = function() {
+        this.node.oncontextmenu = function(e) {
+            var e = e || window.event;
+            e.preventDefault();
 
-		var x = e.clientX;
-		var y = e.clientY;
+            var x = e.clientX;
+            var y = e.clientY;
 
-		var menu = document.getElementsByTagName("context-menu")[0];
-		menu.style.left = x + "px";
-		menu.style.top = y + "px";
-		
-		var htmlStr = "";
-		for(var i = 0; i < itemList.length; i++){
-			htmlStr += '<item>' + itemList[i] + "</item>";
-		}
-		menu.innerHTML = htmlStr;
+            var menu = document.getElementsByTagName("context-menu")[0];
+            menu.style.left = x + "px";
+             menu.style.top = y + "px";
 
-		//菜单项点击事件
-		bindItemClick();
-	}
-	
-	//隐藏菜单事件
-	removeMenu();
+            var htmlStr = "";
+            for (var i = 0; i < itemList.length; i++) {
+                htmlStr += '<item>' + itemList[i] + "</item>";
+            }
+            menu.innerHTML = htmlStr;
+        }
+    }
 }
 
 /**

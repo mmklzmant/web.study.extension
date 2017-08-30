@@ -4,7 +4,7 @@
  * @date    2017-08-30 15:15:13
  */
 
-var lever_one_item_one_next = [
+/*var lever_one_item_one_next = [
 	{
 		icon: "images/icon_one.png",
 		text: "文件夹",
@@ -49,25 +49,20 @@ var lever_one_item_three_next = [
 			alert("联系人");
 		},
 	}
-];
+];*/
 
 var menuList = [
 	{
 		icon: "images/icon_one.png",
 		text: "新建",
-		next: lever_one_item_one_next,
 	},
 	{
 		icon: "images/icon_two.png",
 		text: "刷新",
-		click: function(){
-			alert("刷新");
-		},
 	},
 	{
 		icon: "images/icon_three.png",
 		text: "查看",
-		next: lever_one_item_three_next,
 	}
 ];
 

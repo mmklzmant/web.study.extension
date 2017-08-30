@@ -17,7 +17,7 @@
 /*************************************************/
 window.onload = function(){
 	//鼠标右键事件
-	// mouseRightEvent();
+	mouseRightEvent();
 }
 
 /*************************************************/
@@ -28,6 +28,7 @@ window.onload = function(){
  */
 function mouseRightEvent(){
 	
-	createContextMenu("body-text", menuList);
+	var menu = new contextMenu("body-text", menuList);
+	menu.createMainMenu();
 }
 
