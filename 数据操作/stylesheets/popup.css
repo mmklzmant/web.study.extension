@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/**
+ * 功能：弹出框样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-28 17:40:49
+ */
+
+/*遮罩层*/
+component{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: -1;
+}
+/*弹出框样式*/
+component div.popup-content{
+	width: 300px;
+	height: 200px;
+	background-color: #fff;
+	border-radius: 6px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+.popup-delete{
+	position: absolute;
+	right: -5px;
+	top: -7px;
+	background-color: #747171;
+	color: #fff;
+	text-indent: 0;
+	text-align: center;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+/*弹出文本*/
+component div.text{
+	padding: 20px;
+	text-indent: 2em;
+	position: relative;
+}
+component div.text p{
+	font-size: 16px;
+}
+/*图片*/
+component div.img{
+	height: 300px;
+}
+component div.img img{
+	width: 100%;
+	height: 100%;
+}
+/*操作确认*/
+component div.operate{
+	height: 150px;
+}
+.operate p{
+	padding-left: 30px;
+	font-size: 18px;
+	line-height: 40px;
+	border-bottom: 1px solid  #0B9F55;
+}
+.operate form{
+	text-align: center;
+	margin-top: 50px;
+}
+.operate form button{
+	border: none;
+    background-color:  #0B9F55;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    outline: none;
+}
+.operate form button:first-child{
+	 margin-right: 30px;
+}
+.operate form button:hover{
+	background-color: #7BD7A9;
+}
+.operate form button:active{
+	background-color: #076D3A;
+}
+
+/*表单填写*/
+.form-fill form{
+	padding-top: 40px;
+}
+.form-fill p{
+	margin-bottom: 20px;
+	padding-left: 10px;
+}
+.form-fill p label{
+	font-size: 14px;
+	width: 70px;
+	text-align: right;
+	display: inline-block;
+}
+.form-fill p input{
+	width: 180px;
+	height: 30px;
+	padding: 6px;
+}
+.form-fill p:last-child{
+	padding-left: 42px;
+	padding-top: 10px;
+}
+.form-fill form button{
+	border: none;
+    background-color:  rgba(15, 153, 255, 0.6);
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    outline: none;
+}
+.form-fill form button:first-child{
+	 margin-right: 23px;
+}
+.form-fill form button:hover{
+	background-color: #64BBFC;
+}
+.form-fill form button:active{
+	background-color: #0576CB;
+}

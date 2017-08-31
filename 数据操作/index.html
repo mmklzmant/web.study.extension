@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>数据操作</title>
+    <link href="stylesheets/popup.css" rel="stylesheet">
+    <link href="stylesheets/common.css" rel="stylesheet">
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <!-- mmklzmant于2017-08-30编写 -->
+</head>
+
+<body>
+    <main>
+        <form>
+            <button type="button" id="loadData">加载数据</button>
+            <button type="button" id="deleteBtn">删除选中</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="allCk" disabled="disabled">
+                        </th>
+                        <th>货号<i class="arrow"></i></th>
+                        <th>名称</th>
+                        <th>生产日期<i class="arrow"></i></th>
+                        <th>进货日期<i class="arrow"></i></th>
+                        <th>保质期</th>
+                        <th>售价<i class="arrow"></i></th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </form>
+    </main>
+    <!-- 弹出框 -->
+    <component></component>
+    <!-- 加载动画 -->
+    <load>
+        <img src="images/loading.png" id="loadIcon">
+    </load>
+    <script type="text/javascript" src="javascripts/popup.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript" src="javascripts/index.js"></script>
+</body>
+
+</html>

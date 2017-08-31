@@ -1,0 +1,132 @@
+@charset "UTF-8";
+/**
+ * 功能：索引页样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-21 21:32:59
+ */
+/**********************************************/
+ /*元件样式设置*/
+ /*********************************************/
+table input[type="checkbox"]{
+	width: 16px;
+	height: 16px;
+	position: relative;
+	top: 2px;
+	left: 2px;
+	cursor: pointer;
+}
+table input#allCk{
+	cursor: not-allowed;
+}
+thead i.arrow{
+	display: inline-block;
+	background: url(../images/arrow.png) no-repeat;
+	width: 16px;
+	height: 16px;
+	vertical-align: bottom;
+	position: relative;
+	top: -2px;
+	left: 4px;
+	transition-duration: 0.1s;
+	cursor: pointer;
+}
+thead i.up{
+	transform: rotate(-90deg);
+}
+thead i.down{
+	transform: rotate(90deg);
+}
+/**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+main{
+	padding: 15px;
+	font-size: 16px;
+}
+/*按钮*/
+form > button{
+	width: 100px;
+	height: 35px;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+form > button:hover{
+	background-color: #C9C9C7;
+}
+form > button:active{
+	background-color: #666663;
+}
+
+/*table*/
+table{
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+table thead{
+	background-color: #0B9F55;
+	color: #fff;
+}
+th, td{
+	width: 150px;
+	height: 40px;
+	text-align: left;
+}
+thead th:first-child{
+	width: 60px;
+}
+tbody td:first-child{
+	width: 60px;
+}
+table thead th:first-child{
+	width: 40px;
+}
+tbody tr:nth-child(even){
+	background-color: #edfff7;
+}
+tbody tr{
+	border: 1px solid #7FA894;
+}
+tbody td .view{
+	color: #76a2ff;
+}
+tbody td .view:hover{
+	color: #135dfa;
+}
+tbody td span{
+	margin-right: 10px;
+	cursor: pointer;
+}
+tbody td .delete{
+	color: #ff8080;
+}
+tbody td .delete:hover{
+	color: #ff0a0a;
+}
+tbody td .delete:active{
+	color: #A87F8E;
+}
+
+/*加载动画*/
+load{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: -2;
+	opacity: 0;
+	transform: scale(1);
+	transition: all 0.6s;
+}
+load img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+ /**********************************************/
+ /*响应式样式设置*/
+ /*********************************************/

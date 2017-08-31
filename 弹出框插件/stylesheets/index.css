@@ -16,6 +16,7 @@
     width: 100%;
     background: url(../images/bg.jpg) no-repeat;
     background-size: cover;
+    background-color: #fff;
  }
  body,p,div{
     margin: 0;
