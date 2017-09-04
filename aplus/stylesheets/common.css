@@ -1,0 +1,156 @@
+@charset "UTF-8";
+/**
+ * 功能：公共样式
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-09-04
+ */
+/**********************************************/
+ /*基础样式设置*/
+ /*********************************************/
+ *, *:before, *:after{
+ 	box-sizing: border-box;
+ }
+ html, body, ul, ol, h1, h2, h3, p, div{
+ 	margin: 0;
+ 	padding: 0;
+ }
+ body{
+ 	font: 16px sans-serif, "微软雅黑";
+ }
+ /*表单*/
+ input, select, button, textarea{
+ 	padding: 6px;
+ 	border: 1px solid #999;
+ 	outline: none;
+ 	border-radius: 3px;
+ 	font: 18px sans-serif, "微软雅黑";
+ }
+ input:focus, select:focus, textarea:focus{
+ 	border: 2px solid #29f;
+ 	outline: none;
+ 	box-shadow: 0 0 10px rgba(15, 153, 255, 0.6);
+ }
+ input, select, textarea{
+ 	transition: all 0.15s;
+ }
+
+/*无序列表*/
+ ul{
+ 	list-style: none;
+ }
+ /*超链接*/
+ a{
+ 	text-decoration: none;
+ }
+
+ /*浮动*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+
+/*清除浮动*/
+.clearfix:before, .clearfix:after{
+	display: table;
+	content: "";
+}
+.clearfix:after{
+	clear: both;
+	height: 0;
+	visibility: hidden;
+}
+
+/*header*/
+header{
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 99;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+header .menu{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+header .logo img{
+	height: 40px;
+}
+header .menu a{
+	width: 100px;
+	line-height: 60px;
+	color: #000;
+	text-align: center;
+	display: inline-block;
+}
+header .menu a:hover{
+	background-color: #3c9ce6;
+	color: #fff;
+}
+
+/*footer*/
+footer{
+	width: 100%;
+	background-color: #3d444f;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+footer .footer-content{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 55px 0 60px 10%;
+}
+footer .copyright{
+	width: 100%;
+	height: 52px;
+	line-height: 52px;
+	background-color: #363d46;
+	color: #cbd3b9;
+	background-size: 0.875em;
+	text-align: center;
+	text-align: center;
+}
+footer .footer-content>div{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin-right: 66px;
+}
+footer .footer-content>div>span{
+	color: #fff;
+	font-size: 1em;
+	padding-bottom: 26px;
+}
+footer .footer-content>div>a{
+	color: #9ca3ae;
+	padding-bottom: 17px;
+	font-size: 0.875em;
+}
+
+ /**********************************************/
+ /*响应式样式设置*/
+ /*********************************************/
+ @media screen and (min-width: 800px)
+ {
+ 	header{
+ 		padding: 0 10%;
+ 	}
+ }

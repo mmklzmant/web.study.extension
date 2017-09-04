@@ -27,8 +27,8 @@ window.onload = function(){
  * 功能：为p标签绑定鼠标右键事件
  */
 function mouseRightEvent(){
-	
-	var menu = new contextMenu("body-text", menuList);
-	menu.createMainMenu();
+	var menu = new contextMenu();
+	menu.createMainMenu("body-text", menuList);
+	// menu.createSubMenu("menu-new", menuList);
 }
 

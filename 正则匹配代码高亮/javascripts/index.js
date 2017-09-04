@@ -48,7 +48,7 @@ function setColor(strCode){
  * 功能：去除数组中的重复项
  */
 function removeReptItems(arr){
-	var temp = new Array();
+	var temp = [];
 	for(var i = 0; i < arr.length; i++){
 		if(arr[i] != "" && temp.indexOf(arr[i]) == -1){
 			temp.push(arr[i]);

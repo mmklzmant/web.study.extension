@@ -134,13 +134,11 @@ function ckBoxEvent() {
  * 功能：删除单条数据事件
  */
 function delSingleDataEvent() {
-    console.log("hello");
     //弹出框容器
     var component = document.getElementsByTagName("component")[0];
     //获取所有的删除节点
     var ndDel = document.getElementsByClassName("delete"),
         ndDel_len = ndDel.length;
-    console.log(ndDel);
     for (var i = 0; i < ndDel_len; i++) {
         ndDel[i].onclick = function() {
             //设置对应的input标签的checked值
@@ -148,9 +146,8 @@ function delSingleDataEvent() {
             ndInput.checked = true;
 
             //获取当前被选中的checkbox，并把它赋值给全局变量
-            checkboxObj.isCkedBox = getIsCkedBox();
+            checkboxObj.isCkedBox = [ndInput];
 
-            // console.log(checkboxObj.isCkedBox);
             //弹出框
             createBox({
                 type: "operateSure",
@@ -185,6 +182,10 @@ function bindDeleteBtn() {
             },
             confirm: function() {
                 component.style.zIndex = "-1";
+                //获取被选中的checkbox
+                var isCkedBox = getIsCkedBox();
+                //将被选中的checkBox存取到全局变量checkboxObj中
+                 checkboxObj.isCkedBox = isCkedBox;
                 //删除数据
                 deleteData(checkboxObj.isCkedBox);
             }
@@ -250,9 +251,9 @@ function childCkEvent() {
     //子选框选中状态改变事件
     for (var i = 0; i < checkboxObj.length; i++) {
         checkboxObj.childCkbox[i].onchange = function() {
-            //获取没有被选中的checkbox
+            //获取被选中的checkbox
             var isCkedBox = getIsCkedBox();
-            //获取没有被选中的长度
+            //获取被选中的长度
             var ckedLength = isCkedBox.length;
             //将被选中的checkBox存取到全局变量checkboxObj中
             checkboxObj.isCkedBox = isCkedBox;
@@ -279,8 +280,6 @@ function childCkEvent() {
  */
 function getIsCkedBox() {
     var childCkbox = document.getElementsByName("goods");
-    console.log(childCkbox[0]);
-
     var childCkbox_len = childCkbox.length;
     var arr = [];
 

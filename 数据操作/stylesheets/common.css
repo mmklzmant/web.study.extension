@@ -17,11 +17,10 @@
  body,html{
  	width: 100%;
  	height: 100%;
- 	background-color: #fff;
  }
  body{
  	font: 20px/1.5 sans-serif, "微软雅黑";
- 	background-color: #fff;
+ 	background-color: #607D8B;
  }
  /*表单*/
  input, select, button, textarea{

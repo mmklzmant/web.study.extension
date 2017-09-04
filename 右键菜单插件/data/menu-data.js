@@ -52,18 +52,48 @@ var lever_one_item_three_next = [
 ];*/
 
 var menuList = [
-	{
-		icon: "images/icon_one.png",
-		text: "新建",
-	},
-	{
-		icon: "images/icon_two.png",
-		text: "刷新",
-	},
-	{
-		icon: "images/icon_three.png",
-		text: "查看",
-	}
+	[
+		{
+			id: "memu-new",
+			icon: "images/icon_one.png",
+			text: "新建",
+			type: "hover",
+			event: function(x){
+				var menu = new contextMenu();
+				menu.createSubMenu(x);
+			}
+		},
+		{
+			id: "menu-sort",
+			text: "排序方式",
+			type: "click",
+			event: function(){
+				console.log("排序方式");
+			}
+		}
+	],
+	[
+		{
+			id: "menu-reload",
+			icon: "images/icon_two.png",
+			text: "刷新",
+			type: "click",
+			event: function(){
+				console.log('刷新');
+			}
+		},
+	],
+	[
+		{
+			id: "menu-view",
+			icon: "images/icon_three.png",
+			text: "查看",
+			type: "hover",
+			event: function(x){
+				console.log(x);
+			}
+		}
+	]
 ];
 
 
