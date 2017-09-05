@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /**
  * 功能：公共样式
- * @authors mmklzmant (mmklzmant@163.com)
- * @date    2017-09-04
+ * 作者： 卢敏 (mmklzmant@163.com)
+ * 最后修改日期：   2017-09-04
  */
 /**********************************************/
  /*基础样式设置*/
@@ -14,8 +14,15 @@
  	margin: 0;
  	padding: 0;
  }
+ body,html{
+ 	width: 100%;
+ }
  body{
  	font: 16px sans-serif, "微软雅黑";
+ 	overflow-x: hidden; 
+ }
+ section,footer,header,article,aside{
+ 	display: block;
  }
  /*表单*/
  input, select, button, textarea{
@@ -77,6 +84,9 @@ header{
 	justify-content: space-between;
 	align-items: center;
 }
+header:hover{
+	background-color: rgba(255,255,255,.15);
+}
 header .menu{
 	display: flex;
 	flex-direction: row;
@@ -90,7 +100,7 @@ header .logo img{
 header .menu a{
 	width: 100px;
 	line-height: 60px;
-	color: #000;
+	color: #fff;
 	text-align: center;
 	display: inline-block;
 }
@@ -98,14 +108,37 @@ header .menu a:hover{
 	background-color: #3c9ce6;
 	color: #fff;
 }
-
+header .menu a.active{
+	background-color: #0668B4;
+	color: #fff;
+}
+/*登录注册按钮*/
+header .menu .login{
+	margin-left: 5px;
+}
+header .menu .login button{
+	/*width: 66px;*/
+	padding: 5px 5px;
+	color: #0A7AD0;
+	height: 30px;
+	border: none;
+	outline: none;
+	font-size: 14px;
+	background-color: transparent;
+	cursor: pointer;
+}
+header .menu .login button:hover{
+	/* background-color: #3c9ce6; */
+	color: #fff;
+}
+header .menu .login button:active{
+	/* background-color: #0668B4; */
+	color: #0668B4;
+}
 /*footer*/
 footer{
 	width: 100%;
 	background-color: #3d444f;
-	position: absolute;
-	bottom: 0;
-	left: 0;
 }
 footer .footer-content{
 	width: 100%;
