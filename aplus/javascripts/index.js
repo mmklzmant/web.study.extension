@@ -8,7 +8,6 @@
 /* 全局变量、对象定义部分 */
 /*************************************************/
 
-
 /*************************************************/
 /* 页面加载完成之后执行的功能 (函数目录)*/
 /*************************************************/
@@ -16,7 +15,9 @@ window.onload = function() {
     // ==============================
     // 功能流程
     // ==============================
-    // //加载轮播图图片
+    //导航样式设置
+    setNavStyle();
+    //加载轮播图图片
     loadCarosImg();
     // 轮播图
     runCarousel();
@@ -24,12 +25,24 @@ window.onload = function() {
     // ==============================
     // 全局功能工具函数
     // ==============================
+    
+    //地图显示与隐藏事件
+    toggleMap();
 }
 
 
 /*************************************************/
 /* 功能函数及方法定义部分 (函数内容)*/
 /*************************************************/
+/**
+ * 功能：导航样式设置
+ */
+function setNavStyle(){
+    var navList = document.getElementsByClassName("menu-list")[0].getElementsByTagName("a");
+    var toIndex = sessionStorage.getItem("toIndex");
+    document.getElementsByClassName("active")[0].classList.remove("active");
+    navList[toIndex].classList.add("active");
+}
 /**
  * 功能：加载轮播图片
  */
@@ -82,4 +95,24 @@ function delayAnim(current, pre) {
         pre.className = "";
     }, 500)
 
+}
+
+/**
+ * 功能：地图显示与隐藏事件
+ */
+function toggleMap(){
+	var ndMapToggle = document.getElementById("map-tip");
+	ndMapToggle.onclick = function(){
+		var ndMap = document.getElementById("map");
+		if(ndMap.clientHeight === 150)
+		{
+			ndMap.style.height = "400px";
+			this.setAttribute("data-tip", "收起艾尔帕斯成都公司地图");
+		}
+		else{
+			ndMap.style.height = "150px";
+			this.setAttribute("data-tip", "展开艾尔帕斯成都公司地图");
+		}
+		this.classList.toggle("up");
+	}  
 }

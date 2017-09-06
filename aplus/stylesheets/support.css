@@ -1,0 +1,555 @@
+@charset "UTF-8";
+/**
+ * 功能：服务与支持页面样式
+ * 开发者：卢敏 (mmklzmant@163.com)
+ * 最后修改日期： 2017-09-06 10:33:10
+ */
+/**********************************************/
+ /*元件样式设置*/
+ /*********************************************/
+.view{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+main{
+	width: 100%;
+}
+/**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+section{
+	width: 100%;
+	position: relative;
+}
+/*banner图*/
+.support-view .banner{
+	width: 100%;
+	height: 500px;
+	padding-left: 17%;
+	text-align: left;
+}
+.support-view .banner-software{
+	display: none;
+	background: url(../images/support/service-software-banner.png);
+	background-size: cover;
+}
+.support-view .banner-weChat{
+	display: none;
+	background: url(../images/support/service-weChat-banner.png);
+	background-size: cover;
+}
+.support-view .banner-mobile{
+	display: none;
+	background: url(../images/support/service-mobile-banner.png);
+	background-size: cover;
+}
+.support-view .banner-network{
+	display: block;
+	background: url(../images/support/service-network-banner.png);
+	background-size: cover;
+}
+.support-view .banner-consultant{
+	display: none;
+	background: url(../images/support/service-consultant-banner.png);
+	background-size: cover;
+}
+.support-view .banner h1{
+	color: #fff;
+	font-size: 2.625em;
+	letter-spacing: 2px;
+	padding-top: 185px;
+	padding-bottom: 50px;
+}
+.support-view .banner h2{
+	color: #fff;
+	font-size: 1.5em;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+/*tab*/
+.support-view .tab>div{
+	height: 105px;
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #bcbcbc;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+.support-view .tab>div>a{
+	width: 250px;
+	letter-spacing: 1px;
+	color: #909090;
+	font-size: 1.125em;
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.support-view .tab>span.line{
+	display: block;
+	height: 2px;
+	width: 250px;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background-color: #3c9de5;
+	transition: all 0.5s ease-out;
+}
+.support-view .tab>div>a.active{
+	color: #3c9de5;
+}
+.support-view .tab>div>a:first-child:before{
+	content: url(../images/support/service-tab-1.png);
+	margin-right: 10px;
+}
+.support-view .tab>div>a:nth-child(2):before{
+	content: url(../images/support/service-tab-2.png);
+	margin-right: 10px;
+}
+.support-view .tab>div>a:nth-child(3):before{
+	content: url(../images/support/service-tab-3.png);
+	margin-right: 10px;
+}
+.support-view .tab>div>a:nth-child(4):before{
+	content: url(../images/support/service-tab-4.png);
+	margin-right: 10px;
+}
+.support-view .tab>div>a:nth-child(5):before{
+	content: url(../images/support/service-tab-5.png);
+	margin-right: 10px;
+}
+
+/*support-detail*/
+.support-detail h3{
+	color: #303030;
+	font-size: 1.75em;
+	margin-top: 70px;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+.support-detail h4{
+	color: #3c9de6;
+	font-size: 1.25em;
+	margin-top: 20px;
+	font-weight: 400;
+	letter-spacing: 1px;
+	margin-bottom: 70px;
+}
+.support-detail .software section:last-child h4{
+	margin-bottom: 0;
+}
+.support-detail .weChat section:last-child h4{
+	margin-bottom: 0;
+}
+.support-detail section{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+.support-detail .software{
+	display: none;
+}
+.support-detail .weChat{
+	display: none;
+}
+.support-detail .mobile{
+	display: none;
+}
+.support-detail .network{
+	display: block;
+}
+.support-detail .consultant{
+	display: none;
+}
+/*software*/
+.support-detail .software section:first-child{
+	background-color: #f6f6f6;
+	text-align: center;
+}
+.support-detail .full-img{
+	width: 80%;
+	padding-bottom: 60px;
+	max-width: 1182px;
+}
+.support-detail .full-img>img{
+	width: 100%;
+}
+.support-detail .separate{
+	margin-bottom: 40px;
+	margin-top: 28px;
+}
+.support-detail .separate:before{
+	content: url(../images/support/separate-line.png);
+}
+.support-detail .software ul{
+	width: 90%;
+	padding-bottom: 60px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.support-detail .software ul li{
+	padding-bottom: 30px;
+	width: 33.3%;
+}
+.support-detail .software ul li>div{
+	width: 100%;
+	transition: all 0.6s ease-out;
+}
+.support-detail .software ul li>span{
+	padding: 20px 0 23px 10px;
+	display: block;
+	letter-spacing: 1px;
+	line-height: 25px;
+	font-size: 1em;
+	color: #303030;
+}
+.support-detail .software ul li>p{
+	color: #303030;
+	padding-left: 10px;
+	padding-right: 19%;
+	font-size: 1em;
+	line-height: 25px;
+	letter-spacing: 1px;
+}
+.support-detail .software ul li>div>img{
+	width: 100%;
+}
+.support-detail .software ul li:first-child>div{
+	background: url(../images/support/service-advantage-1.png) 
+		no-repeat center center;
+	background-size: 100%;
+}
+.support-detail .software ul li:first-child>div:hover{
+	background-size: 120%;
+}
+.support-detail .software ul li:nth-child(2)>div{
+	background: url(../images/support/service-advantage-2.png) 
+			no-repeat center center;
+	background-size: 100%;
+}
+.support-detail .software ul li:nth-child(2)>div:hover{
+	background-size: 120%;
+}
+.support-detail .software ul li:nth-child(3)>div{
+	background: url(../images/support/service-advantage-3.png) 
+			no-repeat center center;
+	background-size: 100%;
+}
+.support-detail .software ul li:nth-child(3)>div:hover{
+	background-size: 120%;
+}
+.support-detail .software ul li:nth-child(4)>div{
+	background: url(../images/support/service-advantage-4.png) 
+			no-repeat center center;
+	background-size: 100%;
+}
+.support-detail .software ul li:nth-child(4)>div:hover{
+	background-size: 120%;
+}
+.support-detail .software ul li:nth-child(5)>div{
+	background: url(../images/support/service-advantage-5.png) 
+			no-repeat center center;
+	background-size: 100%;
+}
+.support-detail .software ul li:nth-child(5)>div:hover{
+	background-size: 120%;
+}
+.support-detail .software ul li:nth-child(6)>div{
+	background: url(../images/support/service-advantage-6.png) 
+			no-repeat center center;
+	background-size: 100%;
+}
+.support-detail .software ul li:nth-child(6)>div:hover{
+	background-size: 120%;
+}
+
+/*webChat*/
+.webChat section:first-child{
+	background-color: #f6f6f6;
+	padding: 0 15% 70px;
+}
+.webChat section:first-child>div{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	max-width: 970px;
+	width: 100%;
+}
+.webChat section:first-child>div>div{
+	width: 230px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+	color: #303030;
+}
+.webChat section:first-child>div>div>span{
+	padding: 25px 0 20px;
+	font-size: 1.25em;
+	letter-spacing: 1px;
+}
+.webChat section:first-child>div>div>p{
+	line-height: 24px;
+	width: 100%;
+	letter-spacing: 1px;
+	font-size: 0.875em;
+}
+.webChat section:first-child>div>div:first-child:before{
+	content: url(../images/support/wechat-1.png);
+}
+.webChat section:first-child>div>div:nth-child(2):before{
+	content: url(../images/support/wechat-2.png);
+}
+.webChat section:first-child>div>div:nth-child(3):before{
+	content: url(../images/support/wechat-3.png);
+}
+.webChat section:last-child{
+	background: url(../images/support/service-advantage-bg.png) no-repeat;
+	text-align: center;
+}
+.webChat section:last-child h3{
+	color: #fff;
+}
+.webChat section:last-child h4{
+	color: #fff;
+}
+.webChat section:last-child>span{
+	margin-bottom: 100px;
+}
+.webChat .full-img{
+	margin-bottom: 120px;
+}
+
+/*mobile*/
+.mobile section:first-child{
+	background-color: #f6f6f6;
+	padding: 0 15% 120px;
+}
+.mobile section h4{
+	margin-bottom: 70px;
+}
+.mobile section div{
+	width: 100%;
+	max-width: 920px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.mobile section>div>p{
+	width: 180px;
+	height: 192px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.mobile section:first-child>div>p:first-child{
+	background: url(../images/support/mobile-1.png) no-repeat;
+	background-size: contain;
+}
+.mobile section:first-child>div>p:nth-child(2){
+	background: url(../images/support/mobile-2.png) no-repeat;
+	background-size: contain;
+}
+.mobile section:first-child>div>p:nth-child(3){
+	background: url(../images/support/mobile-3.png) no-repeat;
+	background-size: contain;
+}
+.mobile section>div>p>span{
+	line-height: 40px;
+	text-align: center;
+	letter-spacing: 1px;
+	font-size: 1.75em;
+	font-weight: 100;
+	color: #666;
+}
+.mobile section>div>p>span:first-child{
+	padding-top: 5px;
+}
+.mobile section:last-child{
+	padding: 0 15% 120px;
+}
+.mobile section:last-child>h4{
+	margin-bottom: 70px;
+}
+.mobile section:last-child>div>p:first-child{
+	background: url(../images/support/mobile-4.png) no-repeat;
+	background-size: contain;
+}
+.mobile section:last-child>div>p:nth-child(2){
+	background: url(../images/support/mobile-5.png) no-repeat;
+	background-size: contain;
+}
+.mobile section:last-child>div>p:nth-child(3){
+	background: url(../images/support/mobile-6.png) no-repeat;
+	background-size: contain;
+}
+
+/*network*/
+.network section h4{
+	margin-bottom: 70px;
+}
+.network section:first-child{
+	background-color: #f6f6f6;
+	padding: 0 15% 70px;
+}
+.network section:first-child>div{
+	width: 100%;
+	max-width: 1058px;
+	border: 1px solid #eee;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+.network section:first-child>div>div{
+	width: 50%;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+.network section:first-child>div>div label{
+	width: 100%;
+	height: 80px;
+	padding-left: 10%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+.network section:first-child>div>div:first-child label{
+	background: url(../images/support/network-1.png) no-repeat;
+	background-size: cover;
+}
+.network section:first-child>div>div:last-child label{
+	background: url(../images/support/network-2.png) no-repeat;
+	background-size: cover;
+}
+.network section:first-child>div>div label span{
+	color: #fff;
+	letter-spacing: 1px;
+}
+.network section:first-child>div>div label span:first-child{
+	font-size: 1.75em;
+	font-weight: 500;
+	padding-right: 20px;
+}
+.network section:first-child>div>div label span:last-child{
+	padding-top: 10px;
+	font-size: 1em;
+}
+.network section:first-child>div>div p{
+	font-size: 1em;
+	width: 100%;
+	color: #303030;
+	letter-spacing: 1px;
+	padding-left: 10%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+.network section:first-child>div>div p:before{
+	content: " ";
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: #3c9de5;
+	border-radius: 50%;
+	margin-right: 30px;
+}
+.network section:first-child>div>div:first-child p:nth-child(2){
+	padding-top: 30px;
+}
+.network section:first-child>div>div:first-child p:last-child{
+	padding-bottom: 20px;
+}
+.network section:first-child>div>div:first-child p{
+	line-height: 50px;
+}
+.network section:first-child>div>div:last-child p{
+	border-left: 1px solid #eee;
+	line-height: 40px;
+}
+.network section:first-child>div>div:last-child p:nth-child(2){
+	padding-top: 20px;
+}
+.network section:first-child>div>div:last-child p:last-child{
+	padding-bottom: 20px;
+}
+/*第二个section*/
+.network section:last-child>div{
+	width: 80%;
+	padding: 70px 0 60px;
+	max-width: 1100px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+.network section:last-child>span.split-line{
+	display: block;
+	width: 100%;
+	padding-bottom: 1px;
+	border-top: 1px dashed #d0d0d0;
+}
+.network section:last-child>div>div{
+	width: 50%;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+.network section:last-child>div>img{
+	width: 40%;
+}
+.network section:last-child>div>div>h5{
+	color: #3c9de5;
+	font-size: 1.875em;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+.network section:last-child>div>div>span.under-line{
+	width: 40px;
+	border-bottom: 2px solid #3c9de5;
+	display: block;
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+.network section:last-child>div>div>p{
+	font-size: 1em;
+	letter-spacing: 1px;
+	color: #666;
+	padding-bottom: 10px;
+	line-height: 40px;
+	width: 100%;
+}

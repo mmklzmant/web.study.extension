@@ -323,6 +323,7 @@ section{
 	align-items: center;
 }
 .home-view .home-case ul{
+	margin-top: 60px;
 	width: 90%;
 	display: flex;
 	flex-direction: row;
@@ -357,6 +358,9 @@ section{
 	display: block;
 	width: 100%;
 	position: relative;
+}
+.home-view .home-case ul li>a>img{
+	width: 100%;
 }
 .home-view .home-case ul li>a>div{
 	width: 100%;
@@ -622,6 +626,60 @@ section{
 }
 .home-view .home-contact ul li>div:nth-child(4):before{
 	content: url(../images/home/icon-email.png);
+}
+
+/*map*/
+#map{
+	width: 100%;
+	height: 150px;
+	overflow: hidden;
+	position: relative;
+	z-index: 0;
+	background: url(../images/home/map.png) no-repeat;
+	transition: height .6s linear;
+}
+.map-mask{
+	position: relative;
+	width: 100%;
+	z-index: 100;
+}
+.map-mask>div:first-child{
+	width: 100%;
+	height: 100px;background-color: rgba(246, 246, 246, 0.81);
+	position: absolute;
+	top: -150px;
+	text-align: center;
+	line-height: 100px;
+	cursor: pointer;
+}
+.map-mask>div:last-child{
+	width: 100%;
+	height: 50px;
+	background-color: #f6f6f6;
+	position: absolute;
+	bottom: 0px;
+}
+.map-mask>div:first-child:before{
+	content: attr(data-tip);
+	color: #666;
+	letter-spacing: 2px;
+	font-size: 0.875em;
+}
+.map-mask>div.down:first-child:after{
+	content: url(../images/home/icon-down-expand.png);
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	margin-left: -15px;
+	line-height: 1;
+}
+.map-mask>div.up:first-child:after{
+	content: url(../images/home/icon-up-pack.png);
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	margin-left: -15px;
+	line-height: 1;
 }
  /**********************************************/
  /*动画定义*/

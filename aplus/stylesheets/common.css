@@ -10,7 +10,7 @@
  *, *:before, *:after{
  	box-sizing: border-box;
  }
- html, body, ul, ol, h1, h2, h3, p, div{
+ html, body, ul, ol, h1, h2, h3, h4, h5, p, div{
  	margin: 0;
  	padding: 0;
  }
@@ -94,8 +94,12 @@ header .menu{
 	justify-content: flex-start;
 	align-items: center;
 }
-header .logo img{
+header .logo{
 	height: 40px;
+	width: 120px;
+	background: url(../images/common/logo.png) no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 header .menu a{
 	width: 100px;

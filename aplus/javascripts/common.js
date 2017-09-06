@@ -4,13 +4,16 @@
  * 最后修改日期 2017-09-05 09:44:12
  */
 
-// 功能流程
-// ==============================
 //载入header
 loadHeader();
-
+//设置网页跳转地址
+setHref();
 //载入footer
 loadFooter();
+
+//导航菜单点击事件
+navClick();
+
 
 /*************************************************/
 /* 功能函数及方法定义部分 (函数内容)*/
@@ -21,7 +24,6 @@ loadFooter();
 function loadHeader() {
     var ndHeader = document.getElementsByTagName("header")[0];
     ndHeader.innerHTML = '<div class="logo">' +
-        '<img src="images/common/logo.png">' +
         '</div>' +
         '<div class="menu">' +
         '<div class="menu-list">' +
@@ -37,6 +39,12 @@ function loadHeader() {
         '</form>' +
         '</div>' +
         '</div>';
+     //初始化页面索引值
+     if(!sessionStorage.getItem("toIndex"))
+     {
+        sessionStorage.setItem("toIndex", 0);
+     }
+     
 }
 /**
  * 功能：载入footer
@@ -76,4 +84,37 @@ function loadFooter() {
         '<div class="copyright">' +
         '<span>Copy right 2015 成都艾尔帕思科技有限公司 All Rights Reserved 蜀ICP备 15031645号-1</span>' +
         '</div>';
+}
+/**
+ * 功能：导航点击事件
+ */
+function navClick(){
+    var navList = document.getElementsByClassName("menu-list")[0].getElementsByTagName("a"),
+        len = navList.length;
+    for(var i = 0; i < len; i++){
+        navList[i].index = i;
+        navList[i].onclick = function(e){
+            sessionStorage.setItem("toIndex", this.index);
+        }
+    }
+}
+/**
+ * 功能: 设置导航a标签href属性
+ */
+function setHref()
+{
+    var navList = document.getElementsByClassName("menu-list")[0].getElementsByTagName("a");
+    if(location.href.lastIndexOf("index") !== -1)
+    {
+        navList[0].href = "index.html";
+        navList[1].href = "pages/support.html";
+        navList[2].href = "pages/solution.html";
+        navList[3].href = "pages/about.html";
+    }
+    else{
+        navList[0].href = "../index.html";
+        navList[1].href = "support.html";
+        navList[2].href = "solution.html";
+        navList[3].href = "about.html";
+    }
 }
