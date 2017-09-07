@@ -30,6 +30,8 @@ function bindBtnClick(){
 	var operateSure = document.getElementById("operateSure");
 	var showImg = document.getElementById("showImg");
 	var editForm = document.getElementById("editForm");
+	var login = document.getElementById("login");
+	var register = document.getElementById("register");
 	var component = document.getElementsByTagName('component')[0];
 
 	//文本显示按钮
@@ -84,6 +86,34 @@ function bindBtnClick(){
 	editForm.onclick = function(){
 		createBox({
 			type: "form-fill",
+			cancel: function(){
+				component.style.zIndex = "-1";
+			},
+			confirm: function(userName, pwd){
+				component.style.zIndex = "-1";
+				var ndUser = document.getElementsByClassName("user")[0];
+				ndUser.textContent = "用户名：" + userName + "  " + "密码：" + pwd;
+			}
+		});
+	}
+	//登录
+	login.onclick = function(){
+		createBox({
+			type: "login",
+			cancel: function(){
+				component.style.zIndex = "-1";
+			},
+			confirm: function(userName, pwd){
+				component.style.zIndex = "-1";
+				var ndUser = document.getElementsByClassName("user")[0];
+				ndUser.textContent = "用户名：" + userName + "  " + "密码：" + pwd;
+			}
+		});
+	}
+	//register
+	register.onclick = function(){
+		createBox({
+			type: "register",
 			cancel: function(){
 				component.style.zIndex = "-1";
 			},

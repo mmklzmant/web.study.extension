@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/**
+ * 功能：关于我们页面样式
+ * 开发者：卢敏 (mmklzmant@163.com)
+ * 最后修改日期： 2017-09-07 15:31:58
+ */
+/**********************************************/
+ /*元件样式设置*/
+ /*********************************************/
+.view{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+main{
+	width: 100%;
+}
+/**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+section{
+	width: 100%;
+	position: relative;
+}
+/*banner*/
+.us-view .banner{
+	height: 500px;
+	width: 100%;
+	background: url(../images/about/us-banner.png) no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.us-view .banner h1{
+	font-size: 4.375em;
+	letter-spacing: 10px;
+	padding: 0;
+	color: #fff;
+}
+.us-view .banner h2{
+	font-weight: 400;
+	color: #fff;
+	padding-top: 50px;
+	font-size: 2.625em;
+	letter-spacing: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+.us-view .banner h2:before{
+	content: "";
+	padding-left: 140px;
+	border-bottom: 1px solid #3c9ce6;
+	display: block;
+	margin: 0 30px;
+}
+.us-view .banner h2:after{
+	content: "";
+	padding-left: 140px;
+	border-bottom: 1px solid #3c9ce6;
+	display: block;
+	margin: 0 30px;
+}
+/*公司简介*/
+.us-view section:nth-child(2){
+	padding-bottom: 60px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.us-view h5{
+	color: #3c9ce5;
+	font-size: 1.75em;
+	letter-spacing: 1px;
+	padding-bottom: 40px;
+	padding-top: 80px;
+	font-weight: 400;
+}
+.us-view section:nth-child(2) p{
+	width: 100%;
+	color: #666;
+	line-height: 25px;
+	font-size: 1em;
+	letter-spacing: 1px;
+	padding: 0 15% 30px;
+	text-indent: 2em;
+}
+/*发展历程树*/
+.us-view section:nth-child(3){
+	background-color: #f6f6f6;
+	padding-bottom: 80px;
+	text-align: center;
+}
+.us-view .tree{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	align-items: center;
+	align-items: center;
+	position: relative;
+}
+.us-view .tree>span{
+	width: 4px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -4px;
+	background-color: #3c9ce5;
+	border-radius: 4px;
+}
+.us-view .tree>div{
+	width: 100%;
+	padding: 30px 0;
+	position: relative;
+	z-index: 100;
+	display: flex;
+	flex-direction: row;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+}
+.us-view .tree>div>div{
+	width: 49%;
+}
+.us-view .tree>div>div:first-child{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: flex-end;
+	justify-content: center;
+}
+.us-view .tree>div>i{
+	display: block;
+	position: absolute;
+	background-color: #fff;
+	border: 2px solid #3c9ce5;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	top: 56px;
+	left: 50%;
+	margin-left: -12px;
+}
+.us-view .tree>div>div>span:first-child{
+	color: #3c9ce5;
+	font-stretch: 1.25em;
+	font-weight: 400;
+	letter-spacing: 1px;
+	padding: 5px 20px 8px;
+}
+.us-view .tree>div>div>span:last-child{
+	width: 130px;
+	height: 3px;
+	background-color: #3c9ce5;
+}
+.us-view .tree>div>div:last-child{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.us-view .tree>div>div p{
+	line-height: 26px;
+	letter-spacing: 1px;
+	color: #666;
+	font-stretch: 1em;
+	padding: 0 20px;
+	text-align: left;
+}
+/*公司资源*/
+.us-view section:nth-child(4){
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding-bottom: 100px;
+}
+.us-view section:nth-child(4)>div{
+	width: 100%;
+	height: 430px;
+	max-width: 974px;
+	background: url(../images/about/us-2.png) no-repeat;
+	background-size: contain;
+}
+.us-view section:nth-child(4) p{
+	font-size: 1.125em;
+	letter-spacing: 1px;
+	font-weight: 100;
+	color: #666;
+}
+.us-view section:nth-child(4) p>span:first-child{
+	padding-right: 60px;
+}

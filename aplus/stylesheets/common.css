@@ -14,6 +14,10 @@
  	margin: 0;
  	padding: 0;
  }
+ body {
+    font-family: "Helvetica Neue",Helvetica,Arial,
+    "Hiragino Sans GB","Microsoft Yahei","微软雅黑",STHeiti,"华文细黑",sans-serif;
+}
  body,html{
  	width: 100%;
  }
@@ -107,6 +111,7 @@ header .menu a{
 	color: #fff;
 	text-align: center;
 	display: inline-block;
+	font-size: 1em;
 }
 header .menu a:hover{
 	background-color: #3c9ce6;

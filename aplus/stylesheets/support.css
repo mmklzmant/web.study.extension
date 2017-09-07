@@ -20,6 +20,9 @@ main{
 /**********************************************/
  /*样式细节设置*/
  /*********************************************/
+ header .menu a{
+ 	font-size: 0.9em;
+ }
 section{
 	width: 100%;
 	position: relative;
@@ -47,7 +50,7 @@ section{
 	background-size: cover;
 }
 .support-view .banner-network{
-	display: block;
+	display: none;
 	background: url(../images/support/service-network-banner.png);
 	background-size: cover;
 }
@@ -55,6 +58,9 @@ section{
 	display: none;
 	background: url(../images/support/service-consultant-banner.png);
 	background-size: cover;
+}
+.support-view .banner-show{
+	display: block;
 }
 .support-view .banner h1{
 	color: #fff;
@@ -94,17 +100,16 @@ section{
 	align-items: center;
 	justify-content: center;
 }
-.support-view .tab>span.line{
+.support-view .tab>span#line{
 	display: block;
 	height: 2px;
 	width: 250px;
 	position: absolute;
-	left: 0;
-	bottom: 1px;
+	bottom: 0px;
 	background-color: #3c9de5;
 	transition: all 0.5s ease-out;
 }
-.support-view .tab>div>a.active{
+.support-view .tab>div>a.on{
 	color: #3c9de5;
 }
 .support-view .tab>div>a:first-child:before{
@@ -167,10 +172,13 @@ section{
 	display: none;
 }
 .support-detail .network{
-	display: block;
+	display: none;
 }
 .support-detail .consultant{
 	display: none;
+}
+.support-detail .detail-show{
+	display: block;
 }
 /*software*/
 .support-detail .software section:first-child{
@@ -215,14 +223,14 @@ section{
 	display: block;
 	letter-spacing: 1px;
 	line-height: 25px;
-	font-size: 1em;
+	font-size: 0.9em;
 	color: #303030;
 }
 .support-detail .software ul li>p{
 	color: #303030;
 	padding-left: 10px;
 	padding-right: 19%;
-	font-size: 1em;
+	font-size: 0.9em;
 	line-height: 25px;
 	letter-spacing: 1px;
 }
@@ -279,11 +287,11 @@ section{
 }
 
 /*webChat*/
-.webChat section:first-child{
+.weChat section:first-child{
 	background-color: #f6f6f6;
 	padding: 0 15% 70px;
 }
-.webChat section:first-child>div{
+.weChat section:first-child>div{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -292,7 +300,7 @@ section{
 	max-width: 970px;
 	width: 100%;
 }
-.webChat section:first-child>div>div{
+.weChat section:first-child>div>div{
 	width: 230px;
 	display: flex;
 	flex-direction: column;
@@ -301,40 +309,41 @@ section{
 	justify-content: flex-start;
 	color: #303030;
 }
-.webChat section:first-child>div>div>span{
+.weChat section:first-child>div>div>span{
 	padding: 25px 0 20px;
 	font-size: 1.25em;
 	letter-spacing: 1px;
 }
-.webChat section:first-child>div>div>p{
+.weChat section:first-child>div>div>p{
 	line-height: 24px;
 	width: 100%;
 	letter-spacing: 1px;
 	font-size: 0.875em;
 }
-.webChat section:first-child>div>div:first-child:before{
+.weChat section:first-child>div>div:first-child:before{
 	content: url(../images/support/wechat-1.png);
 }
-.webChat section:first-child>div>div:nth-child(2):before{
+.weChat section:first-child>div>div:nth-child(2):before{
 	content: url(../images/support/wechat-2.png);
 }
-.webChat section:first-child>div>div:nth-child(3):before{
+.weChat section:first-child>div>div:nth-child(3):before{
 	content: url(../images/support/wechat-3.png);
 }
-.webChat section:last-child{
+.weChat section:last-child{
 	background: url(../images/support/service-advantage-bg.png) no-repeat;
+	background-size: cover;
 	text-align: center;
 }
-.webChat section:last-child h3{
+.weChat section:last-child h3{
 	color: #fff;
 }
-.webChat section:last-child h4{
+.weChat section:last-child h4{
 	color: #fff;
 }
-.webChat section:last-child>span{
+.weChat section:last-child>span{
 	margin-bottom: 100px;
 }
-.webChat .full-img{
+.weChat .full-img{
 	margin-bottom: 120px;
 }
 
@@ -552,4 +561,50 @@ section{
 	padding-bottom: 10px;
 	line-height: 40px;
 	width: 100%;
+}
+
+/*consultant*/
+.consultant section:first-child{
+	background-color: #f6f6f6;
+	padding-bottom: 60px;
+}
+.consultant section:last-child>div{
+	width: 90%;
+	max-width: 1196px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+.consultant section:last-child>div>div{
+	width: 33%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+.consultant section:last-child>div>div:first-child{
+	padding-right: 40px;
+}
+.consultant section:last-child>div>div:last-child{
+	padding-left: 40px;
+}
+.consultant section:last-child>div>img{
+	width: 33%;
+}
+.consultant section:last-child>div>div>div{
+	margin-bottom: 70px;
+}
+.consultant section:last-child>div>div>div h5{
+	color: #3c9de5;
+	font-size: 1.1em;
+	font-weight: 400;
+	line-height: 36px;
+}
+.consultant section:last-child>div>div>div p{
+	color: #666;
+	line-height: 36px;
+	font-size: 0.9em;
 }

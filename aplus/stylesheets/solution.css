@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/**
+ * 功能：解决方案页面样式
+ * 开发者：卢敏 (mmklzmant@163.com)
+ * 最后修改日期： 2017-09-07 11:59:53
+ */
+/**********************************************/
+ /*元件样式设置*/
+ /*********************************************/
+.view{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+main{
+	width: 100%;
+}
+/**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+section{
+	width: 100%;
+	position: relative;
+}
+/*banner图*/
+.case-view .banner{
+	width: 100%;
+	height: 500px;
+	padding-left: 17%;
+	text-align: left;
+	background: url(../images/solution/case-banner.png) no-repeat;
+	background-size: cover;
+
+}
+.case-view .banner h1{
+	color: #fff;
+	font-size: 2.625em;
+	letter-spacing: 2px;
+	padding-top: 185px;
+	padding-bottom: 50px;
+}
+.case-view .banner h2{
+	color: #fff;
+	font-size: 1.5em;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+.case-view section:last-child{
+	width: 90%;
+	padding-bottom: 80px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+}
+.case-view section:last-child .tab{
+	width: 100%;
+	padding: 60px 0 30px;
+	font-size: 1em;
+	letter-spacing: 1px;
+	color: #414141;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+.case-view section:last-child .case-container{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+.case-view section:last-child .tab a{
+	padding: 0 25px;
+	line-height: 40px;
+	cursor: pointer;
+}
+.case-view section:last-child .tab a.on{
+	color: #3c9de5;
+}
+.case-view section:last-child .case-container>div{
+	width: 32%;
+	min-width: 250px;
+	max-width: 440px;
+	margin-right: 1.3%;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.case-view section:last-child .case-container>div>img{
+	width: 100%;
+}
