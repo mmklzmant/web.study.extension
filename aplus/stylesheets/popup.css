@@ -5,6 +5,30 @@
  * @date    2017-08-28 17:40:49
  */
 
+/*字体*/
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('../font/iconfont.woff') format('woff'),
+  url('../font/iconfont.ttf') format('truetype'),
+  url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-user:before { content: "\e6a0"; }
+
+.icon-quxiao:before { content: "\e607"; }
+
+.icon-nicheng:before { content: "\e672"; }
+
+.icon-pwd:before { content: "\e60c"; }
+
 /*遮罩层*/
 component{
 	position: fixed;
@@ -13,7 +37,7 @@ component{
 	right: 0;
 	top: 0;
 	background-color: rgba(0, 0, 0, 0.4);
-	z-index: 999;
+	z-index: -1;
 }
 /*弹出框样式*/
 component div.popup-content{
@@ -29,21 +53,23 @@ component div.popup-content{
 }
 .popup-delete{
 	position: absolute;
-	right: -5px;
-	top: -7px;
-	background-color: #3c9ce6;
-	color: #fff;
-	text-indent: 0;
-	text-align: center;
-	width: 22px;
-	height: 22px;
-	border-radius: 50%;
+	right: -6px;
+	top: -10px;
+	color: #3c9ce6;
+	font-size: 26px;
 	cursor: pointer;
+}
+.popup-delete:hover{
+	color: #6BB0E5;
+}
+.popup-delete:active{
+	color: #05518B;
 }
 /*公共样式*/
 /*登录*/
 component form>div{
 	margin: 0 10px 15px;
+	position: relative;
 }
 component form{
 	margin-top: 10px;
@@ -79,7 +105,7 @@ component form>div>input{
 	height: 40px;
 	border-radius: 5px;
 	vertical-align: middle;
-	padding-left: 30px;
+	padding-left: 35px;
 }
 component form>div>button{
 	width: 100%;
@@ -93,7 +119,12 @@ component form>div>button{
 	font-size: 1em;
 	margin-top: 20px;
 }
-
+component form>div>button:hover{
+	background-color: #6BB0E5;
+}
+component form>div>button:active{
+	background-color: #05518B;
+}
 /*注册*/
 component .register form div.login-title{
 	margin-bottom: 60px;
@@ -102,7 +133,7 @@ component .register form div.login-title{
 	position: relative;
 	margin: 0 10px 30px;
 }
-.register form>div>p:first-child{
+component form>div>p:first-child{
 	position: absolute;
 	top: -23px;
 	left: 10px;
@@ -126,4 +157,17 @@ component .register form div.login-title{
 	border-radius: 2px;
 	color: #9DB3D0;
 	cursor: pointer;
+}
+
+/*图标位置*/
+.popup-content em{
+	position: absolute;
+	top: 8px;
+	left: 6px;
+	font-size: 20px;
+	color: #A3A5A4;
+	transition: color .15s;
+}
+.popup-content input:focus + em{
+	color: #3c9ce6;
 }

@@ -7,7 +7,8 @@
 /*************************************************/
 /* 全局变量、对象定义部分 */
 /*************************************************/
-
+//imgDataList是所有分类的案例图片数据结构，
+//在solution-data.js文件中定义
 
 /*************************************************/
 /* 页面加载完成之后执行的功能 (函数目录)*/
@@ -18,6 +19,8 @@ window.onload = function() {
 	 //导航样式设置
     setNavStyle();
    
+    //加载案例导航
+    loadCaseNav();
     //加载案例图片
     loadCaseImg("all");
     // ==============================
@@ -42,12 +45,24 @@ function setNavStyle(){
 }
 
 /**
+ * 功能：加载案例导航
+ */
+function loadCaseNav(){
+    var ndContainer = document.getElementsByClassName("tab")[0];
+    var strHtml = '<a name="all" class="on">全部</a>';
+    for(x in imgDataList)
+    {
+        strHtml += '<a name="' + x + '">'+ 
+                imgDataList[x]["name"] + '</a>';
+    }
+    ndContainer.innerHTML = strHtml;
+}
+
+/**
  * 功能：加载案例图片
  */
 function loadCaseImg(name)
 {
-    //imgDataList是所有分类的案例图片数据结构，
-    //在solution-data.js文件中定义
     var imgList = imgDataList[name];
     //如果对应的name的数据没有
     //就加载全部的图片
@@ -56,12 +71,13 @@ function loadCaseImg(name)
         loadAllImg();
     }
     else{
+        var list = imgList["list"];
         var strHtml = "";
         var ndContainer = document.getElementsByClassName("case-container")[0];
-        var len = imgList.length;
+        var len = list.length;
         for(var i = 0; i < len; i++){
-            strHtml += '<div name="' + imgList[i]["url"] + '">'+
-                       '<img src="' + imgList[i]["imgUrl"] + '">'+
+            strHtml += '<div name="' + list[i]["url"] + '">'+
+                       '<img src="' + list[i]["imgUrl"] + '">'+
                         '</div>';
         }
         ndContainer.innerHTML = strHtml;
@@ -76,12 +92,12 @@ function loadAllImg(){
     var ndContainer = document.getElementsByClassName("case-container")[0];
     var strHtml = "";
     for(x in imgDataList){
-        var itemList = imgDataList[x],
-            len = itemList.length;
+        var itemList = imgDataList[x]["list"],
+        len = itemList.length;
         for(var i = 0; i < len; i++){
             strHtml += '<div name="' + itemList[i]["url"] + '">'+
-                       '<img src="' + itemList[i]["imgUrl"] + '">'+
-                        '</div>';
+                   '<img src="' + itemList[i]["imgUrl"] + '">'+
+                    '</div>';
         }
     }
     ndContainer.innerHTML = strHtml;

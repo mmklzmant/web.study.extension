@@ -13,7 +13,10 @@ loadFooter();
 
 //导航菜单点击事件
 navClick();
-
+ // 登录
+loginClick();
+//注册
+regClick();
 
 /*************************************************/
 /* 功能函数及方法定义部分 (函数内容)*/
@@ -116,5 +119,38 @@ function setHref()
         navList[1].href = "support.html";
         navList[2].href = "solution.html";
         navList[3].href = "about.html";
+    }
+}
+
+/**
+ * 功能：点击登录按钮，弹出登录框
+ */
+function loginClick(){
+    document.getElementById("login").onclick = function(){
+        createBox({
+            type: "login",
+            success: function(){
+                console.log("login");
+            }
+        })
+    }
+}
+
+/**
+ * 功能：点击注册按钮，弹出注册框
+ */
+function regClick(){
+    document.getElementById("register").onclick = function(){
+        createBox({
+            type: "reg",
+            success: function(){
+                createBox({
+                    type: "nick",
+                    success: function(){
+                        console.log(sessionStorage.getItem("nick"));
+                    }
+                })
+            }
+        })
     }
 }

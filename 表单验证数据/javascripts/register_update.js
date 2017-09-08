@@ -173,7 +173,6 @@ function regxVerify(ident, regx, mes)
         ident.style.borderColor = "#999";
         erroMesg.textContent = "";
         verified = true;
-        console.log(value);
     }
     else
     {
