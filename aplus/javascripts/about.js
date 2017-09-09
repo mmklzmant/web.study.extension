@@ -15,6 +15,8 @@
 window.onload = function() {
     // ==============================
     // 功能流程
+    //初始化导航的类名
+    setNavClass(3);
 	 //导航样式设置
     setNavStyle();
    
@@ -28,12 +30,3 @@ window.onload = function() {
 /*************************************************/
 /* 功能函数及方法定义部分 (函数内容)*/
 /*************************************************/
-/**
- * 功能：导航样式设置
- */
-function setNavStyle(){
-	var navList = document.getElementsByClassName("menu-list")[0].getElementsByTagName("a");
-    var toIndex = sessionStorage.getItem("toIndex");
-    document.getElementsByClassName("active")[0].classList.remove("active");
-    navList[toIndex].classList.add("active");
-}

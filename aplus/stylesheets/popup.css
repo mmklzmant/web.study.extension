@@ -145,7 +145,7 @@ component form>div>p:first-child{
 	margin-right: 10px;
 	padding: 6px;
 }
-.register form>div>span#verCode{
+.register form>div>span:nth-child(3){
 	display: inline-block;
 	width: 85px;
 	text-align: center;
@@ -158,6 +158,19 @@ component form>div>p:first-child{
 	color: #9DB3D0;
 	cursor: pointer;
 }
+ .register form>div>span#verCode{
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	color: #282929;
+	border-radius: 2px;
+	cursor: pointer;
+	position: absolute;
+	right: 28px;
+	top: 10px;
+	opacity: 0;
+	transition: opacity 0.15s ease-out;
+} 
 
 /*图标位置*/
 .popup-content em{
@@ -170,4 +183,71 @@ component form>div>p:first-child{
 }
 .popup-content input:focus + em{
 	color: #3c9ce6;
+}
+
+/*动画*/
+@keyframes move{
+	0%{
+		left: 50%;
+	}
+	5%{
+		left: 48%;
+	}
+	10%{
+		left: 50%;
+	}
+	15%{
+		left: 52%;
+	}
+	20%{
+		left: 50%
+	}
+	25%{
+		left: 48%;
+	}
+	30%{
+		left: 50%;
+	}
+	35%{
+		left: 52%;
+	}
+	40%{
+		left: 50%;
+	}
+	45%{
+		left: 48%;
+	}
+	50%{
+		left: 50%;
+	}
+	55%{
+		left: 52%;
+	}
+	60%{
+		left: 50%
+	}
+	65%{
+		left: 48%;
+	}
+	70%{
+		left: 50%;
+	}
+	75%{
+		left: 52%;
+	}
+	80%{
+		left: 50%;
+	}
+	85%{
+		left: 48%;
+	}
+	90%{
+		left: 50%;
+	}
+	95%{
+		left: 52%;
+	}
+	100%{
+		left: 50%;
+	}
 }

@@ -16,6 +16,8 @@
 window.onload = function() {
     // ==============================
     // 功能流程
+    //初始化导航的类名
+    setNavClass(2);
 	 //导航样式设置
     setNavStyle();
    

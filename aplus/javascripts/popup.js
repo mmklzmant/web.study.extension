@@ -18,7 +18,19 @@ function createBox(param) {
     var component = document.createElement("component");
     document.body.appendChild(component);
     param.type = param.type || "reg";
-
+    //点击遮罩层，弹出框抖动
+    component.onclick = function(e){
+        var e = e || window.event;
+        var target = e.target || e.srcElement;
+        if(e.target.tagName.toLowerCase() === "component")
+        {
+            var popup = document.getElementsByClassName("popup-content")[0];
+            popup.style.animation = "move 0.6s ease-out";
+            setTimeout(function(){
+                popup.style.animation = "";
+            }, 600);
+        }
+    }
     //登录
     if (param.type === "login") {
         component.style.zIndex = "999";
@@ -30,12 +42,12 @@ function createBox(param) {
             '<span>请登录</span>' +
             '<i></i>' +
             '</div>' +
-            '<div>' +
-            '<input type="text" name="count" id="count" placeholder="请输入您的邮箱/手机号">' +
+            '<div><p></p>' +
+            '<input type="text" name="count" id="login-count" placeholder="请输入您的邮箱/手机号">' +
             '<em class="iconfont icon-user"></em>' +
             '</div>' +
             '<div>' +
-            '<input type="password" name="pwd" id="pwd" placeholder="请输入您的密码">' +
+            '<input type="password" name="pwd" id="login-pwd" placeholder="请输入您的密码">' +
             '<em class="iconfont icon-pwd"></em>' +
             '</div>' +
             '<div>' +
@@ -45,10 +57,31 @@ function createBox(param) {
             '</div>';
         var login = document.getElementById("loginBtn");
         var cancelBtn = document.getElementById("delete");
+        var user = document.getElementById("login-count");
+        var pwd = document.getElementById("login-pwd");
 
+        //登录按钮
         login.onclick = function() {
-
+            
+            var localUser = localStorage.getItem("user");
+            var localPwd = localStorage.getItem("pwd");
+            if(user.value === localUser && pwd.value === localPwd){
+                sessionStorage.setItem("nick", localStorage.getItem("nick"));
+                component.remove();
+                param.success();
+            }
+            else{
+                user.previousElementSibling.textContent = "您输入的账号或密码错误，请从新输入";
+            }
         }
+        //用户名输入框和密码输入框获取焦点时隐藏提示文字
+        user.onfocus = function(){
+            this.previousElementSibling.textContent = "";
+        }
+        pwd.onfocus = function(){
+            user.previousElementSibling.textContent = "";
+        }
+        // 取消按钮
         cancelBtn.onclick = function() {
             component.remove();
         }
@@ -80,7 +113,8 @@ function createBox(param) {
             '<div>' +
             '<p></p>' +
             '<input type="text" name="verify" id="verify" placeholder="请输入验证码">' +
-            '<span id="verCode">' + createValiCode(5) + '</span>' +
+            '<span id="code">' + createValiCode(5) + '</span>' +
+            '<span id="verCode">刷新</span>'+
             '</div>' +
             '<div>' +
             '<button type="button" id="regBtn">注册</button>' +
@@ -88,8 +122,17 @@ function createBox(param) {
             '</form>' +
             '</div>';
         //点击验证码，重新生成验证码
-        document.getElementById("verCode").onclick = function() {
-            this.textContent = createValiCode(5);
+        var ndVerCode = document.getElementById("verCode");
+        ndVerCode.onclick = function() {
+            this.style.opacity = "0";
+            this.previousElementSibling.textContent = createValiCode(5);
+        }
+        //鼠标hover事件
+        ndVerCode.onmouseenter = function(){
+           this.style.opacity = "1";
+        }
+        ndVerCode.onmouseout = function(){
+            this.style.opacity = "0";
         }
         // 判断输入框值是否合法
         regInputJudge(param);
@@ -120,6 +163,21 @@ function createBox(param) {
                 '</div>';
         //判断昵称格式是否正确
         nickJudeg();
+         //确认按钮事件
+        document.getElementById("sureBtn").onclick = function(){
+            var input = document.getElementById("nick");
+            if(inputStatus)
+            {
+                localStorage.setItem("nick", input.value);
+                sessionStorage.setItem("nick", input.value);
+                component.remove();
+                param.success();
+            }
+            else{
+                input.onblur();
+            }
+        }
+    }
 }
 
 /*************************************************/
@@ -131,26 +189,13 @@ function nickJudeg(){
     input.onblur = function(){
        inputStatus = regxVerify(
             this,
-            /^\S{6,16}$/g,
+            /^\S{2,16}$/g,
             "昵称格式不正确"
         );
     }
     input.onfocus = function(){
         resetStyle(this);
     };
-
-    //确认按钮事件
-    document.getElementById("sureBtn").onclick = function(){
-            if(inputStatus)
-            {
-                sessionStorage.setItem("nick", input.value);
-                param.success();
-            }
-            else{
-                input.onblur();
-            }
-        }
-    }
 }
 /*************************************************/
 /*注册框事件处理*/
@@ -256,8 +301,8 @@ function regInputJudge(param) {
         if (countStatus && pwdStatus && repwdStatus &&
             isEqual && verifyStatus) {
             //存储用户名和密码
-            sessionStorage.setItem("user", count.value);
-            sessionStorage.setItem("pwd", pwd.value);
+            localStorage.setItem("user", count.value);
+            localStorage.setItem("pwd", pwd.value);
             param.success();
 
         } else {
@@ -373,7 +418,7 @@ function checkVerify(input) {
     //错误提示节点
     var errorMes = input.previousElementSibling;
     //随机验证码
-    var verCode = document.getElementById("verCode");
+    var verCode = document.getElementById("code");
     var strCode = verCode.textContent.toLowerCase();
 
     //输入框的值

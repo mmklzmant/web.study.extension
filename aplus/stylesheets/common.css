@@ -112,21 +112,31 @@ header .menu a{
 	text-align: center;
 	display: inline-block;
 	font-size: 1em;
+	transition: all 0.4s;
 }
 header .menu a:hover{
 	background-color: #3c9ce6;
 	color: #fff;
 }
-header .menu a.active{
+ header .menu a.active{
 	background-color: #0668B4;
 	color: #fff;
-}
+} 
 /*登录注册按钮*/
+header .menu #user-form{
+	color: #0A7AD0;
+	font-size: 14px;
+}
+header .menu #user-form p{
+	width: 66px;
+	text-align: center;
+	line-height: 66px;
+	font-size: 1.2em
+}
 header .menu .login{
 	margin-left: 5px;
 }
 header .menu .login button{
-	/*width: 66px;*/
 	padding: 5px 5px;
 	color: #0A7AD0;
 	height: 30px;
@@ -137,11 +147,9 @@ header .menu .login button{
 	cursor: pointer;
 }
 header .menu .login button:hover{
-	/* background-color: #3c9ce6; */
 	color: #fff;
 }
 header .menu .login button:active{
-	/* background-color: #0668B4; */
 	color: #0668B4;
 }
 /*footer*/

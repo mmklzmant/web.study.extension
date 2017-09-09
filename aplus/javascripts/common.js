@@ -26,19 +26,25 @@ regClick();
  */
 function loadHeader() {
     var ndHeader = document.getElementsByTagName("header")[0];
+    var loginStr = sessionStorage.getItem("nick");
+    if(!loginStr){
+        loginStr = '<button type="button" id="login">登录</button>' +
+        '<button type="button" id="register">注册</button>';
+    }
+    else{
+        loginStr = "<p>" + loginStr + "</p>";
+    }
     ndHeader.innerHTML = '<div class="logo">' +
         '</div>' +
         '<div class="menu">' +
         '<div class="menu-list">' +
-        '<a href="index.html" class="active">首页</a>' +
+        '<a href="index.html">首页</a>' +
         '<a href="pages/support.html">服务与支持</a>' +
         '<a href="pages/solution.html">解决方案</a>' +
         '<a href="pages/about.html">关于我们</a>' +
         '</div>' +
         '<div class="login">' +
-        '<form>' +
-        '<button type="button" id="login">登录</button>' +
-        '<button type="button" id="register">注册</button>' +
+        '<form id="user-form">' + loginStr +
         '</form>' +
         '</div>' +
         '</div>';
@@ -126,13 +132,18 @@ function setHref()
  * 功能：点击登录按钮，弹出登录框
  */
 function loginClick(){
-    document.getElementById("login").onclick = function(){
+    var loginBtn = document.getElementById("login");
+    if(loginBtn)
+    {
+        loginBtn.onclick = function(){
         createBox({
             type: "login",
             success: function(){
-                console.log("login");
+               document.getElementById("user-form").innerHTML = "<p>" +
+                                sessionStorage.getItem("nick") + "</p>";
             }
         })
+    }
     }
 }
 
@@ -140,17 +151,37 @@ function loginClick(){
  * 功能：点击注册按钮，弹出注册框
  */
 function regClick(){
-    document.getElementById("register").onclick = function(){
+    var regBtn = document.getElementById("register");
+    if(regBtn){
+        regBtn.onclick = function(){
         createBox({
             type: "reg",
             success: function(){
                 createBox({
                     type: "nick",
                     success: function(){
-                        console.log(sessionStorage.getItem("nick"));
+                        document.getElementById("user-form").innerHTML = "<p>" +
+                                sessionStorage.getItem("nick") + "</p>";
                     }
                 })
             }
         })
     }
+    }
+}
+/**
+ * 功能：首次进入页面初始化导航的类名
+ */
+function setNavClass(index){
+    var navList = document.getElementsByClassName("menu-list")[0].children;
+    navList[index].classList.add("active");
+}
+/**
+ * 功能：导航样式设置
+ */
+function setNavStyle(){
+    var navList = document.getElementsByClassName("menu-list")[0].getElementsByTagName("a");
+    var toIndex = sessionStorage.getItem("toIndex");
+    document.getElementsByClassName("active")[0].classList.remove("active");
+    navList[toIndex].classList.add("active");
 }

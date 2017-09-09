@@ -7,6 +7,8 @@
 /*************************************************/
 /* 全局变量、对象定义部分 */
 /*************************************************/
+//地图相关对象
+var map, infoWindow, marker;
 
 /*************************************************/
 /* 页面加载完成之后执行的功能 (函数目录)*/
@@ -15,6 +17,8 @@ window.onload = function() {
     // ==============================
     // 功能流程
     // ==============================
+    //初始化导航的类名
+    setNavClass(0);
     //导航样式设置
     setNavStyle();
     //加载轮播图图片
@@ -25,24 +29,18 @@ window.onload = function() {
     // ==============================
     // 全局功能工具函数
     // ==============================
-    
     //地图显示与隐藏事件
     toggleMap();
+    //显示Map
+    initMap();
+    //公司信息卡片点击事件
+    companyClick();
 }
 
 
 /*************************************************/
 /* 功能函数及方法定义部分 (函数内容)*/
 /*************************************************/
-/**
- * 功能：导航样式设置
- */
-function setNavStyle(){
-    var navList = document.getElementsByClassName("menu-list")[0].getElementsByTagName("a");
-    var toIndex = sessionStorage.getItem("toIndex");
-    document.getElementsByClassName("active")[0].classList.remove("active");
-    navList[toIndex].classList.add("active");
-}
 /**
  * 功能：加载轮播图片
  */
@@ -96,6 +94,69 @@ function delayAnim(current, pre) {
     }, 500)
 
 }
+/**
+ * 功能：公司信息卡片点击事件
+ */
+function companyClick(){
+    var companyList = document.getElementsByClassName("company-list")[0].children,
+    len = companyList.length;
+    for(var i = 0; i < len; i++){
+        companyList[i].index = i;
+        companyList[i].onclick = function(){
+            //设置当前li的border-bottom样式，
+            //清除其它的li的border-bottom样式
+            setBorderStyle(companyList, this.index);
+            this.style.borderBottom = "4px solid #3c9de5";
+            //刷新map
+            refreshMap({
+                name: this.getAttribute("data-name"),
+                addr: this.getAttribute("data-address"),
+                lng: this.getAttribute("data-lng"),
+                lat: this.getAttribute("data-lat")
+
+            });
+        }
+    }
+}
+/**
+ * 功能：刷新map
+ * @param  object param 包含四个属性值
+ * name：公司名称
+ * addr：公司地址
+ * lng：经度
+ * lat：维度
+ * @return {[type]}       [description]
+ */
+function refreshMap(param){
+    //处理信息数据
+    var name = "艾尔帕斯" + param.name;
+    var addr = param.addr;
+    var pos = [];
+    pos.push(Number(param.lng));
+    pos.push(Number(param.lat));
+    //根据位置信息刷新地图，标注和信息窗口
+    map.setCenter(pos);
+    marker.setPosition(pos);
+    infoWindow.open(map, pos);
+    //设置信息窗口文本内容
+    var ndName = document.getElementById("company-name");
+    ndName.textContent = name;
+    var ndAddr = document.getElementById("company-addr");
+    ndAddr.textContent = addr;
+}
+/**
+ * 功能：清除没有被点击的li的border-bottom样式
+ * @param Element companyList 公司信息卡片li标签列表
+ * @param Number index 当前点击的li的下标
+ */
+function setBorderStyle(companyList, index){
+    var len = companyList.length;
+    for(var i = 0; i < len; i++){
+        if(i !== index){
+            companyList[i].style.borderBottom = "";
+        }
+    }
+}
 
 /**
  * 功能：地图显示与隐藏事件
@@ -115,4 +176,44 @@ function toggleMap(){
 		}
 		this.classList.toggle("up");
 	}  
+}
+
+/**
+ * 功能：初始化map，信息窗口和标记
+ */
+function initMap(){
+    map = new AMap.Map('map', {
+            pitch:75,
+            viewMode:'3D',
+            zoom: 18,
+            expandZoomRange:true,
+            zooms:[3,20],
+            resizeEnable: true,
+            center:[104.066463,30.546089]
+        });
+        map.plugin(["AMap.ToolBar"], function() {
+            map.addControl(new AMap.ToolBar());
+        });
+    
+
+    infoWindow = new AMap.InfoWindow({
+            content: "<div class=\"infowindow-box\">" + 
+                    "<span id=\"company-name\">艾尔帕思成都公司</span><br>" + 
+                    "<span id=\"company-addr\">新希望国际B座2505</span></div>",
+            //基点指向marker的头部位置
+            offset: new AMap.Pixel(3, -2),
+        });
+    marker = new AMap.Marker({
+        icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
+        map:map,
+        position: map.getCenter(),
+    });
+     //鼠标点击marker弹出自定义的信息窗体
+    AMap.event.addListener(marker, 'click', function() {
+            infoWindow.open(map, marker.getPosition());
+    });
+    infoWindow.open(map, marker.getPosition());
+    //成都： 104.066463,30.546089
+    //重庆：106.512885,29.522087
+    //山东：117.123191,36.681031
 }

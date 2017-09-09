@@ -236,8 +236,8 @@
             <section>
                 <div class="home-contact">
                     <h3>联系我们</h3>
-                    <ul>
-                        <li>
+                    <ul class="company-list">
+                        <li data-name="成都公司" data-address="新希望国际B座2505" data-lng="104.066463" data-lat="30.546089" style="border-bottom:4px solid #3c9de5 ">
                             <p>艾尔帕思科技</p>
                             <div>
                                 <span>公司地址：成都市高新区天府三街69号新希望国际b座2505</span>
@@ -249,7 +249,7 @@
                                 <span>企业邮箱：contact@aplus-it.cn</span>
                             </div>
                         </li>
-                        <li>
+                        <li data-name="重庆分公司" data-address="谢家湾文化7村51号8栋15-9室" data-lng="106.512885" data-lat="29.522087">
                             <p>重庆分公司</p>
                             <div>
                                 <span>公司地址：重庆市九龙坡区谢家湾文化7村51号8栋15-9室</span>
@@ -258,7 +258,7 @@
                                 <span>联系电话：13996390133</span>
                             </div> 
                         </li> 
-                        <li>
+                        <li data-name="山东分公司" data-address="东环国际广场D座701室" data-lng="117.123191" data-lat="36.681031">
                             <p>山东分公司</p>
                             <div>
                                 <span>公司地址：济南市高新区丁豪广场L座2-1404</span>
@@ -381,17 +381,22 @@
                 <div>
                     <p>验证码错误</p>
                     <input type="text" name="reg-repwd" id="reg-repwd" placeholder="请输入验证码">
-                    <span id="verCode">XL45J</span>
+                    <span>XL45J</span>
+                    <span id="verCode">刷新</span>
                 </div>
                 <div>
                     <button type="button" id="regBtn">注册</button>
                 </div> 
             </form>
         </div> -->
-    <!-- </component> -->
-    <script type="text/javascript" src="javascripts/common.js"></script><script type="text/javascript" src="javascripts/popup.js"></script>
+    </component>
+    <script type="text/javascript" src="javascripts/common.js"></script>
+    <script type="text/javascript" src="javascripts/popup.js"></script>
     <script type="text/javascript" src="data/index-data.js"></script>
     <script type="text/javascript" src="javascripts/index.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=aeca80aadcf5c0dba7ba2b31a6217670"></script>
+    <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+    <!-- 异步加载地图 -->
 </body>
 
 </html>
