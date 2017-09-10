@@ -1,7 +1,7 @@
 /**
  * 功能：数据
- * @authors mmklzmant (mmklzmant@163.com)
- * @date    2017-08-21 21:40:27
+ * 开发者： mmklzmant (mmklzmant@163.com)
+ * 最后修改日期   2017-09-05
  */
 
 var carouselInfo = [

@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>艾尔帕思</title>
     <link href="stylesheets/common.css" rel="stylesheet">
     <link href="stylesheets/popup.css" rel="stylesheet">
@@ -13,25 +12,7 @@
 
 <body>
     <!-- header -->
-    <header>
-        <!-- <div class="logo">
-            <img src="images/common/logo.png">
-        </div>
-        <div class="menu">
-            <div class="menu-list">
-                <a href="index.html">首页</a>
-                <a href="pages/support.html">服务与支持</a>
-                <a href="pages/solution.html">解决方案</a>
-                <a href="pages/about.html">关于我们</a>
-            </div>
-            <div class="login">
-                <form>
-                    <button type="button" id="login">登录</button>
-                    <button type="button" id="register">注册</button>
-                </form>
-            </div>
-        </div> -->
-    </header>
+    <header></header>
     <!-- main -->
     <main>
         <div class="home-view view">
@@ -70,33 +51,33 @@
             <section>
                 <div class="home-service">
                     <h3>我们的服务</h3>
-                    <ul>
+                    <ul class="my-service"> 
                         <li>
-                            <a href="#">
+                            <a>
                                 <span></span>
                             </a>
                             <label>软件定制服务</label>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <span></span>
                             </a>
                             <label>微信平台开发</label>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <span></span>
                             </a>
                             <label>移动互联网开发</label>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <span></span>
                             </a>
                             <label>网络营销</label>
                         </li>
                         <li>
-                            <a href="#">
+                            <a>
                                 <span></span>
                             </a>
                             <label>解决方案咨询</label>
@@ -107,49 +88,49 @@
             <section>
                 <div class="home-case">
                     <h3>方案案例</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
+                    <ul class="case-list">
+                        <li name="eGover">
+                            <a>
                                 <img src="images/home/home-case-7.png">
                                 <div>
                                     <p>电子政务</p>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li name="eCommerce">
+                            <a>
                                 <img src="images/home/home-case-7.png">
                                 <div>
                                     <p>电子商务</p>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li name="edu">
+                            <a>
                                 <img src="images/home/home-case-7.png">
                                 <div>
                                     <p>教育行业</p>
                                 </div>
                             </a>
                         </li> 
-                        <li>
-                            <a href="#">
+                        <li name="thingsNet">
+                            <a>
                                 <img src="images/home/home-case-7.png">
                                 <div>
                                     <p>物联网</p>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li name="etpApp">
+                            <a>
                                 <img src="images/home/home-case-7.png">
                                 <div>
                                     <p>企业应用</p>
                                 </div>
                             </a>
                         </li> 
-                        <li>
-                            <a href="#">
+                        <li name="all">
+                            <a>
                                 <div>
                                     <p>更多案例</p>
                                 </div>
@@ -278,125 +259,14 @@
         </div>
     </main>
     <!-- footer -->
-    <footer>
-       <!--  <div class="footer-content">
-           <div>
-               <span>服务</span>
-               <a href="#">软件定制</a>
-               <a href="#">软件系统集成</a>
-               <a href="#">网络运营</a>
-           </div>
-           <div>
-               <span>运营</span>
-               <a href="#">微信运营</a>
-               <a href="#">APP运营</a>
-               <a href="#">SEM</a>
-               <a href="#">SEO</a>
-           </div>
-           <div>
-               <span>产品</span>
-               <a href="#">电子商务平台</a>
-               <a href="#">数字校园平台</a>
-               <a href="#">物联网平台</a>
-               <a href="#">数据采集监控平台</a>
-               <a href="#">IT计算服务</a>
-           </div>
-           <div>
-               <span>公司</span>
-               <a href="#">团队</a>
-               <a href="#">职位</a>
-               <a href="#">联系</a>
-               <a href="#">魏蜀吴</a>
-           </div>
-       </div>
-       <div class="copyright">
-           <span>Copy right 2015 成都艾尔帕思科技有限公司 All Rights Reserved 蜀ICP备 15031645号-1</span>
-       </div> -->
-    </footer>
-    <!-- <component> -->
-        <!-- 登录 -->
-        <!-- <div class="popup-content login">
-            <span class="popup-delete iconfont icon-quxiao" id="text-delete"></span>
-            <form>
-                <div class="login-title">
-                    <i></i>
-                    <span>请登录</span>
-                    <i></i>
-                </div>
-                 <div>
-                    <input type="text" name="count" id="count" placeholder="请输入您的邮箱/手机号">
-                    <em class="iconfont icon-user"></em>
-                </div>
-                <div>
-                    <input type="password" name="pwd" id="pwd" placeholder="请输入您的密码">
-                    <em class="iconfont icon-pwd"></em>
-                </div>
-                               <div>
-                    <button type="button" id="loginBtn">登录</button>
-                </div> 
-            </form>
-        </div> -->
-        <!-- 设置昵称 -->
-        <!-- <div class="popup-content popup-nick">
-            <form>
-                <div class="login-title">
-                    <i></i>
-                    <span>请设置昵称</span>
-                    <i></i>
-                </div>
-                 <div>
-                    <p></p>
-                    <input type="text" name="nick" id="nick" placeholder="请设置您的昵称">
-                    <em class="iconfont icon-nicheng"></em>
-                </div>
-                <div>
-                    <button type="button" id="sureBtn">确认</button>
-                </div> 
-            </form>
-        </div> -->
-        <!-- 注册 -->
-        <!-- <div class="popup-content register">
-            <span class="popup-delete iconfont icon-quxiao" id="text-delete"></span>
-            <form>
-                <div class="login-title">
-                    <i></i>
-                    <span>注册</span>
-                    <i></i>
-                </div>
-                 <div>
-                    <p>用户名不能为空</p>
-                    <input type="text" name="username" id="username" placeholder="请输入您的手机号或者邮箱">
-                    <em class="iconfont icon-user"></em>
-                </div>
-                <div>
-                    <p>密码不能为空</p>
-                    <input type="text" name="reg-pwd" id="reg-pwd" placeholder="请设置您的密码">
-                    <em class="iconfont icon-pwd"></em>
-                </div>
-                <div>
-                    <p>密码不能为空</p>
-                    <input type="text" name="reg-repwd" id="reg-repwd" placeholder="请重新输入您的密码">
-                    <em class="iconfont icon-pwd"></em>
-                </div>
-                <div>
-                    <p>验证码错误</p>
-                    <input type="text" name="reg-repwd" id="reg-repwd" placeholder="请输入验证码">
-                    <span>XL45J</span>
-                    <span id="verCode">刷新</span>
-                </div>
-                <div>
-                    <button type="button" id="regBtn">注册</button>
-                </div> 
-            </form>
-        </div> -->
-    </component>
+    <footer></footer>
+    <!-- js -->
     <script type="text/javascript" src="javascripts/common.js"></script>
     <script type="text/javascript" src="javascripts/popup.js"></script>
     <script type="text/javascript" src="data/index-data.js"></script>
     <script type="text/javascript" src="javascripts/index.js"></script>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=aeca80aadcf5c0dba7ba2b31a6217670"></script>
     <script src="http://webapi.amap.com/ui/1.0/main.js"></script>
-    <!-- 异步加载地图 -->
 </body>
 
 </html>

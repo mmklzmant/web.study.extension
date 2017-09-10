@@ -1,7 +1,7 @@
 /**
  * 功能：载入header和footer
- * 作者 卢敏 (mmklzmant@163.com)
- * 最后修改日期 2017-09-05 09:44:12
+ * 开发者 卢敏 (mmklzmant@163.com)
+ * 最后修改日期 2017-09-10
  */
 
 //载入header
@@ -103,6 +103,12 @@ function navClick(){
     for(var i = 0; i < len; i++){
         navList[i].index = i;
         navList[i].onclick = function(e){
+            if(this.index === 1){
+                sessionStorage.setItem("svs-index", 0);
+            }
+            else if(this.index === 2){
+                sessionStorage.setItem("case-name", "all");
+            }
             sessionStorage.setItem("toIndex", this.index);
         }
     }

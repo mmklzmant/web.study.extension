@@ -1,13 +1,12 @@
 /**
  * 功能：弹出框
- * @authors mmklzmant (mmklzmant@163.com)
- * @date    2017-08-28 17:41:33
+ * 开发者 mmklzmant (mmklzmant@163.com)
+ * 最后修改日期    2017-09-09
  */
 
 /**
  * 功能：创建弹出框
  * @param  object param 弹出框信息
- * @return {[type]}       [description]
  */
 function createBox(param) {
     //如果component存在，则移除component

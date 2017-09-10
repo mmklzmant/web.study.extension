@@ -2,7 +2,7 @@
 /**
  * 功能：解决方案页面样式
  * 开发者：卢敏 (mmklzmant@163.com)
- * 最后修改日期： 2017-09-07 11:59:53
+ * 最后修改日期： 2017-09-07
  */
 /**********************************************/
  /*元件样式设置*/
@@ -80,13 +80,14 @@ section{
 	padding: 0 25px;
 	line-height: 40px;
 	cursor: pointer;
+	font-size: 0.875em;
 }
 .case-view section:last-child .tab a.on{
 	color: #3c9de5;
 }
 .case-view section:last-child .case-container>div{
 	width: 32%;
-	min-width: 250px;
+	min-width: 200px;
 	max-width: 440px;
 	margin-right: 1.3%;
 	margin-bottom: 15px;

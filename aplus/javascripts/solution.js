@@ -1,7 +1,7 @@
 /**
  * 功能：解决方案功能模块
- * 作者 卢敏 (mmklzmant@163.com)
- * 最后修改日期 2017-09-07
+ * 开发者 卢敏 (mmklzmant@163.com)
+ * 最后修改日期 2017-09-10
  */
 
 /*************************************************/
@@ -23,8 +23,10 @@ window.onload = function() {
    
     //加载案例导航
     loadCaseNav();
+    //设置案例导航样式
+    setCaseNavStyle(sessionStorage.getItem("case-name"));
     //加载案例图片
-    loadCaseImg("all");
+    loadCaseImg(sessionStorage.getItem("case-name"));
     // ==============================
     // 全局功能工具函数
     // ==============================
@@ -59,7 +61,15 @@ function loadCaseNav(){
     }
     ndContainer.innerHTML = strHtml;
 }
-
+/**
+ * 功能：设置案例导航样式
+ */
+ function setCaseNavStyle(name){
+    //设置字体样式
+    document.getElementsByClassName("on")[0].classList.remove("on");
+    var node = document.getElementsByName(name)[0];
+    node.classList.add("on");
+ }
 /**
  * 功能：加载案例图片
  */
@@ -116,9 +126,8 @@ function caseNavClick(){
     {
         ndList[i].onclick = function(){
             loadCaseImg(this.name);
-            //设置字体样式
-            document.getElementsByClassName("on")[0].classList.remove("on");
-            this.classList.add("on");
+            setCaseNavStyle(this.name);
+            sessionStorage.setItem("case-name", this.name);
         }
     }
 }

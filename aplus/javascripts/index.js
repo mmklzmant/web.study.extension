@@ -1,7 +1,7 @@
 /**
  * 功能：首页功能
  * 开发者： 卢敏 (mmklzmant@163.com)
- * 最后修改日期：    2017-08-21 21:36:08
+ * 最后修改日期：    2017-09-10
  */
 
 /*************************************************/
@@ -29,6 +29,10 @@ window.onload = function() {
     // ==============================
     // 全局功能工具函数
     // ==============================
+    // 服务导航点击事件
+    svsNavClick();
+    //方案案例卡片点击事件
+    caseClick();
     //地图显示与隐藏事件
     toggleMap();
     //显示Map
@@ -201,7 +205,7 @@ function initMap(){
                     "<span id=\"company-name\">艾尔帕思成都公司</span><br>" + 
                     "<span id=\"company-addr\">新希望国际B座2505</span></div>",
             //基点指向marker的头部位置
-            offset: new AMap.Pixel(3, -2),
+            offset: new AMap.Pixel(0, 3),
         });
     marker = new AMap.Marker({
         icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_r.png",
@@ -216,4 +220,34 @@ function initMap(){
     //成都： 104.066463,30.546089
     //重庆：106.512885,29.522087
     //山东：117.123191,36.681031
+}
+/**
+ * 功能：服务导航点击事件
+ */
+function svsNavClick(){
+    var ndSvsList = document.getElementsByClassName("my-service")[0].children,
+        len = ndSvsList.length;
+    for(var i = 0; i < len; i++){
+        ndSvsList[i].index = i;
+        ndSvsList[i].onclick = function(){
+            sessionStorage.setItem("svs-index", this.index);
+            sessionStorage.setItem("toIndex", 1);
+            location.href = "pages/support.html";
+        }
+    }
+
+}
+/**
+ * 功能：方案案例卡片点击事件
+ */
+function caseClick(){
+    var caseList = document.getElementsByClassName("case-list")[0].children,
+        len = caseList.length;
+    for(var i = 0; i < len; i++){
+        caseList[i].onclick = function(){
+            sessionStorage.setItem("case-name", this.getAttribute("name"));
+            sessionStorage.setItem("toIndex", 2);
+            location.href = "pages/solution.html";
+        }
+    }
 }

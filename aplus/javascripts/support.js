@@ -1,7 +1,7 @@
 /**
  * 功能：服务与支持页面功能模块
- * 作者 卢敏 (mmklzmant@163.com)
- * 最后修改日期 2017-09-06 13:57:37
+ * 开发者 卢敏 (mmklzmant@163.com)
+ * 最后修改日期 2017-09-10
  */
 
 /*************************************************/
@@ -9,15 +9,15 @@
 /*************************************************/
 window.onload = function() {
     // ==============================
-    // 功能流程
      //初始化导航的类名
     setNavClass(1);
 	//导航样式设置
     setNavStyle();
-
-   	//设置服务导航底部线条位置以及宽度
-   	setNavLine();
-
+    
+    //设置服务导航底部线条位置以及宽度
+   	setNavLine(sessionStorage.getItem("svs-index"));
+   	//显示对应的服务详情
+	showService(sessionStorage.getItem("svs-index"));
    	//服务导航按钮点击事件
    	serviceNavClick();
     // ==============================
@@ -39,13 +39,13 @@ window.onload = function() {
  */
 function resizeWindow(){
 	window.onresize = function(){
-		setNavLine();
+		setNavLine(sessionStorage.getItem("svs-index"));
 	}
 }
 /**
  * 功能：设置服务导航底部线条位置以及宽度
  */
-function setNavLine(){
+function setNavLine(index){
 	var ndLine = document.getElementById("line");
 	var ndServiceNav = document.getElementsByClassName("tab")[0]
 					   .getElementsByTagName("a"),
@@ -61,10 +61,10 @@ function setNavLine(){
 	}
 	//设置服务导航字体颜色
 	document.getElementsByClassName("on")[0].classList.remove("on");
-			ndServiceNav[0].classList.add("on");
+			ndServiceNav[index].classList.add("on");
 	//设置底部线条样式
-	ndLine.style.left = ndServiceNav[0].offsetLeft + "px";
-	ndLine.style.width = ndServiceNav[0].offsetWidth + "px";
+	ndLine.style.left = ndServiceNav[index].offsetLeft + "px";
+	ndLine.style.width = ndServiceNav[index].offsetWidth + "px";
 }
 /**
  * 功能：服务导航按钮点击事件
@@ -77,6 +77,7 @@ function serviceNavClick(){
 	for(var i = 0; i < len; i++){
 		ndServiceNav[i].index = i;
 		ndServiceNav[i].onclick = function(){
+			sessionStorage.setItem("svs-index", this.index);
 			//设置标签字体颜色
 			document.getElementsByClassName("on")[0].classList.remove("on");
 			this.classList.add("on");
@@ -97,7 +98,6 @@ function showService(index){
 	//隐藏显示的内容
 	document.getElementsByClassName("banner-show")[0].classList.remove("banner-show");
 	document.getElementsByClassName("detail-show")[0].classList.remove("detail-show");
-
 	//详细服务页面
 	var ndDetail = document.getElementsByClassName("detail");
 	//banner图
