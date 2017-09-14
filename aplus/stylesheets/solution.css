@@ -64,7 +64,7 @@ section{
 	color: #414141;
 	display: flex;
 	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-start;
 }
@@ -80,7 +80,7 @@ section{
 	padding: 0 25px;
 	line-height: 40px;
 	cursor: pointer;
-	font-size: 0.875em;
+	font-size: 1em;
 }
 .case-view section:last-child .tab a.on{
 	color: #3c9de5;

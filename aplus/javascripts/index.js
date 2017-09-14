@@ -69,7 +69,7 @@ function runCarousel() {
             //显示下一张
             ndImgContainer.nextElementSibling.className = "slider show";
 
-            //图片内容延迟500秒
+            //图片内容延迟500毫秒
             delayAnim(ndImgContainer.nextElementSibling.children[0],
             			ndImgContainer.children[0]);
         } else {
@@ -79,7 +79,7 @@ function runCarousel() {
             //隐藏上一张
             ndImgContainer.className = "slider";
 
-            //图片内容延迟500秒
+            //图片内容延迟500毫秒执行动画
             delayAnim(ndCarosChild.firstElementChild,
             			ndImgContainer.firstElementChild);
         }
@@ -96,7 +96,6 @@ function delayAnim(current, pre) {
         current.className = "move";
         pre.className = "";
     }, 500)
-
 }
 /**
  * 功能：公司信息卡片点击事件

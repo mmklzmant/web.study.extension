@@ -84,7 +84,9 @@ function createBox(param) {
         cancelBtn.onclick = function() {
             component.remove();
         }
-    } else if (param.type === "reg") {
+    } 
+    //注册
+    else if (param.type === "reg") {
         component.style.zIndex = "999";
         component.innerHTML = '<div class="popup-content register">' +
             '<span class="popup-delete iconfont icon-quxiao" id="delete"></span>' +
