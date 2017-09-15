@@ -18,6 +18,10 @@
  	font: 20px/1.5 sans-serif, "微软雅黑";
  	background-color: #fff;
  }
+ html, body{
+ 	width: 100%;
+ 	height: 100%;
+ }
  /*表单*/
  input, select, button, textarea{
  	padding: 6px;
@@ -60,11 +64,13 @@
 /*滚动条样式*/
 ::-webkit-scrollbar { 
 	height: 0px;
+	width: 0px;
 }
 /*每个对应底部导航的容器*/
 .wrapper{
-	width: 100%;
-	height: 100%;
+	 width: 100%; 
+	 height: calc(100% - 50px);
+	 overflow-y: auto;
 }
 /*view*/
 .view{
