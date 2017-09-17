@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>test</title>
+    <link href="" rel="stylesheet">
+    <!-- mmklzmant于2017-08-21编写 -->
+</head>
+
+<body>
+    <button type="button" id="testbtn">触摸</button>
+    <p id="content"></p>
+    <!-- <script type="text/javascript" src="data/data.js"></script>
+    <script type="text/javascript" src="javascripts/index.js"></script> -->
+    <script type="text/javascript">
+    	var button = document.getElementById("testbtn");
+    	var content = document.getElementById("content");
+    	button.addEventListener("touchstart", function(e){
+			content.textContent = "touchstart";
+    	})
+    </script>
+</body>
+
+</html>

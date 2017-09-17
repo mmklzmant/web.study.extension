@@ -15,6 +15,7 @@
  	padding: 0;
  }
  body{
+ 	overflow: hidden;
  	font: 20px/1.5 sans-serif, "微软雅黑";
  	background-color: #fff;
  }
@@ -82,6 +83,8 @@
 	flex-wrap: nowrap;
 	align-items: flex-start;
 	justify-content: flex-start;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 /*footer*/
 .footerNav{
@@ -106,8 +109,8 @@
 .footerNav a i.icon{
 	width: 30px;
 	height: 30px;
-	background-size: contain;
-	background-position: left;
+	background-size: 100% 100%;
+	background-position: center;
 	background-repeat: no-repeat;
 }
 .footerNav a span{
@@ -140,4 +143,26 @@
 }
 .footerNav a.checked:nth-child(4) .icon{
 	background-image: url(../images/home/ic_tab_mine_active.png);
+}
+.footerNav a.checked .icon{
+	transition: transform 0.3s;
+	animation: iconSize 0.3s ease-in-out;
+}
+/*动画*/
+@keyframes iconSize{
+	0%{
+		transform: scale(1);
+	}
+	25%{
+		transform: scale(0.9);
+	}
+	50%{
+		transform: scale(0.8);
+	}
+	75%{
+		transform: scale(0.9);
+	}
+	100%{
+		transform: scale(1);
+	}
 }
