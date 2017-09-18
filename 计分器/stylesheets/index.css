@@ -1,0 +1,140 @@
+@charset "utf-8";
+/**
+ * 功能: 
+ * @authors mmklzmant (mmklzmant@163.com)
+ * @date    2017-08-01 16:35:40
+ */
+
+ /**********************************************/
+ /*公共样式*/
+ /*********************************************/
+ *{
+    box-sizing: border-box;
+ }
+ body,p,div{
+    margin: 0;
+    padding: 0;
+ }
+ ul{
+    list-style: none;
+ }
+ a{
+    text-decoration: none;
+ }
+ .container{
+    width: 1170px;
+    margin: 0 auto;
+ }
+ /*浮动*/
+ .fl{
+    float: left;
+ }
+.fr{
+    float: right;
+}
+ /*清除浮动*/
+ .clearfix:before, .clearfix:after{
+    display: table;
+    content: "";
+ }
+ .clearfix:after{
+    clear: both;
+    height: 0;
+    visibility: hidden;
+ }
+
+
+ /**********************************************/
+ /*样式细节设置*/
+ /*********************************************/
+main{
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px 0 100px;
+    position: relative;
+
+}
+main form{
+    width: 100%;
+}
+main form .input{
+    width: 100%;
+}
+main form p{
+    width: 20%;
+    float: left;
+    position: relative;
+    margin-top: 25px;
+}
+main form p label{
+    vertical-align: middle;
+    position: absolute;
+    left: -27px;
+    top: 3px;
+}
+main form p input{
+    vertical-align: middle;
+    width: 60px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #000;
+    outline: none;
+    color: #F88510;
+}
+main form p input:focus{
+    border: 1px solid #F88510;
+    box-shadow: 0 0 5px #F88510;
+}
+main form p input:focus + label{
+    color: #F88510;
+    text-shadow: 0 0 2px #F88510;
+}
+main form .btns{
+    position: absolute;
+    right: 60px;
+    bottom: 44px;
+}
+main form .score{
+    position: absolute;
+    right: 60px;
+    bottom: 0px;
+}
+main form .btns button{
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    color: #fff;
+    background-color: #D89249;
+    border-radius: 2px;
+}
+main form .btns button:hover{
+    background-color: #F3C28F;
+}
+main form .btns button:active{
+    background-color: #F88006;
+}
+main form .btns button:first-child{
+    margin-right: 30px;
+}
+main form .score label{
+    display: inline-block;
+    margin-right: 50px;
+    font-size: 17px;
+}
+main form .score span{
+    width: 66px;
+    text-align: left;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #D89249;
+}
+/**********************************************/
+ /*响应式样式设置*/
+ /*********************************************/
+
