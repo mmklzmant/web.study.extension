@@ -42,6 +42,8 @@ function getHomeHTML()
 {
 	 getHTML("pages/home.html", function(html){
 		wrapper.innerHTML = html;
+		//加载滑动显示的内容
+		loadView(1);
 		//设置每个页面的宽度
 		setPageWidth();
 		//绑定滑动内容触摸事件
@@ -49,7 +51,7 @@ function getHomeHTML()
 		// 设置头部导航栏的位置
 		setNavLinePos(pageNow);
 		//快讯界面展开点击事件
-		expandClick();
+		// expandClick();
     });
     
 }
@@ -249,9 +251,14 @@ function bindTouchEvent(){
 				}
 			}
 			//执行滑动
-			transform.call(viewContainer, translate);
+			setTimeout(function(){
+				transform.call(viewContainer, translate);
+			}, 100);
+			
 			//计算当前页码
 			pageNow = Math.round(Math.abs(translate)/pageWidth) + 1;
+			//加载当前显示的内容
+			loadView(pageNow);
 			//设置导航栏的位置
 			setNavLinePos(pageNow);
 			var navViewWidth = document.getElementsByClassName("home-nav")[0].offsetWidth; 
@@ -267,6 +274,33 @@ function setNavLinePos(pos)
 	var navs =  document.getElementsByClassName("slide-nav");
 	var line = document.getElementById("home-nav-line");
 	line.style.left = navs[pos-1].offsetLeft + 25 + "px";
+}
+/**
+ * 功能：加载当前显示的内容
+ */
+function loadView(index)
+{
+	var url = "";
+	var contents = document.getElementsByClassName("content-view");
+	switch(index){
+		case 1:
+			url = "pages/focus-view-normal.html";
+			break;
+		case 2:
+			url = "pages/recom-view.html";
+			break;
+		case 3:
+			url = "pages/flash-view.html";
+			break;
+		default:
+			break;
+	}
+	if(index < 4)
+	{
+		getHTML(url, function(html){
+			contents[index-1].innerHTML = html;
+		});
+	}
 }
 /**
  * 功能获取指定路径的html
@@ -286,9 +320,8 @@ function getHTML(url, callback)
 }
 /**
  * 功能: ajax获取对象
- * @param  {[type]}   url      [description]
- * @param  {Function} callback [description]
- * @return {[type]}            [description]
+ * @param   String  url      地址
+ * @param  Function callback 回调函数
  */
 function getObj(url, callback)
 {
@@ -296,7 +329,7 @@ function getObj(url, callback)
 	xhr.open("GET", url);
 	xhr.send();
 	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4 && xhr.status === 400)
+		if(xhr.readyState === 4 && xhr.status === 200)
 		{
 			var obj = JSON.parse(xhr.responseText);
 			callback(obj);
