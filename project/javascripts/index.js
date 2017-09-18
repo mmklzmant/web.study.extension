@@ -48,8 +48,22 @@ function getHomeHTML()
 		bindTouchEvent();
 		// 设置头部导航栏的位置
 		setNavLinePos(pageNow);
+		//快讯界面展开点击事件
+		expandClick();
     });
     
+}
+/**
+ * 功能：快讯界面展开点击事件
+ */
+function expandClick(){
+	var expand = document.getElementsByClassName("other-left")[0];
+	expand.onclick = function(){
+		if(this.parentElement.classList.contains('show'))
+		{
+			console.log("show");
+		}
+	}
 }
 /**
  * 功能：获取开氪页面html并执行相应的功能函数

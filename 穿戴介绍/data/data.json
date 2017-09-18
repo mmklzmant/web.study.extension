@@ -1,0 +1,26 @@
+{
+	"clothes":{
+		"branch": "GUESS.班尼路",
+		"type": "上衣",
+		"made": "蚕丝",
+		"location": "法国",
+		"price": 2699,
+		"descrip": "可手洗 干洗"
+	},
+	"pants":{
+		"branch": "唐狮裤子",
+		"type": "裤子",
+		"made": "棉质",
+		"location": "法国",
+		"price": 799,
+		"descrip": "不可手洗 干洗"
+	},
+	"shoes":{
+		"branch": "大东",
+		"type": "鞋子",
+		"made": "皮质",
+		"location": "中国",
+		"price": 1099,
+		"descrip": "可手洗"
+	}
+}
