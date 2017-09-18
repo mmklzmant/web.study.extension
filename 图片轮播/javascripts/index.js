@@ -86,7 +86,6 @@ function loadImages() {
     var roundIconHtml = "";
 
     imagesInfo.forEach(function(e, index) {
-        // '" class="img' + (index + 1) + 
         imgHtml += '<a href="' + e.url + '">' +
             '<img src="' + e.imageUrl + '"></a>';
         roundIconHtml += "<i index=\"" + index + "\"></i>";

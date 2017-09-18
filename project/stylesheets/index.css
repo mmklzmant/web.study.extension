@@ -3,11 +3,6 @@
  * 功能：索引页样式
  * @authors mmklzmant (mmklzmant@163.com)
  * @date    2017-08-21 21:32:59
- */
-/**********************************************/
- /*元件样式设置*/
- /*********************************************/
-
 
 /**********************************************/
  /*样式细节设置*/
@@ -149,6 +144,10 @@ span.home-channel{
 	transform: translate(-50%, -50%);
 }
 /*关注页面*/
+.focus-view{
+	width: 100%;
+	height: 100%;
+}
 .focus-view-content{
 	width: 100%;
 	height: 100%;
@@ -188,11 +187,44 @@ span.home-channel{
 /*轮播图*/
 .recom-view .carousel{
 	width: 100%;
-	height: 210px;
+	height: 180px;
+	position: relative;
 }
-.recom-view .carousel img{
+.recom-view .carousel .images{
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.recom-view .carousel .images a{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.recom-view .carousel .images a img{
+	width: 100%;
+	height: 100%;
+}
+/*小圆点*/
+.recom-view .carousel .round-icons{
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 20;
+}
+.recom-view .carousel .round-icons i{
+	display: inline-block;
+	margin-right: 5px;
+	width: 8px;
+	height: 8px;
+	background-color: #C8C6C4;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.6s;
+}
+.recom-view .carousel .round-icons i.round-checked{
+	background-color: #E8E7E6;
 }
 /*列表*/
 .recom-view .list{

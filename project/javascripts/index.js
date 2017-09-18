@@ -284,3 +284,22 @@ function getHTML(url, callback)
 		}
 	}
 }
+/**
+ * 功能: ajax获取对象
+ * @param  {[type]}   url      [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+function getObj(url, callback)
+{
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.send();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === 4 && xhr.status === 400)
+		{
+			var obj = JSON.parse(xhr.responseText);
+			callback(obj);
+		}
+	}
+}
