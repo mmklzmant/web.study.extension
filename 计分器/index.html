@@ -11,15 +11,32 @@
 <body>
     <main>
         <form id="form">
-            <div class="input clearfix">
+            <div class="load">
+                <p>
+                    <input type="text" name="load" id="subNum">
+                    <label>题数：</label>
+                </p>
+                <p>
+                    <input type="text" name="load" id="maxScore">
+                    <label>单个题目最高分：</label>
+                </p>
+                <p>
+                    <input type="text" name="load" id="originScore">
+                    <label>总分：</label>
+                </p>
+                <button type="button" id="sure">确定</button>
             </div>
-            <div class="btns">
-                <button type="reset" id="reset">重置</button>
-                <button type="button" id="sum">计算</button>
-            </div>
-            <div class="score">
-                <label>总分：</label>
-                <span id="score">100</span>
+            <div>
+                <div class="input clearfix">
+                </div>
+                <div class="btns">
+                    <button type="reset" id="reset">重置</button>
+                    <button type="button" id="sum">计算</button>
+                </div>
+                <div class="score">
+                    <label>总分：</label>
+                    <span id="score">100</span>
+                </div>
             </div>
         </form>
     </main>

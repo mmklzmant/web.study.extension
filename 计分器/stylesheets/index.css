@@ -66,6 +66,19 @@ main form p{
     position: relative;
     margin-top: 25px;
 }
+main form .load{
+    margin-bottom: 20px;
+    margin-left: 25px;
+}
+main form .load p{
+    float: none;
+    display: inline-block;
+    margin-right: 15px;
+}
+main form .load p label{
+    left: -51px;
+    top: 2px;
+}
 main form p label{
     vertical-align: middle;
     position: absolute;
@@ -100,7 +113,7 @@ main form .score{
     right: 60px;
     bottom: 0px;
 }
-main form .btns button{
+main form  button{
     width: 80px;
     height: 30px;
     line-height: 30px;
@@ -112,13 +125,13 @@ main form .btns button{
     background-color: #D89249;
     border-radius: 2px;
 }
-main form .btns button:hover{
+main form  button:hover{
     background-color: #F3C28F;
 }
-main form .btns button:active{
+main form  button:active{
     background-color: #F88006;
 }
-main form .btns button:first-child{
+main form  button:first-child{
     margin-right: 30px;
 }
 main form .score label{
@@ -133,6 +146,18 @@ main form .score span{
     font-size: 20px;
     letter-spacing: 2px;
     color: #D89249;
+}
+main form>div:last-child{
+    display: none;
+}
+main form .load p:nth-child(2){
+    margin-left: 81px;
+}
+main form .load p:nth-child(2) label{
+    left: -129px;
+}
+main form div.show{
+    display: block;
 }
 /**********************************************/
  /*响应式样式设置*/
