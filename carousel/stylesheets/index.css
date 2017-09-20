@@ -4,16 +4,64 @@
  * @authors mmklzmant (mmklzmant@163.com)
  * @date    2017-08-21 21:32:59
  */
-/**********************************************/
- /*元件样式设置*/
- /*********************************************/
-
 
 /**********************************************/
  /*样式细节设置*/
  /*********************************************/
-
-
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+img{
+	vertical-align: top;
+}
+.scroll{
+	width: 500px;
+	height: 200px;
+	margin: 100px auto;
+	border: 1px solid #ccc;
+	padding: 7px;
+	position: relative;
+}
+.box{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.box ul{
+	width: 1000%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.box ul li{
+	float: left;
+}
+.box ul li img{
+	width: 500px;
+	height: 200px;
+}
+.scroll .round{
+	position: absolute;
+	right: 30px;
+	bottom: 10px;
+}
+.scroll .round i{
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: #aaa;
+	margin-right: 3px;
+}
+.scroll .round i.checked{
+	background-color: #fff;
+}
  /**********************************************/
  /*响应式样式设置*/
  /*********************************************/
