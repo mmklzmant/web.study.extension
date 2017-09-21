@@ -35,12 +35,12 @@ $(function() {
 function init(num) {
     for (var i = num - 1; i > -1; i--) {
         $(".right").append(`
-			<div class="eval eval-${i+1}">
-   					<span>↑</span>
-   					<span>↓</span>
-   					<h4>${i+1}</h4>
-   				</div>
-		`);
+            <div class="eval eval-${i+1}">
+                    <span>↑</span>
+                    <span>↓</span>
+                    <h4>${i+1}</h4>
+                </div>
+        `);
     }
     // 设置左边box的高度
     var heightVal = $(".box").height();
@@ -58,13 +58,13 @@ function dirClick() {
     $("span").click(function() {
         //点击的层数
         var floor = attrObj.floorNum - $(this).parent().index();
-         // 为按钮添加点击背景
-         $(this).addClass("checked");
+        // 为按钮添加点击背景
+        $(this).addClass("checked");
         //将当前点击的层数添加至数组
         evalArr.push(floor);
-        if(!flag)
-        {
-        	animation(evalArr);
+
+        if (!flag) {
+            animation(evalArr);
         }
     });
 }
@@ -73,36 +73,42 @@ function dirClick() {
  * 功能：执行电梯动画
  */
 function animation(arr) {
-    while (arr.length > 0) {
-        //电梯不在运行状态
-        if (!flag) {
-        	var floor = arr.shift();
-        	flag = true;//标志电梯在运行状态
-            // 清除电梯关门动画
-    		$(".leftDoor, .rightDoor").removeClass("toggle");
-            //当前点击的层数与上一次层数的差值
-            var diff = Math.abs(attrObj.curentIndex - floor);
-            //动画开始时间
-            var times = diff * attrObj.time;
+    //电梯不在运行状态
+    while (arr.length > 0 && !flag) {
+        var floor = arr.shift();
+        flag = true; //标志电梯在运行状态
+        
+        //当前点击的层数与上一次层数的差值
+        var diff = Math.abs(attrObj.curentIndex - floor);
+        //动画开始时间
+        var times = diff * attrObj.time;
 
-            //设置电梯bottom值
-            $(".box").css("transitionDuration", times / 1000 + "s");
-            $(".box").css("bottom", $(".box").height() * (floor - 1) + "px");
-            //延时times秒后为电梯添加开门效果，并移除按钮点击样式
+        //设置电梯bottom值
+        $(".box").css("transitionDuration", times / 1000 + "s");
+        $(".box").css("bottom", $(".box").height() * (floor - 1) + "px");
+        //延时times秒后为电梯添加开门效果，并移除按钮点击样式
+        setTimeout(function() {
+            //打开电梯门
+            $(".leftDoor, .rightDoor").addClass("toggle");
+            //清除按钮样式
+            $(".right .eval-" + floor).children().removeClass("checked");
+            //等打开电梯动画执行完再去响应下一次运行
             setTimeout(function() {
-            	//打开电梯门
-                $(".leftDoor, .rightDoor").addClass("toggle");
-                //清除按钮样式
-                $(".right .eval-" + floor).children().removeClass("checked");
-                flag = false;//电梯一次运行结束
-                //等打开电梯动画执行完再去响应下一次运行
-                setTimeout(function(){
-					animation(arr);
-                }, 2000);
-            }, times);
-            //修改当前的电梯层数
-            attrObj.curentIndex = floor;
-        }
+                // 清除电梯开门动画
+                $(".leftDoor, .rightDoor").removeClass("toggle"); 
+                // 电梯关门动画
+                $(".leftDoor, .rightDoor").addClass("close");
+                
+            }, 3000);
+            setTimeout(function(){
+                flag = false; //电梯一次运行结束
+                // 清除电梯关门动画
+                $(".leftDoor, .rightDoor").removeClass("close");
+                animation(arr);
+            }, 5000);
+        }, times);
 
+        //修改当前的电梯层数
+        attrObj.curentIndex = floor;
     }
 }

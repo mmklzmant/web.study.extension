@@ -128,12 +128,18 @@ main .elevator .left .box>div.leftDoor{
 main .elevator .left .box>div.leftDoor.toggle{
     animation: slideLeft 2s forwards;
 }
+main .elevator .left .box>div.leftDoor.close{
+    animation: slideCloseLeft 2s forwards;
+}
 main .elevator .left .box>div.rightDoor{
     right: 0;
     top: 0;
 }
 main .elevator .left .box>div.rightDoor.toggle{
     animation: slideRight 2s forwards;
+}
+main .elevator .left .box>div.rightDoor.close{
+    animation: slideCloseRight 2s forwards;
 }
 
 /**********************************************/
@@ -153,5 +159,21 @@ main .elevator .left .box>div.rightDoor.toggle{
     }
     100%{
         right: -48%;
+    }
+}
+@keyframes slideCloseLeft{
+    0%{
+        left: -48%;
+    }
+    100%{
+        left: 0;
+    }
+}
+@keyframes slideCloseRight{
+    0%{
+        right: -48%;
+    }
+    100%{
+        right: 0;
     }
 }

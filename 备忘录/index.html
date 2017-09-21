@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>备忘录</title>
+    <link href="stylesheets/index.css" rel="stylesheet">
+    <!-- mmklzmant于2017-09-21 编写 -->
+</head>
+
+<body>
+    <div class="main">
+        <!-- header -->
+        <header>
+            <h1>备忘录</h1>
+            <button id="mainEdit" type="button" disabled="disabled">编辑</button>
+            <button id="mainCancle" type="button">取消</button>
+        </header>
+        <!-- main -->
+        <main>
+        	<ul id="list">
+        		<!-- <li>
+        			<div>
+        				<i class="checked">√</i>
+        			</div>
+        			<div>
+        				<p>备忘录一</p>
+        				<p>2017-09-21 18:01</p>
+        			</div>
+        		</li> -->
+        	</ul>
+        </main>
+        <!-- footer -->
+        <footer>
+            <h1>无备忘录</h1>
+            <button type="button" id="mainAdd" class="rightBtn"></button>
+            <button type="button" id="mainDelete" class="rightBtn">删除</button>
+        </footer>
+    </div>
+    <div class="edit">
+    	<header>
+    		<button id="backBtn" type="button" class="leftBtn">
+    			<i></i>
+    			<span>备忘录</span>
+    		</button>
+    		<button id="saveBtn" type="button" class="rightBtn">保存</button>
+    	</header>
+    	<main>
+    		<textarea id="textArea" spellcheck="fal
+    		"></textarea>
+    	</main>
+    	 <footer>
+            <button type="button" id="editBtn" class="rightBtn"></button>
+        </footer>
+    </div>
+    <script type="text/javascript" src="plugin/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/index.js"></script>
+</body>
+
+</html>
