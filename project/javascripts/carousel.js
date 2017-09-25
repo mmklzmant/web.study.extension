@@ -1,39 +1,9 @@
 /**
- * 功能：图片轮播
- * @authors mmklzmant (mmklzmant@163.com)
- * @date    2017-09-25
- */
-
-/*************************************************/
-/* 全局变量、对象定义部分 */
-/*************************************************/
-
-/*************************************************/
-/* 页面加载完成之后执行的功能 (函数目录)*/
-/*************************************************/
-window.onload = function () {
-    // ==============================
-    // 功能流程
-    // ==============================
-    //实例化Carousel对象
-    var carousel = new Carousel();
-    carousel.init(imgList);
-    carousel.autoplay(1500);
-    // console.log(carousel.len);
-    // ==============================
-    // 全局功能工具函数
-    // ==============================
-}
-/*************************************************/
-/* 功能函数及方法定义部分 (函数内容)*/
-/*************************************************/
-
-/**
  * 功能：图片轮播类
  */
 function Carousel(){
-    this.ulNode = document.getElementById("ul");
-    this.roundNode = document.getElementsByClassName("round")[0];
+    this.ulNode = document.getElementsByClassName("crsUl")[0];
+    this.roundNode = document.getElementsByClassName("round-icons")[0];
     this.index = 0;//显示图片的当前索引值
     this.circle = 0; //小圆点的位置
     var self = this;//自身
@@ -46,6 +16,7 @@ function Carousel(){
         this.len = imgList.length;
         var strHTML = "";
         var roundHTML = "";
+        console.log(imgList);
         for (var i = 0; i < this.len; i++)
         {
             strHTML += '<li>'+
@@ -56,7 +27,7 @@ function Carousel(){
         this.ulNode.innerHTML = strHTML;
         this.roundNode.innerHTML = roundHTML;
         //设置第一个小圆点被选中
-        this.roundNode.children[0].className = "checked";
+        this.roundNode.children[0].className = "round-checked";
         //为了实现无缝轮播，克隆第一张放到最后一张
         this.ulNode.appendChild(this.ulNode.children[0].cloneNode(true));
         //获取每个li的宽度
@@ -84,8 +55,8 @@ function Carousel(){
             {
                 self.circle = 0;
             }
-            document.getElementsByClassName("checked")[0].classList.remove("checked");
-            self.roundNode.children[self.circle].classList.add("checked");
+            document.getElementsByClassName("round-checked")[0].classList.remove("round-checked");
+            self.roundNode.children[self.circle].classList.add("round-checked");
         }, time);
     }
     /**
