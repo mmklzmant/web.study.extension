@@ -13,6 +13,10 @@ var wrapper = document.getElementsByClassName("wrapper")[0];
 var currentPosition = 0;
 //当前页码
 var pageNow = 1;
+//推荐页面轮播对象
+var recomCarousel = new Carousel();
+//开氪页面轮播对象
+var kaikeCarousel = new Carousel();
 
 
 /*************************************************/
@@ -49,8 +53,7 @@ function getHomeHTML() {
         bindTouchEvent();
         // 设置头部导航栏的位置
         setNavLinePos(pageNow);
-        //快讯界面展开点击事件
-        // expandClick();
+
     });
 
 }
@@ -59,12 +62,21 @@ function getHomeHTML() {
  * 功能：快讯界面展开点击事件
  */
 function expandClick() {
-    /*var expand = document.getElementsByClassName("other-left")[0];
-    expand.onclick = function () {
-        if (this.parentElement.classList.contains('show')) {
-            console.log("show");
+    var expand = document.getElementsByClassName("other-left"),
+        len = expand.length;
+    for(var i = 0; i < len; i++)
+    {
+        expand[i].onclick = function () {
+            if (this.closest(".flash-right-content").classList.contains('show')) {
+                this.closest(".flash-right-content").classList.remove('show');
+                this.setAttribute("data-txt", "展开");
+            }
+            else{
+                this.closest(".flash-right-content").classList.add('show');
+                this.setAttribute("data-txt", "收起");
+            }
         }
-    }*/
+    }
 }
 
 /**
@@ -73,6 +85,14 @@ function expandClick() {
 function getKaikeHTML() {
     getHTML("pages/kaike.html", function (html) {
         wrapper.innerHTML = html;
+        getObj("data/kaike-crs-data.json", function (obj) {
+            var imgList = Array.prototype.slice.call(obj['images']);
+            kaikeCarousel.setUlNode("crsUl");
+            kaikeCarousel.setRoundNode("round-icons");
+            kaikeCarousel.setCheckedName("round-checked");
+            kaikeCarousel.init(imgList);
+            kaikeCarousel.autoplay(1500);
+        })
     });
 }
 
@@ -122,6 +142,13 @@ function bottomNavClick() {
             document.getElementsByClassName("checked")[0]
                 .classList.remove("checked");
             this.classList.add("checked");
+            //停止推荐页面图片轮播
+            recomCarousel.stopAutoPlay();
+            if(this.index !== 1)
+            {
+                //停止开氪页面图片轮播
+                kaikeCarousel.stopAutoPlay();
+            }
         }
     }
 }
@@ -298,12 +325,23 @@ function loadView(index) {
             //当为推荐页面时加载轮播图数据
             if(index === 2)
             {
-                getJSON("data/recom-crs-data.json", function (obj) {
+                getObj("data/recom-crs-data.json", function (obj) {
                     var imgList = Array.prototype.slice.call(obj["images"]);
-                    var carousel = new Carousel();
-                    carousel.init(imgList);
-                    carousel.autoplay(1500);
-                })
+                    recomCarousel.setUlNode("crsUl");
+                    recomCarousel.setRoundNode("round-icons");
+                    recomCarousel.setCheckedName("round-checked");
+                    recomCarousel.init(imgList);
+                    recomCarousel.autoplay(1500);
+                });
+            }
+            else {
+                if(index === 3)
+                {
+                    //快讯界面展开点击事件
+                    expandClick();
+                }
+                //停止轮播
+                recomCarousel.stopAutoPlay();
             }
         });
     }
@@ -316,7 +354,7 @@ function getJSON(url, callback){
         if(xhr.readyState === 4 && xhr.status === 200)
         {
             var json = xhr.responseText;
-            callback(JSON.parse(json));
+            callback(json);
         }
     }
 }
