@@ -10,7 +10,7 @@
 //除底部当行栏的页面容器
 var wrapper = document.getElementsByClassName("wrapper")[0];
 //当前页面位置
-var currentPosition = 0;
+var currentPosition;
 //当前页码
 var pageNow = 1;
 //推荐页面轮播对象
@@ -50,10 +50,12 @@ function getHomeHTML() {
         loadView(1);
         //设置每个页面的宽度
         setPageWidth();
+        //头部按钮点击事件
+        bindHomeNavClick();
         //绑定滑动内容触摸事件
         bindTouchEvent();
         // 设置头部导航栏的位置
-        setNavLinePos(pageNow);
+        setNavLinePos(0);
 
     });
 
@@ -174,17 +176,41 @@ function transform(translate) {
 }
 
 /**
+ * 功能：头部导航按钮点击事件
+ */
+function bindHomeNavClick() {
+    var liList = document.getElementsByClassName("home-nav")[0]
+        .getElementsByTagName("li"),
+        len = liList.length;
+    var homeContent = document.getElementsByClassName("home-content")[0];
+    for(var i = 0; i < len; i++)
+    {
+        liList[i].index = i;
+        liList[i].onclick = function () {
+            var pageWidth = window.innerWidth;
+            setNavLinePos(this.index);
+            if(this.index !== 1)
+            {
+                recomCarousel.stopAutoPlay();
+            }
+            loadView(this.index + 1);
+            transform.call(homeContent, -pageWidth*(this.index));
+        }
+    }
+}
+/**
  * 功能：绑定触摸事件
  */
 function bindTouchEvent() {
+    currentPosition = 0;
     //滑动页面的父容器
     var viewContainer = document.getElementById("home-content");
     //滑动页面容器
     var viewContents = document.getElementsByClassName("content-view");
     //每个页面宽度
-    var pageWidth = window.innerWidth;
+    var pageWidth;
     //滑动到最后一页的平移量
-    var maxWidth = -pageWidth * (viewContents.length - 1);
+    var maxWidth;
     //开始滑动位置和结束位置
     var startX, startY;
     //手指按下的屏幕位置
@@ -203,6 +229,8 @@ function bindTouchEvent() {
     // 手指开始滑动
     viewContainer.addEventListener("touchstart", function (e) {
         // e.preventDefault();
+        pageWidth = window.innerWidth;
+        maxWidth = -pageWidth * (viewContents.length - 1);
         var target = e.targetTouches[0].target;
         if (!target.closest(".crsUl")) {
             if (e.touches.length === 1 || isTouchEnd) {
@@ -286,9 +314,7 @@ function bindTouchEvent() {
             //加载当前显示的内容
             loadView(pageNow);
             //设置导航栏的位置
-            setNavLinePos(pageNow);
-            var navViewWidth = document.getElementsByClassName("home-nav")[0].offsetWidth;
-            var line = document.getElementById("home-nav-line");
+            setNavLinePos(pageNow-1);
         }
     }, false);
 }
@@ -298,8 +324,8 @@ function bindTouchEvent() {
  */
 function setNavLinePos(pos) {
     var navs = document.getElementsByClassName("slide-nav");
-    var line = document.getElementById("home-nav-line");
-    line.style.left = navs[pos - 1].offsetLeft + 25 + "px";
+    document.getElementsByClassName("show")[0].classList.remove("show");
+    navs[pos].classList.add("show");
 }
 
 /**
@@ -360,7 +386,6 @@ function cslTouchEvent() {
     //每张图片的图片宽度
     var imgWidth = window.innerWidth;
     var maxWidth = -imgWidth * (container.children.length);
-    console.log(maxWidth);
     //开始时间
     var startTime = 0;
     //滑动结束

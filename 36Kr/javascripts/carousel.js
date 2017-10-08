@@ -49,7 +49,13 @@ function Carousel(){
         this.ulNode.innerHTML = strHTML;
         this.roundNode.innerHTML = roundHTML;
         //根据当前的index值设置小圆点被选中
-        this.roundNode.children[this.index].className = this.ckdName;
+        if(this.index === 5)
+        {
+            this.roundNode.children[0].className = this.ckdName;
+        }
+        else{
+            this.roundNode.children[this.index].className = this.ckdName;
+        }
         //为了实现无缝轮播，克隆第一张放到最后一张
         this.ulNode.appendChild(this.ulNode.children[0].cloneNode(true));
         //根据当前的index值设置ul的left值
