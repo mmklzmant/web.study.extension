@@ -1,0 +1,94 @@
+/**
+* 功能：首页样式
+ */
+a{
+    cursor: pointer;
+}
+/*清除浮动*/
+.clearfix:before, .clearfix:after{
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+main{
+    margin-top: 50px;
+    height: 625px;
+}
+footer section{
+    width: 1120px;
+}
+footer dl{
+    width: 25%;
+    text-align: left;
+}
+footer .footer-share{
+    float: none;
+}
+footer .footer-share .share{
+    height: 30px;
+    margin-top: 20px;
+    margin-left: -172px;
+    text-align: center;
+}
+footer .copyright{
+    margin-left: -56px;
+}
+footer .footer-share .share-links{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    margin-right: 10px;
+    border-radius: 50%;
+    position: relative;
+}
+footer .footer-share .share-links:first-child{
+    background-color: #d0be2d;
+}
+footer .footer-share .share-links:nth-child(2){
+    background-color: #44AC35;
+}
+footer .footer-share .share-links:nth-child(3){
+    background-color: #4199FD;
+}
+footer .footer-share .share-links:nth-child(4){
+    background-color: #D22B2A;
+}
+footer .footer-share .share-links:nth-child(5){
+    background-color: #7dd29c;
+}
+footer .footer-share .share-links:nth-child(6){
+    background-color: #37cfff;
+}
+footer .footer-share .share-links span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    background-image: url("../../images/share_ch.png");
+    background-repeat: no-repeat;
+}
+footer .footer-share .share-links span.share-email{
+    background-position: -8px -40px;
+}
+footer .footer-share .share-links span.share-weixin{
+    background-position: -8px -184px;
+}
+footer .footer-share .share-links span.share-qq{
+    background-position: -8px -76px;
+}
+footer .footer-share .share-links span.share-weibo{
+    background-position: -8px -8px;
+}
+footer .footer-share .share-links span.share-tencent-weibo{
+    background-position: -8px -148px;
+}
+footer .footer-share .share-links span.share-rss{
+    background-position: -8px -112px;
+}

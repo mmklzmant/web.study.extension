@@ -1,0 +1,58 @@
+<!-- login Modal -->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginTitle">登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal"
+                      name="signInForm"
+                      id="signInForm"
+                      action="/sign-up"
+                      method="POST">
+
+                    <div class="form-group">
+                        <label for="login-tel" class="col-sm-2 control-label">电话：</label>
+                        <div class="col-sm-10">
+                            <input type="tel"
+                                   name="login-tel"
+                                   class="form-control"
+                                   id="login-tel"
+                                   placeholder="请输入您的电话号码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-pwd" class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password"
+                                   name="login-pwd"
+                                   class="form-control"
+                                   id="login-pwd"
+                                   placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 记住我
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="button"
+                                   class="btn btn-default"
+                                   onclick="validatorSignInForm()"
+                                   value="登录"
+                            >
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

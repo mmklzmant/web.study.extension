@@ -1,0 +1,59 @@
+//第一部分
+//{{------引入相关依赖模块（库）部分
+var express = require('express');
+//------引入相关依赖模块（库）部分}}
+
+//第二部分
+//{{------实例化（将相关依赖模块实例化）部分
+var app = express();
+//------实例化（将相关依赖模块实例化）部分}}
+
+
+//第三部分
+//{{---设置环境变量部分
+app.set('port', process.env.PORT || 3009);
+//---设置环境变量部分}}
+
+//第四部分
+//{{---调中间件部分
+
+//---调中间件部分}}
+
+//配置路由
+app.get('/', function(req, res){
+    res.type('text/html');
+    res.send('<span style="color:green">Welcome to My Site.</span>');
+});
+app.get('/about', function(req, res){
+    res.type('text/html');
+    res.send('<span style="color:green">About My WebSite.</span>');
+});
+
+//第五部分
+//{{------定制错误部分
+// 定制404 页面（所有的确404错误，都是找不到页面或
+// 文件或路由错误---原因有两个，1、用户访问时在浏览
+// 器中输入错误，2、开发者引用文件或路由错误）
+app.use(function(req, res){
+    res.type('text/html');
+    res.status(404);
+    res.send(' <span style="color:red">404 - Not Found</span>');
+});
+
+// 定制500 页面（所有的500错误都是服务器端代码错识）
+app.use(function(err, req, res, next){
+    console.error(err.stack);
+    res.type('text/plain');
+    res.status(500);
+    res.send('500 - Server Error');
+});
+//-----定制错误部分}}
+
+//第六部分
+//{{------在指定端口上启动应用
+app.listen(app.get('port'), function(){
+    console.log( 'Express 已启动在 http://localhost:' +
+        app.get('port') + '; 若要终止运行请按组合键 Ctrl-C .' );
+});
+//-----定制错误部分}}
+
